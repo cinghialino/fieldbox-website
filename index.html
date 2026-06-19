@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FieldBox — Professional Photo Backup</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0b;
+      --surface: #141416;
+      --border:  #232327;
+      --text:    #f0f0f2;
+      --muted:   #8a8a90;
+      --accent:  #4f8ef7;
+      --green:   #2ecc71;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 24px 0;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .wordmark span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px 64px;
+      width: 100%;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .feature {
+      background: var(--surface);
+      padding: 24px;
+    }
+
+    .feature-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .321-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .pill {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .pill.green { border-color: var(--green); color: var(--green); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">
+      FieldBox
+      <span>3 · 2 · 1 Backup</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="label">Field Backup System</p>
+    <h1>Back up your cards.<br>Verify every file.<br>Never lose a shot.</h1>
+    <p class="sub">FieldBox is a professional photo backup tool for iOS. It reads camera cards, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
+
+    <hr class="rule">
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-label">Integrity</div>
+        <div class="feature-title">SHA-256 Verified</div>
+        <div class="feature-desc">Every file is checksummed on card and again after copy. Bit-perfect or it fails.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Cloud</div>
+        <div class="feature-title">Multi-target Backup</div>
+        <div class="feature-desc">Backblaze B2, Dropbox, Google Drive, or iCloud — your choice, your account.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Offline</div>
+        <div class="feature-title">Works Without Wi-Fi</div>
+        <div class="feature-desc">Local transfer and verification work fully offline. Cloud sync follows when connected.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Session Log</div>
+        <div class="feature-title">Full Audit Trail</div>
+        <div class="feature-desc">Every transfer logged with file counts, sizes, checksums, and cloud confirmation.</div>
+      </div>
+    </div>
+
+    <div class="321-row">
+      <div class="pill green">3 Copies</div>
+      <div class="pill green">2 Places</div>
+      <div class="pill green">1 Offsite</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Alessandro Casagli &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="mailto:casagli@gmail.com">Contact</a>
+    </p>
+  </footer>
+
+</body>
+</html>

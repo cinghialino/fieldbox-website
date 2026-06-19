@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — FieldBox</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0b;
+      --surface: #141416;
+      --border:  #232327;
+      --text:    #f0f0f2;
+      --muted:   #8a8a90;
+      --accent:  #4f8ef7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 24px 0;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .wordmark a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wordmark span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      width: 100%;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 8px 0 12px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    ul li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">
+      <a href="/">FieldBox</a>
+      <span>3 · 2 · 1 Backup</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="label">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Effective date: June 18, 2026</p>
+
+    <section>
+      <h2>Overview</h2>
+      <p>FieldBox ("the app", "we", "us") is a professional photo backup application for iOS developed by Alessandro Casagli. This policy explains what data the app accesses, how it is used, and your rights.</p>
+      <p>FieldBox does not collect, store, or transmit any personal data to our servers. There are no servers. All data stays on your device and in your own cloud accounts.</p>
+    </section>
+
+    <section>
+      <h2>Data the App Accesses</h2>
+      <p>FieldBox accesses only the following data, solely to perform the backup functions you initiate:</p>
+      <ul>
+        <li><strong>Camera card contents</strong> — image and video files you choose to back up. Read-only. The app never modifies or deletes files from your card.</li>
+        <li><strong>Device storage</strong> — a verified local copy of your files is written to the FieldBox folder in your iOS Files app.</li>
+        <li><strong>Your cloud storage accounts</strong> — when you configure a cloud destination, the app uploads your backed-up files to that account. See the sections below for each provider.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Google Drive</h2>
+      <p>When you connect Google Drive, FieldBox requests the <code>drive.file</code> scope. This grants the app access <strong>only to files and folders that FieldBox itself creates</strong> — it cannot read any other files in your Google Drive.</p>
+      <p>Specifically, the app:</p>
+      <ul>
+        <li>Creates a <strong>FieldBox</strong> folder in your Google Drive</li>
+        <li>Uploads your backed-up photo and video files into that folder</li>
+        <li>Reads those files back to verify integrity (size and checksum)</li>
+        <li>Deletes those files when you turn off cloud backup for a session</li>
+      </ul>
+      <p>FieldBox does not read, modify, or delete any file in your Google Drive that it did not create. Your Google account credentials are stored securely in the iOS Keychain on your device and are never transmitted to us.</p>
+    </section>
+
+    <section>
+      <h2>Dropbox</h2>
+      <p>When you connect Dropbox, FieldBox uses App Folder access — an isolated folder named <strong>Fieldbox Backup</strong> inside your Dropbox <code>Apps/</code> directory. The app can only read and write within that folder. It cannot access any other part of your Dropbox.</p>
+    </section>
+
+    <section>
+      <h2>Backblaze B2 / S3-Compatible Storage</h2>
+      <p>When you configure an S3-compatible destination (Backblaze B2, Wasabi, Cloudflare R2, etc.), you provide your own access credentials. The app uses those credentials solely to upload, verify, and delete files in the bucket you specify. Credentials are stored in the iOS Keychain and never leave your device.</p>
+    </section>
+
+    <section>
+      <h2>iCloud Drive</h2>
+      <p>When iCloud Drive is selected, files are copied into the app's iCloud container using Apple's standard APIs. Syncing is handled entirely by Apple's infrastructure. FieldBox does not transmit any data independently.</p>
+    </section>
+
+    <section>
+      <h2>Data We Do Not Collect</h2>
+      <ul>
+        <li>No analytics or telemetry</li>
+        <li>No crash reporting sent to our servers</li>
+        <li>No advertising identifiers</li>
+        <li>No personal information (name, email, location)</li>
+        <li>No access to your Photos library</li>
+        <li>No data sold or shared with third parties — ever</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Data Retention</h2>
+      <p>All data is under your control. Local files remain on your device until you delete them through the app or iOS Files. Cloud copies remain in your cloud account until you remove them through the app or directly in your cloud provider's interface.</p>
+    </section>
+
+    <section>
+      <h2>Security</h2>
+      <p>All cloud credentials are stored in the iOS Keychain with <code>kSecAttrAccessibleWhenUnlockedThisDeviceOnly</code> protection — they cannot be extracted from the device or included in iCloud backups. All cloud communication uses HTTPS/TLS. File integrity is verified with SHA-256 checksums.</p>
+    </section>
+
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>FieldBox is a professional tool intended for adults. We do not knowingly collect any information from children under 13.</p>
+    </section>
+
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>If this policy changes materially, the updated version will be posted at this URL with a new effective date. Continued use of the app after changes constitutes acceptance.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about this privacy policy? Contact us at <a href="mailto:casagli@gmail.com">casagli@gmail.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Alessandro Casagli &nbsp;·&nbsp;
+      <a href="/">FieldBox</a> &nbsp;·&nbsp;
+      <a href="mailto:casagli@gmail.com">Contact</a>
+    </p>
+  </footer>
+
+</body>
+</html>
