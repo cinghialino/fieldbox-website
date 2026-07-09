@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Fieldbox Backup</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0b;
+      --surface: #141416;
+      --border:  #232327;
+      --text:    #f0f0f2;
+      --muted:   #8a8a90;
+      --accent:  #4f8ef7;
+      --green:   #2ecc71;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 24px 0;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .wordmark a { color: inherit; text-decoration: none; }
+
+    .wordmark span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      width: 100%;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 56ch;
+    }
+
+    .toc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 56px;
+    }
+
+    .toc-pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .toc-pill:hover { color: var(--text); border-color: var(--accent); }
+
+    section.qa-group { margin-bottom: 52px; }
+    section.qa-group:last-of-type { margin-bottom: 0; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .section-head svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    h2.section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    details.qa {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    details.qa summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    details.qa summary::-webkit-details-marker { display: none; }
+
+    details.qa summary::after {
+      content: "+";
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      width: 16px;
+      text-align: center;
+    }
+
+    details.qa[open] summary::after { content: "\2212"; }
+
+    details.qa .qa-body {
+      padding: 0 20px 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    details.qa .qa-body p { margin-bottom: 12px; }
+    details.qa .qa-body p:last-child { margin-bottom: 0; }
+    details.qa .qa-body strong { color: var(--text); font-weight: 600; }
+
+    details.qa .qa-body ul {
+      margin: 4px 0 12px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    details.qa .qa-body li {
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+
+    details.qa .qa-body li::before {
+      content: "\00b7";
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .example {
+      background: rgba(79, 142, 247, 0.07);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 4px;
+      margin-top: 12px;
+    }
+
+    .example-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .example p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .readmore {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 14px;
+    }
+
+    .readmore:hover { text-decoration: underline; }
+
+    .contact-block {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .contact-block p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #06121f;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .cta:hover { opacity: 0.9; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 12px; color: var(--muted); }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">
+      <a href="/">Fieldbox Backup</a>
+      <span>3 · 2 · 1 Backup</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="label">Questions & Answers</p>
+    <h1>Frequently asked questions</h1>
+    <p class="sub">Everything photographers usually want to know before trusting Fieldbox with a shoot. If your question isn't here, email us at the bottom of the page.</p>
+
+    <div class="toc-row">
+      <a class="toc-pill" href="#getting-started">Getting started</a>
+      <a class="toc-pill" href="#safety">Keeping files safe</a>
+      <a class="toc-pill" href="#cloud">Cloud backup</a>
+      <a class="toc-pill" href="#teams">Working as a team</a>
+      <a class="toc-pill" href="#devices">Devices & files</a>
+    </div>
+
+    <section class="qa-group" id="getting-started">
+      <div class="section-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h7M12 8.5l3.5 3.5-3.5 3.5"/></svg>
+        <h2 class="section-title">Getting started</h2>
+      </div>
+
+      <details class="qa">
+        <summary>What does Fieldbox Backup actually do?</summary>
+        <div class="qa-body">
+          <p>It takes the photos and video off your camera card, copies them onto your iPhone or iPad, checks every single file to make sure the copy is perfect, and then sends a copy to a cloud storage account you already own. By the time it's done, your shoot exists in three places: the card, your device, and the cloud.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>How do I back up a card?</summary>
+        <div class="qa-body">
+          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name (or add it to one you already started), glance over the summary of what's on the card, and tap Start. When the screen turns green and says every file is verified, you're done.</p>
+          <div class="example">
+            <div class="example-label">Example</div>
+            <p>You finish a session and swap cards mid-shoot. Fieldbox recognizes the camera and offers to drop the new card straight into the same session, so everything from the day ends up together.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Do I need an internet connection to back up?</summary>
+        <div class="qa-body">
+          <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. Once you're back online, Fieldbox picks up any backups that are waiting and sends them to your cloud on its own, even if it's not the same day.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Can I plan a session before the shoot even starts?</summary>
+        <div class="qa-body">
+          <p>Yes. Set up a session with a name and a date ahead of time, and pick which cloud it should go to. On the day, it sits at the top of the list ready to go, so you can plug in and start without stopping to name anything.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="safety">
+      <div class="section-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h2 class="section-title">Keeping files safe</h2>
+      </div>
+
+      <details class="qa">
+        <summary>What does "verified" actually mean?</summary>
+        <div class="qa-body">
+          <p>Every file gets a unique fingerprint before it's copied, and another one after. If the two don't match exactly, down to a single byte, Fieldbox knows and retries the file rather than letting a broken copy through quietly. Only once every file on the card has matched perfectly does the screen turn green.</p>
+          <a class="readmore" href="/faq-details.html#verification">Read more about how verification works →</a>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Is my card ever erased or changed?</summary>
+        <div class="qa-body">
+          <p><strong>Never automatically.</strong> Fieldbox only reads from your card, it doesn't format it, delete from it, or reorganize it. The card stays your safety net until you personally decide it's safe to reuse. The success screen only tells you it's safe to format after every file has been verified and you've acknowledged it, nothing formats on its own.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>What happens if a transfer gets interrupted?</summary>
+        <div class="qa-body">
+          <p>Whatever file was copying at that moment finishes safely or isn't counted at all, there's no half-written file left behind. Fieldbox tells you exactly how many files made it in and shows a standing warning not to format the card until the rest are backed up. Plug the card back in later and it continues from where it stopped, it never starts over.</p>
+          <a class="readmore" href="/faq-details.html#interrupted">Read more about interrupted transfers →</a>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="cloud">
+      <div class="section-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg>
+        <h2 class="section-title">Cloud backup</h2>
+      </div>
+
+      <details class="qa">
+        <summary>Which cloud services can I use?</summary>
+        <div class="qa-body">
+          <p>Dropbox, Google Drive, Microsoft OneDrive, any S3-compatible storage (Backblaze B2, Wasabi, Cloudflare R2, and similar), or your own NAS and home server over WebDAV (Synology, QNAP, TrueNAS, Nextcloud, and others). It's your account and your storage, Fieldbox just moves the verified files there.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>How does Fieldbox know a cloud backup really landed, not just that the upload didn't error?</summary>
+        <div class="qa-body">
+          <p>It's a genuine double check rather than an assumption. The cloud service does its own math on the exact bytes it received and rejects the file outright if anything doesn't match. Then, separately, Fieldbox asks the cloud to confirm the file is really there, at the right size, with the right fingerprint. Both have to hold true before that cloud backup counts as confirmed.</p>
+          <a class="readmore" href="/faq-details.html#cloud-safety">Read more about cloud verification →</a>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>I backed up to Dropbox, then switched to Google Drive for the next shoot. Did my old backup stop counting?</summary>
+        <div class="qa-body">
+          <p>No. Once a shoot has a complete, verified copy sitting in one cloud, that's a fact that doesn't change. Switching which cloud is your default only decides where new backups go from now on, it never touches what's already confirmed.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Can I back up to more than one cloud at the same time?</summary>
+        <div class="qa-body">
+          <p>Yes. Pick as many clouds as you want for a session and they all upload together, not one after another. The success screen tells you how many confirmed.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Does Fieldbox use my iCloud storage?</summary>
+        <div class="qa-body">
+          <p>No, it never touches iCloud. Your files go to your device and to whichever cloud account you connect yourself. There's no subscription or storage tied to Fieldbox itself, you use the storage you already have.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="teams">
+      <div class="section-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><path d="M2.5 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.3"/><path d="M14.8 13.6c.7-.2 1.4-.3 2.2-.3 2.8 0 5.1 2.2 5.5 5"/></svg>
+        <h2 class="section-title">Working as a team</h2>
+      </div>
+
+      <details class="qa">
+        <summary>Can my whole crew back up to one shared cloud account?</summary>
+        <div class="qa-body">
+          <p>Yes, hand everyone the same login. Every device that connects gets its own space inside the account, so nobody's files ever collide or overwrite each other.</p>
+          <div class="example">
+            <div class="example-label">Example</div>
+            <p>Two photographers cover a wedding, both shooting on separate cameras and both backing up into the same studio Dropbox. A producer can browse both galleries from either phone, but neither photographer can delete the other's uploads. Nobody can wipe out a colleague's only copy by accident.</p>
+          </div>
+          <a class="readmore" href="/faq-details.html#sharing">Read more about shared accounts →</a>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="devices">
+      <div class="section-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10.5" y1="18.2" x2="13.5" y2="18.2"/></svg>
+        <h2 class="section-title">Devices & files</h2>
+      </div>
+
+      <details class="qa">
+        <summary>What do I need to use Fieldbox?</summary>
+        <div class="qa-body">
+          <ul>
+            <li>An iPhone 15 Pro / 16 or later, or an iPad with USB-C, running iOS or iPadOS 17 or newer</li>
+            <li>A USB-C card reader (CFexpress or SD)</li>
+          </ul>
+          <p>That's the whole list. No extra hardware, no dedicated device to carry.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>What file types does it handle?</summary>
+        <div class="qa-body">
+          <p>RAW (including CR3 and similar formats), JPEG, HEIC, video, and audio, essentially anything that comes off a memory card.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Can I preview my photos and videos in the app?</summary>
+        <div class="qa-body">
+          <p>Yes. Browse a backed-up session as a thumbnail grid and tap anything to view it full-size, RAW and HEIC included.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Can I copy a backup onto a USB drive to hand off to a client?</summary>
+        <div class="qa-body">
+          <p>Yes, export a session directly to an external USB-C drive, formatted exFAT, FAT32, or APFS. Handy for a same-day client handoff without needing a laptop.</p>
+        </div>
+      </details>
+    </section>
+
+    <div class="contact-block">
+      <p>Still have a question?</p>
+      <a class="cta" href="mailto:info@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Alessandro Casagli &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="mailto:info@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+
+</body>
+</html>

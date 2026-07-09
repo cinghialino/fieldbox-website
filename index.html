@@ -74,11 +74,46 @@
       margin-bottom: 20px;
     }
 
+    h2.section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
     .sub {
       font-size: 16px;
       color: var(--muted);
       line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
       margin-bottom: 48px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #06121f;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .cta:hover { opacity: 0.9; }
+
+    .cta-note {
+      font-size: 13px;
+      color: var(--muted);
     }
 
     .rule {
@@ -140,6 +175,53 @@
 
     .pill.green { border-color: var(--green); color: var(--green); }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+
+    .shot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .shot-caption {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .founder-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .founder-note p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .founder-note p:last-of-type { margin-bottom: 0; }
+
+    .founder-sig {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 24px;
@@ -174,6 +256,11 @@
     <h1>Back up your cards.<br>Verify every file.<br>Never lose a shot.</h1>
     <p class="sub">Fieldbox Backup is a professional photo backup tool for iOS. It reads camera cards, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
 
+    <div class="cta-row">
+      <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
+      <span class="cta-note">Not on the App Store yet — email gets you a heads-up the day it ships.</span>
+    </div>
+
     <hr class="rule">
 
     <div class="features">
@@ -185,7 +272,7 @@
       <div class="feature">
         <div class="feature-label">Cloud</div>
         <div class="feature-title">Multi-target Backup</div>
-        <div class="feature-desc">Backblaze B2, Dropbox, or Google Drive — your choice, your account.</div>
+        <div class="feature-desc">Dropbox, Google Drive, Microsoft OneDrive, or your own S3-compatible bucket (Backblaze B2, Wasabi, R2) — your choice, your account.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Offline</div>
@@ -204,13 +291,54 @@
       <div class="pill green">2 Places</div>
       <div class="pill green">1 Offsite</div>
     </div>
+
+    <hr class="rule">
+
+    <h2 class="section-title">See It In Action</h2>
+    <div class="gallery">
+      <div class="shot">
+        <img src="screenshots/01_home.png" alt="Fieldbox Backup home screen showing 3-2-1 backup status">
+        <div class="shot-caption">Home — 3-2-1 status at a glance</div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/06_summary.png" alt="Pre-transfer summary screen listing scanned files by type">
+        <div class="shot-caption">Pre-transfer summary</div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/03_progress.png" alt="Transfer progress screen showing files copying">
+        <div class="shot-caption">Transfer in progress</div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/02_success.png" alt="Success screen confirming all files verified">
+        <div class="shot-caption">Verified — safe to format</div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/04_synccenter.png" alt="Sync Center showing cloud backup connections and status">
+        <div class="shot-caption">Sync Center — cloud status</div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/05_preview.png" alt="Thumbnail grid preview of a backed-up folder">
+        <div class="shot-caption">Preview your backed-up files</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <h2 class="section-title">A Note From the Photographer Who Built This</h2>
+    <div class="founder-note">
+      <p>I'm a photographer. I know the ritual: cards fill up mid-shoot, and at some point you have to trust that a copy actually worked before you reuse them. A progress bar finishing isn't the same as knowing every file landed intact — and on a job that can't be reshot, that gap is the whole problem.</p>
+      <p>Fieldbox Backup exists because I wanted an honest answer to one question: is this file really, verifiably safe, in more than one place, before I touch the format button? Not "it looks done." Verified — a SHA-256 checksum on the original and on the copy, matched, with a clear green screen when it's true and an unambiguous red one when it isn't.</p>
+      <p>It's built and maintained by one person — me. That means it moves slower than a team-built app, but every decision in it is made by someone who actually needs it to work in a hotel room at midnight with a card full of a day you can't get back.</p>
+      <div class="founder-sig">— Alessandro Casagli</div>
+    </div>
   </main>
 
   <footer>
     <p>
       &copy; 2026 Alessandro Casagli &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
       <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="mailto:casagli@gmail.com">Contact</a>
+      <a href="mailto:info@fieldbox.app">Contact</a>
     </p>
   </footer>
 

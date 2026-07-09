@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How it works — Fieldbox Backup</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0b;
+      --surface: #141416;
+      --border:  #232327;
+      --text:    #f0f0f2;
+      --muted:   #8a8a90;
+      --accent:  #4f8ef7;
+      --green:   #2ecc71;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 24px 0;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .wordmark {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .wordmark a { color: inherit; text-decoration: none; }
+
+    .wordmark span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      margin-top: 24px;
+    }
+
+    .back-link:hover { color: var(--text); }
+
+    main {
+      flex: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      width: 100%;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 56ch;
+    }
+
+    .toc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 56px;
+    }
+
+    .toc-pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .toc-pill:hover { color: var(--text); border-color: var(--accent); }
+
+    article.deep {
+      margin-bottom: 56px;
+      padding-top: 8px;
+      scroll-margin-top: 24px;
+    }
+
+    article.deep:last-of-type { margin-bottom: 0; }
+
+    .deep-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .deep-head svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .deep-head h2 {
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+
+    article.deep p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    article.deep p:last-of-type { margin-bottom: 0; }
+
+    article.deep strong { font-weight: 600; }
+
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      margin: 4px 0 18px 0;
+      padding: 0;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      position: relative;
+      padding: 4px 0 4px 34px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aside {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 4px;
+      margin: 18px 0;
+    }
+
+    .aside-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .aside p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 56px;
+    }
+
+    .contact-block {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .contact-block p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #06121f;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .cta:hover { opacity: 0.9; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 12px; color: var(--muted); }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">
+      <a href="/">Fieldbox Backup</a>
+      <span>3 · 2 · 1 Backup</span>
+    </div>
+    <a class="back-link" href="/faq.html">&larr; Back to FAQ</a>
+  </header>
+
+  <main>
+    <p class="label">Under the hood, in plain language</p>
+    <h1>How Fieldbox actually keeps your files safe</h1>
+    <p class="sub">The short answers on the FAQ page are the whole truth, just the short version. This page walks through the same things in more detail for anyone who wants to see exactly how each check works, without needing an engineering background to follow along.</p>
+
+    <div class="toc-row">
+      <a class="toc-pill" href="#verification">Verification</a>
+      <a class="toc-pill" href="#cloud-safety">Cloud confirmation</a>
+      <a class="toc-pill" href="#sharing">Shared accounts</a>
+      <a class="toc-pill" href="#interrupted">Interrupted transfers</a>
+    </div>
+
+    <article class="deep" id="verification">
+      <div class="deep-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h2>How verification works</h2>
+      </div>
+      <p>Think of it like a wax seal on a letter. The seal is made from the exact contents of what's inside, so if a single word changes, the seal no longer matches. Fieldbox does the same thing with a mathematical fingerprint (the technical name is SHA-256) instead of wax.</p>
+      <ol class="step-list">
+        <li>Fieldbox reads the file straight off your card and calculates its fingerprint.</li>
+        <li>It copies the file onto your device.</li>
+        <li>It reads the copy back and calculates the fingerprint again.</li>
+        <li>The two fingerprints are compared. If they match exactly, the file is marked verified. If they don't, Fieldbox retries the file once before flagging it as failed.</li>
+      </ol>
+      <p>This happens for every single file in the transfer, not a sample. The green "all files verified" screen only appears once every fingerprint on the card matches its counterpart on your device. A file can only fail this check if something actually went wrong in the copy, so it's a real guarantee, not a progress bar that just assumes things went fine.</p>
+    </article>
+
+    <hr class="rule">
+
+    <article class="deep" id="cloud-safety">
+      <div class="deep-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg>
+        <h2>How Fieldbox confirms a cloud backup really landed</h2>
+      </div>
+      <p>Uploading a file and having the upload finish without an error isn't proof the file is intact, connections drop, bytes get corrupted along the way, and a naive app would show "done" anyway. Fieldbox checks this properly, in two separate steps.</p>
+      <ol class="step-list">
+        <li><strong>The cloud checks its own math.</strong> When Fieldbox uploads a file, it sends the fingerprint along with it. Your cloud provider recalculates the fingerprint from the bytes it actually received and rejects the upload outright if they don't match. A corrupted upload can't be silently accepted.</li>
+        <li><strong>Fieldbox checks back afterward.</strong> Once the upload finishes, Fieldbox asks the cloud a separate question: is this exact file really sitting there, at the right size, with the right fingerprint? Only a yes to all three counts as confirmed.</li>
+      </ol>
+      <p>A cloud backup only shows as confirmed once both checks pass for every file. That is the standard behind the green cloud status you see in Fieldbox.</p>
+      <div class="aside">
+        <div class="aside-label">Why a file sometimes takes a few minutes to show up in your cloud provider's own website</div>
+        <p>Some providers' web file browsers take a little while to catch up after an upload, that's just how their listing pages work, not a sign anything is wrong. Fieldbox's confirmation check asks about that one specific file directly, so it gets a reliable answer the moment the file lands, even before the provider's own website has caught up.</p>
+      </div>
+    </article>
+
+    <hr class="rule">
+
+    <article class="deep" id="sharing">
+      <div class="deep-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><path d="M2.5 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.3"/><path d="M14.8 13.6c.7-.2 1.4-.3 2.2-.3 2.8 0 5.1 2.2 5.5 5"/></svg>
+        <h2>How shared cloud accounts stay safe</h2>
+      </div>
+      <p>Handing a whole crew the same cloud login sounds risky, one careless tap could wipe out someone else's only copy of a shoot. Fieldbox is built so that can't happen.</p>
+      <p>Every device that connects to a shared account gets its own private space inside it. Two photographers can use cameras that happen to produce identically named files and they'll never collide or overwrite each other. Everyone on the team can browse everyone else's galleries from the in-app Cloud Browser, which is useful for a producer keeping track of a whole shoot, but <strong>a device can only ever delete the files it personally uploaded.</strong> Try to delete someone else's session and Fieldbox shows a lock instead of a delete option.</p>
+      <p>So the account can be fully shared without the risk being shared too. Everyone sees the same pool of work, but nobody can accidentally erase a colleague's backup.</p>
+    </article>
+
+    <hr class="rule">
+
+    <article class="deep" id="interrupted">
+      <div class="deep-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h2>What happens when a transfer is interrupted</h2>
+      </div>
+      <p>Whether you tap "interrupt" yourself, close the app, unplug the reader, or the battery dies, Fieldbox never leaves things in a confusing state.</p>
+      <p>Whichever file is actively copying when the interruption happens is either finished safely first or thrown out entirely, it is never left half-written on your device. Every file after that point in the transfer is simply marked as not yet copied. Nothing on the card is touched, and nothing already verified is redone.</p>
+      <p>The screen tells you plainly how many files made it in before stopping, and shows a standing warning not to format the card until the rest are backed up. Plug the card back in whenever you're ready, and Fieldbox picks up exactly where it left off, skipping everything that's already confirmed and only copying what's left.</p>
+    </article>
+
+    <div class="contact-block">
+      <p>Have a question this page didn't answer?</p>
+      <a class="cta" href="mailto:info@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Alessandro Casagli &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+</body>
+</html>
