@@ -187,7 +187,7 @@
 
     <section>
       <h2>Google Drive</h2>
-      <p>When you connect Google Drive, Fieldbox Backup requests the <code>drive.file</code> scope. This grants the app access <strong>only to files and folders that Fieldbox Backup itself creates</strong> — it cannot read any other files in your Google Drive.</p>
+      <p>When you connect Google Drive, Fieldbox Backup requests limited, app-scoped access. This grants the app access <strong>only to files and folders that Fieldbox Backup itself creates</strong> — it cannot read any other files in your Google Drive.</p>
       <p>Specifically, the app:</p>
       <ul>
         <li>Creates a <strong>FieldBox</strong> folder in your Google Drive</li>
@@ -205,7 +205,7 @@
 
     <section>
       <h2>Microsoft OneDrive</h2>
-      <p>When you connect OneDrive, Fieldbox Backup requests the <code>Files.ReadWrite.AppFolder</code> scope. This grants the app access <strong>only to its own dedicated app folder</strong> in your OneDrive — it cannot read, modify, or delete any other file in your account.</p>
+      <p>When you connect OneDrive, Fieldbox Backup requests limited, app-scoped access. This grants the app access <strong>only to its own dedicated app folder</strong> in your OneDrive — it cannot read, modify, or delete any other file in your account.</p>
       <p>Your Microsoft account credentials are stored securely in the iOS Keychain on your device and are never transmitted to us.</p>
     </section>
 
@@ -233,7 +233,7 @@
 
     <section>
       <h2>Security</h2>
-      <p>All cloud credentials are stored in the iOS Keychain with <code>kSecAttrAccessibleWhenUnlockedThisDeviceOnly</code> protection — they cannot be extracted from the device or included in iCloud backups. All cloud communication uses HTTPS/TLS. File integrity is verified with SHA-256 checksums.</p>
+      <p>All cloud credentials are stored in the iOS Keychain with the strictest available device-only protection — they cannot be extracted from the device or included in iCloud backups. All cloud communication uses HTTPS/TLS. File integrity is verified with SHA-256 checksums.</p>
     </section>
 
     <section>

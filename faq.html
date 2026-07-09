@@ -230,6 +230,33 @@
 
     .readmore:hover { text-decoration: underline; }
 
+    .qa-q {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pro-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 2px 8px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .plan-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 56ch;
+    }
+
+    .plan-note .pro-tag { margin-right: 2px; }
+
     .contact-block {
       margin-top: 64px;
       padding-top: 32px;
@@ -285,7 +312,8 @@
   <main>
     <p class="label">Questions & Answers</p>
     <h1>Frequently asked questions</h1>
-    <p class="sub">Everything photographers usually want to know before trusting Fieldbox with a shoot. If your question isn't here, email us at the bottom of the page.</p>
+    <p class="sub">Everything you'd want to know before trusting Fieldbox with a shoot, a drone flight, an interview recording, or just a card full of vacation photos. If your question isn't here, email us at the bottom of the page.</p>
+    <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, works on the free plan.</p>
 
     <div class="toc-row">
       <a class="toc-pill" href="#getting-started">Getting started</a>
@@ -304,7 +332,8 @@
       <details class="qa">
         <summary>What does Fieldbox Backup actually do?</summary>
         <div class="qa-body">
-          <p>It takes the photos and video off your camera card, copies them onto your iPhone or iPad, checks every single file to make sure the copy is perfect, and then sends a copy to a cloud storage account you already own. By the time it's done, your shoot exists in three places: the card, your device, and the cloud.</p>
+          <p>It takes the files off a memory card, copies them onto your iPhone or iPad, checks every single one to make sure the copy is perfect, and then sends a copy to a cloud storage account you already own. By the time it's done, your files exist in three places: the card, your device, and the cloud.</p>
+          <p>It's built with professional shoots in mind, but it works just as well for a drone flight, an interview or podcast recorded on a separate audio recorder, or a card full of vacation photos. Anything that comes off a memory card gets the same verified treatment.</p>
         </div>
       </details>
 
@@ -320,6 +349,18 @@
       </details>
 
       <details class="qa">
+        <summary>What is a "session," exactly?</summary>
+        <div class="qa-body">
+          <p>A session is just the shoot or the day you're working on, one place that holds everything from it. Give it a name when you start (the client, the event, the trip) and every card you import that day gets added to the same one.</p>
+          <p>Different cameras can feed the same session too. Fieldbox keeps each camera's files sorted into their own spot underneath it automatically, so nothing from two bodies ever gets mixed together, even while it all lives under one name.</p>
+          <div class="example">
+            <div class="example-label">Example</div>
+            <p>A full day covering a product launch: morning interviews on one camera, afternoon b-roll on a second body, and a drone card at the end. All three imports land in one session called "product-launch," so the whole day is in one place when you look back.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="qa">
         <summary>Do I need an internet connection to back up?</summary>
         <div class="qa-body">
           <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. Once you're back online, Fieldbox picks up any backups that are waiting and sends them to your cloud on its own, even if it's not the same day.</p>
@@ -327,7 +368,7 @@
       </details>
 
       <details class="qa">
-        <summary>Can I plan a session before the shoot even starts?</summary>
+        <summary><span class="qa-q">Can I plan a session before the shoot even starts? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
           <p>Yes. Set up a session with a name and a date ahead of time, and pick which cloud it should go to. On the day, it sits at the top of the list ready to go, so you can plug in and start without stopping to name anything.</p>
         </div>
@@ -374,6 +415,7 @@
         <summary>Which cloud services can I use?</summary>
         <div class="qa-body">
           <p>Dropbox, Google Drive, Microsoft OneDrive, any S3-compatible storage (Backblaze B2, Wasabi, Cloudflare R2, and similar), or your own NAS and home server over WebDAV (Synology, QNAP, TrueNAS, Nextcloud, and others). It's your account and your storage, Fieldbox just moves the verified files there.</p>
+          <p>The free plan connects one of these at a time. Pro adds the rest, so you can connect several and send a backup to all of them at once.</p>
         </div>
       </details>
 
@@ -393,7 +435,7 @@
       </details>
 
       <details class="qa">
-        <summary>Can I back up to more than one cloud at the same time?</summary>
+        <summary><span class="qa-q">Can I back up to more than one cloud at the same time? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
           <p>Yes. Pick as many clouds as you want for a session and they all upload together, not one after another. The success screen tells you how many confirmed.</p>
         </div>
@@ -414,7 +456,7 @@
       </div>
 
       <details class="qa">
-        <summary>Can my whole crew back up to one shared cloud account?</summary>
+        <summary><span class="qa-q">Can my whole crew back up to one shared cloud account? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
           <p>Yes, hand everyone the same login. Every device that connects gets its own space inside the account, so nobody's files ever collide or overwrite each other.</p>
           <div class="example">
@@ -446,7 +488,14 @@
       <details class="qa">
         <summary>What file types does it handle?</summary>
         <div class="qa-body">
-          <p>RAW (including CR3 and similar formats), JPEG, HEIC, video, and audio, essentially anything that comes off a memory card.</p>
+          <p>Just about anything a memory card can hold:</p>
+          <ul>
+            <li>RAW from every major camera brand (Canon, Nikon, Sony, Fujifilm, Panasonic, Olympus, Pentax, and Adobe's universal DNG)</li>
+            <li>Regular stills: JPEG, HEIC, PNG, TIFF</li>
+            <li>Video, including the higher-end formats used by cinema cameras and drones</li>
+            <li>Audio, from a quick voice memo to a full field recorder's output</li>
+          </ul>
+          <p>If it came off a camera, a drone, or an audio recorder, Fieldbox almost certainly recognizes it.</p>
         </div>
       </details>
 
@@ -458,7 +507,14 @@
       </details>
 
       <details class="qa">
-        <summary>Can I copy a backup onto a USB drive to hand off to a client?</summary>
+        <summary>Can I hear the audio, like sound in a video or a separate recording?</summary>
+        <div class="qa-body">
+          <p>Yes. Playing back a video plays its audio right along with it, so you can review an interview or a narration take without leaving the app. A standalone audio file, say a take from a handheld recorder, opens with its own playback controls too.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span class="qa-q">Can I copy a backup onto a USB drive to hand off to a client? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
           <p>Yes, export a session directly to an external USB-C drive, formatted exFAT, FAT32, or APFS. Handy for a same-day client handoff without needing a laptop.</p>
         </div>
