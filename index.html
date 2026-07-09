@@ -156,24 +156,111 @@
       line-height: 1.5;
     }
 
-    .321-row {
+    .rule321 {
       display: flex;
-      gap: 6px;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .rule321-step {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: 32px;
+      text-align: center;
+      width: 140px;
     }
 
-    .pill {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 10px;
+    .rule321-icon-wrap {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 12px;
+    }
+
+    .rule321-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       border: 1px solid var(--border);
-      color: var(--muted);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .pill.green { border-color: var(--green); color: var(--green); }
+    .rule321-icon svg {
+      width: 26px;
+      height: 26px;
+      color: var(--accent);
+    }
+
+    .rule321-num {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #06210f;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rule321-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .rule321-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .rule321-arrow {
+      color: var(--muted);
+      font-size: 20px;
+      align-self: center;
+      margin-top: 18px;
+      flex-shrink: 0;
+    }
+
+    .rule321-caption {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 28px;
+    }
+
+    .rule321-caption strong { color: var(--green); font-weight: 600; }
+
+    .faq-nudge {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .faq-nudge a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-nudge a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .rule321 { flex-direction: column; align-items: center; }
+      .rule321-step { width: 100%; max-width: 220px; }
+      .rule321-arrow { transform: rotate(90deg); margin: 4px 0; }
+    }
 
     .gallery {
       display: grid;
@@ -254,7 +341,7 @@
   <main>
     <p class="label">Field Backup System</p>
     <h1>Back up your cards.<br>Verify every file.<br>Never lose a shot.</h1>
-    <p class="sub">Fieldbox Backup is a professional photo backup tool for iOS. It reads camera cards, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
+    <p class="sub">Fieldbox Backup is a professional backup tool for iOS. It reads memory cards from cameras, drones, and recorders, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
 
     <div class="cta-row">
       <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
@@ -284,13 +371,58 @@
         <div class="feature-title">Full Audit Trail</div>
         <div class="feature-desc">Every transfer logged with file counts, sizes, checksums, and cloud confirmation.</div>
       </div>
+      <div class="feature">
+        <div class="feature-label">Formats</div>
+        <div class="feature-title">Every File Type</div>
+        <div class="feature-desc">RAW, JPEG, HEIC, video, and audio, from cameras, drones, and recorders alike.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Organization</div>
+        <div class="feature-title">Sessions, Not Chaos</div>
+        <div class="feature-desc">Every card you import groups into one named session, even across multiple cameras.</div>
+      </div>
     </div>
 
-    <div class="321-row">
-      <div class="pill green">3 Copies</div>
-      <div class="pill green">2 Places</div>
-      <div class="pill green">1 Offsite</div>
+    <div class="rule321">
+      <div class="rule321-step">
+        <div class="rule321-icon-wrap">
+          <div class="rule321-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 3v4H6"/><line x1="9" y1="11" x2="9" y2="16"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="15" y1="11" x2="15" y2="16"/></svg>
+          </div>
+          <div class="rule321-num">1</div>
+        </div>
+        <div class="rule321-title">Your Card</div>
+        <div class="rule321-desc">The original, untouched</div>
+      </div>
+
+      <div class="rule321-arrow">&rarr;</div>
+
+      <div class="rule321-step">
+        <div class="rule321-icon-wrap">
+          <div class="rule321-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10.5" y1="18.2" x2="13.5" y2="18.2"/></svg>
+          </div>
+          <div class="rule321-num">2</div>
+        </div>
+        <div class="rule321-title">Your Device</div>
+        <div class="rule321-desc">Verified, byte for byte</div>
+      </div>
+
+      <div class="rule321-arrow">&rarr;</div>
+
+      <div class="rule321-step">
+        <div class="rule321-icon-wrap">
+          <div class="rule321-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg>
+          </div>
+          <div class="rule321-num">3</div>
+        </div>
+        <div class="rule321-title">Your Cloud</div>
+        <div class="rule321-desc">Confirmed offsite</div>
+      </div>
     </div>
+    <p class="rule321-caption"><strong>3-2-1</strong>: three copies, two kinds of storage, one offsite, done automatically.</p>
+    <p class="faq-nudge"><a href="/faq.html">Have questions? Check out the FAQ →</a></p>
 
     <hr class="rule">
 
