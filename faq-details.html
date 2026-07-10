@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How it works — Fieldbox Backup</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -42,6 +43,12 @@
     }
 
     .wordmark a { color: inherit; text-decoration: none; }
+
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+    .logo-mark { width: 30px; height: 30px; color: var(--accent); flex-shrink: 0; }
+
+    .logo-mark svg { width: 100%; height: 100%; display: block; }
 
     .wordmark span {
       font-size: 10px;
@@ -261,10 +268,18 @@
 <body>
 
   <header>
-    <div class="wordmark">
-      <a href="/">Fieldbox Backup</a>
-      <span>3 · 2 · 1 Backup</span>
-    </div>
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">
+        Fieldbox Backup
+        <span>3 · 2 · 1 Backup</span>
+      </div>
+    </a>
     <a class="back-link" href="/faq.html">&larr; Back to FAQ</a>
   </header>
 

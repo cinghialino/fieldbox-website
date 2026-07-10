@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fieldbox Backup — Professional Photo Backup for iOS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -33,6 +34,21 @@
       width: 100%;
     }
 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg { width: 100%; height: 100%; display: block; }
+
     .wordmark {
       font-size: 12px;
       font-weight: 600;
@@ -49,11 +65,118 @@
       margin-top: 2px;
     }
 
+    .hero-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-text {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .hero-text .cta-row { justify-content: center; }
+
+    .device-stack {
+      position: relative;
+      width: min(340px, 88vw);
+      height: 400px;
+      margin: 48px auto 0;
+    }
+
+    .device-stack::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 380px;
+      height: 380px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(79, 142, 247, 0.16), transparent 70%);
+      z-index: -1;
+    }
+
+    .tablet-frame {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-58%);
+      width: 280px;
+      border: 13px solid #1b1b1e;
+      border-radius: 24px;
+      background: #000;
+      padding: 4px;
+      opacity: 0.5;
+      filter: saturate(0.85);
+      box-shadow: 0 30px 70px -18px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .tablet-frame::after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #333;
+      z-index: 2;
+    }
+
+    .tablet-frame img {
+      display: block;
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+    }
+
+    .phone-mock {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-36%);
+      width: 180px;
+      z-index: 2;
+    }
+
+    .phone-frame {
+      position: relative;
+      border: 9px solid #1b1b1e;
+      border-radius: 36px;
+      background: #000;
+      padding: 4px;
+      box-shadow: 0 30px 70px -18px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 14px;
+      background: #000;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .phone-frame img {
+      display: block;
+      width: 100%;
+      border-radius: 27px;
+    }
+
     main {
       flex: 1;
       max-width: 680px;
       margin: 0 auto;
-      padding: 80px 24px 64px;
+      padding: 0 24px 64px;
       width: 100%;
     }
 
@@ -242,19 +365,63 @@
 
     .rule321-caption strong { color: var(--green); font-weight: 600; }
 
-    .faq-nudge {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 13px;
+    .faq-banner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 40px;
+      flex-wrap: wrap;
     }
 
-    .faq-nudge a {
+    .faq-banner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(79, 142, 247, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .faq-banner-icon svg {
+      width: 22px;
+      height: 22px;
       color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
     }
 
-    .faq-nudge a:hover { text-decoration: underline; }
+    .faq-banner-body { flex: 1 1 240px; }
+
+    .faq-banner-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .faq-banner-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .faq-banner-cta {
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .faq-banner-cta:hover { background: var(--accent); color: #06121f; }
 
     @media (max-width: 480px) {
       .rule321 { flex-direction: column; align-items: center; }
@@ -286,12 +453,23 @@
       color: var(--muted);
       padding: 10px 12px;
       border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .shot-caption svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
     }
 
     .founder-note {
       background: var(--surface);
       border: 1px solid var(--border);
       padding: 28px;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
     }
 
     .founder-note p {
@@ -332,22 +510,46 @@
 <body>
 
   <header>
-    <div class="wordmark">
-      Fieldbox Backup
-      <span>3 · 2 · 1 Backup</span>
+    <div class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">
+        Fieldbox Backup
+        <span>3 · 2 · 1 Backup</span>
+      </div>
     </div>
   </header>
 
-  <main>
-    <p class="label">Field Backup System</p>
-    <h1>Back up your cards.<br>Verify every file.<br>Never lose a shot.</h1>
-    <p class="sub">Fieldbox Backup is a professional backup tool for iOS. It reads memory cards from cameras, drones, and recorders, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
+  <section class="hero-wrap">
+    <div class="hero-text">
+      <p class="label">Field Backup System</p>
+      <h1>Back up your cards.<br>Verify every file.<br>Never lose a shot.</h1>
+      <p class="sub">Fieldbox Backup is a professional backup tool for iOS. It reads memory cards from cameras, drones, and recorders, verifies every file with SHA-256, and replicates to your cloud storage — giving you a confirmed offsite copy before you format.</p>
 
-    <div class="cta-row">
-      <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
-      <span class="cta-note">Not on the App Store yet — email gets you a heads-up the day it ships.</span>
+      <div class="cta-row">
+        <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
+        <span class="cta-note">Not on the App Store yet — email gets you a heads-up the day it ships.</span>
+      </div>
     </div>
 
+    <div class="device-stack">
+      <div class="tablet-frame">
+        <img src="screenshots/04_synccenter.png" alt="Fieldbox Backup Sync Center on iPad">
+      </div>
+      <div class="phone-mock">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="screenshots/01_home.png" alt="Fieldbox Backup home screen showing 3-2-1 backup status">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
     <hr class="rule">
 
     <div class="features">
@@ -422,7 +624,17 @@
       </div>
     </div>
     <p class="rule321-caption"><strong>3-2-1</strong>: three copies, two kinds of storage, one offsite, done automatically.</p>
-    <p class="faq-nudge"><a href="/faq.html">Have questions? Check out the FAQ →</a></p>
+
+    <div class="faq-banner">
+      <div class="faq-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9a2.7 2.7 0 0 1 5.2-1c0 1.9-2.5 2.1-2.5 4"/><line x1="12" y1="16.6" x2="12" y2="16.7"/></svg>
+      </div>
+      <div class="faq-banner-body">
+        <div class="faq-banner-title">Have questions?</div>
+        <div class="faq-banner-desc">How verification works, which clouds are supported, what happens if a transfer gets interrupted. It's all answered.</div>
+      </div>
+      <a class="faq-banner-cta" href="/faq.html">Browse the FAQ →</a>
+    </div>
 
     <hr class="rule">
 
@@ -430,27 +642,45 @@
     <div class="gallery">
       <div class="shot">
         <img src="screenshots/01_home.png" alt="Fieldbox Backup home screen showing 3-2-1 backup status">
-        <div class="shot-caption">Home — 3-2-1 status at a glance</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Home — 3-2-1 status at a glance
+        </div>
       </div>
       <div class="shot">
         <img src="screenshots/06_summary.png" alt="Pre-transfer summary screen listing scanned files by type">
-        <div class="shot-caption">Pre-transfer summary</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="13" y2="18"/></svg>
+          Pre-transfer summary
+        </div>
       </div>
       <div class="shot">
         <img src="screenshots/03_progress.png" alt="Transfer progress screen showing files copying">
-        <div class="shot-caption">Transfer in progress</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.3-6.4M21 12a9 9 0 0 1-15.3 6.4"/><path d="M18 3v5h-5"/><path d="M6 21v-5h5"/></svg>
+          Transfer in progress
+        </div>
       </div>
       <div class="shot">
         <img src="screenshots/02_success.png" alt="Success screen confirming all files verified">
-        <div class="shot-caption">Verified — safe to format</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          Verified — safe to format
+        </div>
       </div>
       <div class="shot">
         <img src="screenshots/04_synccenter.png" alt="Sync Center showing cloud backup connections and status">
-        <div class="shot-caption">Sync Center — cloud status</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg>
+          Sync Center — cloud status
+        </div>
       </div>
       <div class="shot">
         <img src="screenshots/05_preview.png" alt="Thumbnail grid preview of a backed-up folder">
-        <div class="shot-caption">Preview your backed-up files</div>
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-6 6"/></svg>
+          Preview your backed-up files
+        </div>
       </div>
     </div>
 
@@ -458,10 +688,9 @@
 
     <h2 class="section-title">A Note From the Photographer Who Built This</h2>
     <div class="founder-note">
-      <p>I'm a photographer. I know the ritual: cards fill up mid-shoot, and at some point you have to trust that a copy actually worked before you reuse them. A progress bar finishing isn't the same as knowing every file landed intact — and on a job that can't be reshot, that gap is the whole problem.</p>
-      <p>Fieldbox Backup exists because I wanted an honest answer to one question: is this file really, verifiably safe, in more than one place, before I touch the format button? Not "it looks done." Verified — a SHA-256 checksum on the original and on the copy, matched, with a clear green screen when it's true and an unambiguous red one when it isn't.</p>
-      <p>It's built and maintained by one person — me. That means it moves slower than a team-built app, but every decision in it is made by someone who actually needs it to work in a hotel room at midnight with a card full of a day you can't get back.</p>
-      <div class="founder-sig">— Alessandro Casagli</div>
+      <p>I'm a photographer. Fieldbox Backup exists to answer one question with certainty: is this file verified and safe in more than one place before I format the card. Not "it looks done" - a SHA-256 checksum on the original and the copy, matched, green when true, red when it isn't.</p>
+      <p>I build and maintain it myself, so every decision comes from someone who actually uses it on real shoots.</p>
+      <div class="founder-sig">- Alessandro Casagli</div>
     </div>
   </main>
 
