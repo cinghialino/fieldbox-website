@@ -317,12 +317,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg>
         <h2>How Fieldbox confirms a cloud backup really landed</h2>
       </div>
-      <p>Uploading a file and having the upload finish without an error isn't proof the file is intact, connections drop, bytes get corrupted along the way, and a naive app would show "done" anyway. Fieldbox checks this properly, in two separate steps.</p>
+      <p>Uploading a file and having the upload finish without an error isn't proof the file is intact, connections drop, bytes get corrupted along the way, and a naive app would show "done" anyway. Fieldbox records the strongest confirmation each provider can actually supply.</p>
       <ol class="step-list">
-        <li><strong>The cloud checks its own math.</strong> When Fieldbox uploads a file, it sends the fingerprint along with it. Your cloud provider recalculates the fingerprint from the bytes it actually received and rejects the upload outright if they don't match. A corrupted upload can't be silently accepted.</li>
-        <li><strong>Fieldbox checks back afterward.</strong> Once the upload finishes, Fieldbox asks the cloud a separate question: is this exact file really sitting there, at the right size, with the right fingerprint? Only a yes to all three counts as confirmed.</li>
+        <li><strong>Your device always checks the copy.</strong> Every local archive file is SHA-256 verified against the card before Fieldbox keeps it.</li>
+        <li><strong>Cloud checks depend on the provider.</strong> S3-compatible storage such as Backblaze B2, and Google Drive, must return a matching SHA-256 checksum. Dropbox and WebDAV confirm the stored size. OneDrive uses a SHA-256 checksum when it provides one, otherwise confirms the stored size.</li>
+        <li><strong>Fieldbox checks back afterward.</strong> After an upload, Fieldbox asks the provider for the file's stored size and, where the provider supports it, its checksum. The app labels an upload receipt separately from cloud hash verification.</li>
       </ol>
-      <p>A cloud backup only shows as confirmed once both checks pass for every file. That is the standard behind the green cloud status you see in Fieldbox.</p>
+      <p>A cloud backup only shows as upload-confirmed once the provider's available check passes for every file. The local archive remains the byte-for-byte SHA-256 verified copy; cloud hash verification is called out only where the provider supplies a matching checksum.</p>
       <div class="aside">
         <div class="aside-label">Why a file sometimes takes a few minutes to show up in your cloud provider's own website</div>
         <p>Some providers' web file browsers take a little while to catch up after an upload, that's just how their listing pages work, not a sign anything is wrong. Fieldbox's confirmation check asks about that one specific file directly, so it gets a reliable answer the moment the file lands, even before the provider's own website has caught up.</p>

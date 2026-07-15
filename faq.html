@@ -444,7 +444,7 @@
       <details class="qa">
         <summary>How does Fieldbox know a cloud backup really landed, not just that the upload didn't error?</summary>
         <div class="qa-body">
-          <p>It's a genuine double check rather than an assumption. The cloud service does its own math on the exact bytes it received and rejects the file outright if anything doesn't match. Then, separately, Fieldbox asks the cloud to confirm the file is really there, at the right size, with the right fingerprint. Both have to hold true before that cloud backup counts as confirmed.</p>
+          <p>Fieldbox always SHA-256 verifies the local archive against the card. Cloud status is a separate provider receipt: S3-compatible storage and Google Drive require a matching provider-reported SHA-256 checksum; Dropbox and WebDAV confirm stored size; OneDrive uses its checksum when available and otherwise confirms stored size. The app labels upload confirmation separately from cloud hash verification.</p>
           <a class="readmore" href="/faq-details.html#cloud-safety">Read more about cloud verification →</a>
         </div>
       </details>
@@ -452,7 +452,7 @@
       <details class="qa">
         <summary>I backed up to Dropbox, then switched to Google Drive for the next shoot. Did my old backup stop counting?</summary>
         <div class="qa-body">
-          <p>No. Once a shoot has a complete, verified copy sitting in one cloud, that's a fact that doesn't change. Switching which cloud is your default only decides where new backups go from now on, it never touches what's already confirmed.</p>
+          <p>No. Once a shoot has a complete cloud-confirmed copy, that record stays with that provider. Switching your default only decides where new backups go from now on; it never touches an existing cloud copy.</p>
         </div>
       </details>
 

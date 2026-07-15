@@ -207,7 +207,7 @@
       <ul>
         <li>Creates a <strong>FieldBox</strong> folder in your Google Drive</li>
         <li>Uploads your backed-up photo and video files into that folder</li>
-        <li>Reads those files back to verify integrity (size and checksum)</li>
+        <li>Checks uploaded files using the strongest verification information each provider exposes: stored size for all supported providers and a matching SHA-256 checksum where the provider supplies one</li>
         <li>Deletes those files when you turn off cloud backup for a session</li>
       </ul>
       <p>Fieldbox Backup does not read, modify, or delete any file in your Google Drive that it did not create. Your Google account credentials are stored securely in the iOS Keychain on your device and are never transmitted to us.</p>
@@ -248,7 +248,7 @@
 
     <section>
       <h2>Security</h2>
-      <p>All cloud credentials are stored in the iOS Keychain with the strictest available device-only protection — they cannot be extracted from the device or included in iCloud backups. All cloud communication uses HTTPS/TLS. File integrity is verified with SHA-256 checksums.</p>
+      <p>All cloud credentials are stored in the iOS Keychain with the strictest available device-only protection — they cannot be extracted from the device or included in device backups. All cloud communication uses HTTPS/TLS. Local file integrity is verified with SHA-256 checksums; cloud verification is provider-specific as described above.</p>
     </section>
 
     <section>
