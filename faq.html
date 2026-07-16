@@ -332,7 +332,7 @@
 
     <div class="toc-row">
       <a class="toc-pill" href="#getting-started">Getting started</a>
-      <a class="toc-pill" href="#safety">Keeping files safe</a>
+      <a class="toc-pill" href="#safety">Verification and source media</a>
       <a class="toc-pill" href="#cloud">Cloud backup</a>
       <a class="toc-pill" href="#teams">Working as a team</a>
       <a class="toc-pill" href="#devices">Devices & files</a>
@@ -393,7 +393,7 @@
     <section class="qa-group" id="safety">
       <div class="section-head">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-        <h2 class="section-title">Keeping files safe</h2>
+        <h2 class="section-title">Verification and source media</h2>
       </div>
 
       <details class="qa">
@@ -407,7 +407,7 @@
       <details class="qa">
         <summary>Is my card ever erased or changed?</summary>
         <div class="qa-body">
-          <p><strong>Never automatically.</strong> Fieldbox only reads from your card, it doesn't format it, delete from it, or reorganize it. The card stays your safety net until you personally decide it's safe to reuse. The success screen only tells you it's safe to format after every file has been verified and you've acknowledged it, nothing formats on its own.</p>
+          <p><strong>Never automatically.</strong> Fieldbox only reads from your card; it does not format, delete from, or reorganize it. The card remains the original source until you decide to reuse it. The app records when every file matched at transfer time and never formats anything on its own.</p>
         </div>
       </details>
 
@@ -446,6 +446,13 @@
         <div class="qa-body">
           <p>Fieldbox always SHA-256 verifies the local archive against the card. Cloud status is a separate provider receipt: S3-compatible storage and Google Drive require a matching provider-reported SHA-256 checksum; Dropbox and WebDAV confirm stored size; OneDrive uses its checksum when available and otherwise confirms stored size. The app labels upload confirmation separately from cloud hash verification.</p>
           <a class="readmore" href="/faq-details.html#cloud-safety">Read more about cloud verification →</a>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>Can I restore files that are missing from my device?</summary>
+        <div class="qa-a">
+          <p>Yes. From a session, choose Restore Locally Missing Files and select the original card or a cloud provider that has confirmed the complete session. A cloud download first goes to staging. Fieldbox returns it to the archive only when its SHA-256 matches the hash recorded from the original transfer.</p>
         </div>
       </details>
 
