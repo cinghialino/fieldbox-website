@@ -182,7 +182,7 @@
   <main>
     <p class="label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: June 18, 2026</p>
+    <p class="updated">Effective date: July 20, 2026</p>
 
     <section>
       <h2>Overview</h2>
@@ -227,6 +227,11 @@
     <section>
       <h2>Backblaze B2 / S3-Compatible Storage</h2>
       <p>When you configure an S3-compatible destination (Backblaze B2, Wasabi, Cloudflare R2, etc.), you provide your own access credentials. The app uses those credentials solely to upload, verify, and delete files in the bucket you specify. Credentials are stored in the iOS Keychain and never leave your device.</p>
+    </section>
+
+    <section>
+      <h2>NAS (WebDAV)</h2>
+      <p>When you configure your own NAS or WebDAV server as a destination, you provide the server address and your own credentials. The app uses those credentials solely to upload, verify, and delete files in the folder you specify on your server. Connections require HTTPS. Credentials are stored in the iOS Keychain and are sent only to the server you configured.</p>
     </section>
 
     <section>
