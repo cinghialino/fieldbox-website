@@ -528,7 +528,7 @@
     <div class="hero-text">
       <p class="label">Field Backup System</p>
       <h1>Back up your cards.<br>Verify every file.<br>Know before you format.</h1>
-      <p class="sub">Fieldbox Backup copies your memory card onto your phone and SHA-256 checks every file against its source at transfer time. It then uploads that verified local archive to your own cloud storage when you're connected. Backup Status shows the current local and cloud copies before you decide whether to reuse the card.</p>
+      <p class="sub">Fieldbox Backup copies files from a memory card to your iPhone or iPad and compares source and local SHA-256 hashes at transfer time. When you connect your own cloud storage, Backup Status shows the current copy inventory and the confirmations Fieldbox has recorded before you decide whether to reuse the card.</p>
 
       <div class="cta-row">
         <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
@@ -556,7 +556,7 @@
       <div class="feature">
         <div class="feature-label">Integrity</div>
         <div class="feature-title">Every File Checked</div>
-        <div class="feature-desc">Every file is checked twice, once on the card and once after copying (SHA-256). Bit-perfect, or it's flagged.</div>
+        <div class="feature-desc">Fieldbox compares a SHA-256 value from the card with one from the local archive. A mismatch is flagged instead of being promoted as verified.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Cloud</div>
@@ -566,22 +566,27 @@
       <div class="feature">
         <div class="feature-label">Offline</div>
         <div class="feature-title">Works Without Wi-Fi</div>
-        <div class="feature-desc">Local transfer and verification work fully offline, so you can start right away. Connect to Wi-Fi as soon as you can. Your backup isn't complete under the 3-2-1 rule until cloud sync finishes.</div>
+        <div class="feature-desc">Local transfer and verification work without a connection. Cloud confirmation is shown separately when a provider reports a complete copy.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Session Log</div>
         <div class="feature-title">Every Transfer Logged</div>
-        <div class="feature-desc">Every transfer logged with file counts, sizes, checksums, and cloud confirmation.</div>
+        <div class="feature-desc">Review file counts, sizes, local verification results, and recorded cloud-provider confirmation for each session.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Formats</div>
-        <div class="feature-title">Every File Type</div>
-        <div class="feature-desc">RAW, JPEG, HEIC, video, and audio, from cameras, drones, and recorders alike.</div>
+        <div class="feature-title">Made for Card Media</div>
+        <div class="feature-desc">Import photographs, video, audio, and other supported files from the memory cards you use for camera, drone, and recorder work.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Organization</div>
         <div class="feature-title">Sessions, Not Chaos</div>
         <div class="feature-desc">Every card you import groups into one named session, even across multiple cameras.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Integrity Record</div>
+        <div class="feature-title">Export the Evidence</div>
+        <div class="feature-desc">Create a signed record of a session’s verification evidence and share the resulting <code>.fieldbox.json</code> file. It is self-issued by the device, not externally certified.</div>
       </div>
     </div>
 
@@ -623,7 +628,7 @@
         <div class="rule321-desc">Upload-confirmed offsite</div>
       </div>
     </div>
-    <p class="rule321-caption"><strong>3-2-1</strong>: three current copies, two kinds of storage, one offsite.</p>
+    <p class="rule321-caption"><strong>3-2-1</strong>: Fieldbox reports when its current inventory has three copies, two kinds of storage, and one complete confirmed offsite copy.</p>
 
     <div class="faq-banner">
       <div class="faq-banner-icon">
@@ -641,8 +646,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9z"/><path d="M9 9V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/><line x1="4" y1="13.5" x2="20" y2="13.5"/></svg>
       </div>
       <div class="faq-banner-body">
-        <div class="faq-banner-title">Shooting professionally?</div>
-        <div class="faq-banner-desc">Team accounts, simultaneous multi-cloud uploads, planned sessions, same-day client delivery. Fieldbox Pro goes deeper.</div>
+        <div class="faq-banner-title">Fieldbox Pro</div>
+        <div class="faq-banner-desc">For productions that need multiple cloud destinations, shared-account ownership boundaries, planned sessions, and client handoff tools.</div>
       </div>
       <a class="faq-banner-cta" href="/pro">Meet Fieldbox Pro →</a>
     </div>
@@ -691,6 +696,20 @@
         <div class="shot-caption">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-6 6"/></svg>
           Preview your backed-up files
+        </div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/07_verification.png" alt="Fieldbox Integrity Record screen showing session verification evidence">
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          Integrity Record — evidence at a point in time
+        </div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/08_cloud-browser.png" alt="Fieldbox Cloud Browser showing session-scoped cloud management">
+        <div class="shot-caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/><rect x="9" y="11" width="6" height="5" rx="1"/><path d="M10.5 11V9.5a1.5 1.5 0 0 1 3 0V11"/></svg>
+          Cloud Browser — session-scoped controls
         </div>
       </div>
     </div>

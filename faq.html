@@ -327,7 +327,7 @@
   <main>
     <p class="label">Questions & Answers</p>
     <h1>Frequently asked questions</h1>
-    <p class="sub">Everything you'd want to know before trusting Fieldbox with a shoot, a drone flight, an interview recording, or just a card full of vacation photos. If your question isn't here, email us at the bottom of the page.</p>
+    <p class="sub">Answers about using Fieldbox with a shoot, drone flight, interview recording, or card of photographs. If your question is not here, email us at the bottom of the page.</p>
     <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, comes with the standard app.</p>
 
     <div class="toc-row">
@@ -347,7 +347,7 @@
       <details class="qa">
         <summary>What does Fieldbox Backup actually do?</summary>
         <div class="qa-body">
-          <p>It takes the files off a memory card, copies them onto your iPhone or iPad, checks every single one to make sure the copy is perfect, and then sends a copy to a cloud storage account you already own. By the time it's done, your files exist in three places: the card, your device, and the cloud.</p>
+          <p>It copies files from a memory card to your iPhone or iPad and compares source and local SHA-256 values for each selected file. You can then send the verified local archive to a cloud storage account you already own. Backup Status reports the current copy inventory and the confirmations Fieldbox has recorded.</p>
           <p>It's built with professional shoots in mind, but it works just as well for a drone flight, an interview or podcast recorded on a separate audio recorder, or a card full of vacation photos. Anything that comes off a memory card gets the same verified treatment.</p>
         </div>
       </details>
@@ -399,7 +399,7 @@
       <details class="qa">
         <summary>What does "verified" actually mean?</summary>
         <div class="qa-body">
-          <p>Every file gets a unique fingerprint before it's copied, and another one after. If the two don't match exactly, down to a single byte, Fieldbox knows and retries the file rather than letting a broken copy through quietly. Only once every file on the card has matched perfectly does the screen turn green.</p>
+          <p>Fieldbox calculates a SHA-256 value from each selected source file and from the local copy. If the values do not match, the app retries the file and flags it if it still cannot verify a match. The green result appears only when the selected files have matched their local copies.</p>
           <a class="readmore" href="/faq-details.html#verification">Read more about how verification works →</a>
         </div>
       </details>
@@ -414,7 +414,7 @@
       <details class="qa">
         <summary>What happens if a transfer gets interrupted?</summary>
         <div class="qa-body">
-          <p>Whatever file was copying at that moment finishes safely or isn't counted at all, there's no half-written file left behind. Fieldbox tells you exactly how many files made it in and shows a standing warning not to format the card until the rest are backed up. Plug the card back in later and it continues from where it stopped, it never starts over.</p>
+          <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox reports the files it recorded as verified and warns you to review the result before deciding whether to reuse the card. You can reconnect the card later to continue the transfer.</p>
           <a class="readmore" href="/faq-details.html#interrupted">Read more about interrupted transfers →</a>
         </div>
       </details>
@@ -487,10 +487,10 @@
       <details class="qa">
         <summary><span class="qa-q">Can my whole crew back up to one shared cloud account? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
-          <p>Yes, hand everyone the same login. Every device that connects gets its own space inside the account, so nobody's files ever collide or overwrite each other.</p>
+          <p>Yes. Each connected device uses its own space within the shared account, so Fieldbox keeps one device’s session paths separate from another’s. Cloud Browser also applies ownership boundaries when opened from a session.</p>
           <div class="example">
             <div class="example-label">Example</div>
-            <p>A three-person crew covers a conference: two shooting photo and video, one recording the keynote audio on a separate device, all backing up into the same studio Dropbox. A producer can browse every device's files from any phone, but nobody can delete what someone else uploaded. Nobody can wipe out a colleague's only copy by accident.</p>
+            <p>A three-person crew covers a conference: two shooting photo and video, one recording the keynote audio on a separate device, all backing up into the same studio Dropbox. A producer can browse the cloud inventory, while session-launched Cloud Browser applies the app’s ownership boundaries to deletion controls.</p>
           </div>
           <a class="readmore" href="/faq-details.html#sharing">Read more about shared accounts →</a>
         </div>

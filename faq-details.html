@@ -335,9 +335,9 @@
     <article class="deep" id="sharing">
       <div class="deep-head">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><path d="M2.5 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.3"/><path d="M14.8 13.6c.7-.2 1.4-.3 2.2-.3 2.8 0 5.1 2.2 5.5 5"/></svg>
-        <h2>How shared cloud accounts stay safe</h2>
+        <h2>How shared cloud accounts stay organized</h2>
       </div>
-      <p>Handing a whole crew the same cloud login sounds risky, one careless tap could wipe out someone else's only copy of a shoot. Fieldbox is built so that can't happen. Sharing an account this way is part of the Pro plan.</p>
+      <p>Sharing one cloud login across a crew needs clear ownership boundaries. Fieldbox assigns each device its own namespace and applies session-based controls when Cloud Browser is opened from a session. Shared accounts are part of the Pro plan.</p>
       <p>Every device that connects to a shared account gets its own private space inside it. Two photographers can use cameras that happen to produce identically named files and they'll never collide or overwrite each other. Everyone on the team can browse everyone else's galleries from the in-app Cloud Browser, which is useful for a producer keeping track of a whole shoot, but <strong>a device can only ever delete the files it personally uploaded.</strong> Try to delete someone else's session and Fieldbox shows a lock instead of a delete option.</p>
       <p>So the account can be fully shared without the risk being shared too. Everyone sees the same pool of work, but nobody can accidentally erase a colleague's backup.</p>
     </article>
@@ -350,7 +350,7 @@
         <h2>What happens when a transfer is interrupted</h2>
       </div>
       <p>Whether you tap "interrupt" yourself, close the app, unplug the reader, or the battery dies, Fieldbox never leaves things in a confusing state.</p>
-      <p>Whichever file is actively copying when the interruption happens is either finished safely first or thrown out entirely, it is never left half-written on your device. Every file after that point in the transfer is simply marked as not yet copied. Nothing on the card is touched, and nothing already verified is redone.</p>
+      <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox records which files were verified and which still need attention. Nothing on the card is changed by the app, and verified files are not copied again when the transfer continues.</p>
       <p>The screen tells you plainly how many files made it in before stopping, and shows a standing warning not to format the card until the rest are backed up. Plug the card back in whenever you're ready, and Fieldbox picks up exactly where it left off, skipping everything that's already confirmed and only copying what's left.</p>
     </article>
 
