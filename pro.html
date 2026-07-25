@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fieldbox Pro — 3-2-1 Verified Backup for Production Work</title>
+  <title>Fieldbox Pro: 3-2-1 Verified Backup for Production Work</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,10 +28,14 @@
     }
 
     header {
-      padding: 40px 24px 0;
-      max-width: 680px;
+      padding: 32px 32px 0;
+      max-width: 1180px;
       margin: 0 auto;
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .brand {
@@ -80,10 +84,15 @@
       margin: 0 0 0 8px;
     }
 
+    .site-nav { display: flex; align-items: center; gap: 18px; }
+    .site-nav a { color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
+    .site-nav a:hover { color: var(--text); }
+    .site-nav .active { color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 8px 13px; }
+
     .hero-wrap {
-      max-width: 680px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 56px 24px 8px;
+      padding: 72px 32px 36px;
       width: 100%;
       text-align: center;
     }
@@ -98,7 +107,7 @@
     }
 
     h1 {
-      font-size: clamp(28px, 5vw, 40px);
+      font-size: clamp(36px, 4.3vw, 60px);
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: -0.5px;
@@ -144,8 +153,8 @@
 
     .device-stack {
       position: relative;
-      width: min(320px, 86vw);
-      height: 360px;
+      width: min(420px, 86vw);
+      height: 450px;
       margin: 40px auto 0;
     }
 
@@ -164,7 +173,7 @@
     .phone-mock {
       position: absolute;
       top: 14px;
-      width: 168px;
+      width: 210px;
     }
 
     .phone-mock.back {
@@ -211,9 +220,9 @@
 
     main {
       flex: 1;
-      max-width: 680px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 24px 64px;
+      padding: 0 32px 80px;
       width: 100%;
     }
 
@@ -234,7 +243,7 @@
 
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
@@ -498,6 +507,14 @@
 
     .faq-banner-cta:hover { background: var(--accent); color: #06121f; }
 
+    @media (max-width: 800px) {
+      header { padding: 24px 20px 0; }
+      .hero-wrap { padding: 52px 20px 28px; }
+      main { padding: 0 20px 56px; }
+    }
+
+    @media (max-width: 480px) { .site-nav a:not(.active) { display: none; } }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 24px;
@@ -530,12 +547,16 @@
         <span>3 · 2 · 1 Backup</span>
       </div>
     </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Fieldbox Backup</a>
+      <a class="active" href="/pro">Fieldbox Pro</a>
+    </nav>
   </header>
 
   <section class="hero-wrap">
-    <p class="label">For Working Professionals</p>
-    <h1>The verified workflow,<br>scaled for production.</h1>
-    <p class="sub">Fieldbox Pro builds on the standard app’s local SHA-256 comparison with the workflow capacity a working shoot may need: multiple cloud destinations, concurrent uploads, shared-account ownership boundaries, planned sessions, and client handoff tools.</p>
+    <p class="label">Fieldbox Pro for working productions</p>
+    <h1>Keep the workflow moving when the shoot cannot wait.</h1>
+    <p class="sub">Pro adds the capacity to work across several destinations, prepare sessions before the day begins, and keep shared cloud-account paths distinct by device. The core remains the same: Fieldbox records what it verified locally and what each provider later confirmed.</p>
 
     <div class="cta-row">
       <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
