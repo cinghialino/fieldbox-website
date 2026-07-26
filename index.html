@@ -72,7 +72,18 @@
     .site-nav { display: flex; align-items: center; gap: 18px; }
     .site-nav a { color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
     .site-nav a:hover { color: var(--text); }
-    .site-nav .pro-link { color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 8px 13px; }
+    .site-nav .pro-link { color: var(--muted); }
+    .site-nav .pro-link::after {
+      content: "PRO";
+      display: inline-block;
+      margin-left: 6px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 6px;
+      color: var(--accent);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
 
     .hero-wrap {
       max-width: 1180px;
@@ -454,18 +465,21 @@
     .faq-banner-cta:hover { background: var(--accent); color: #06121f; }
 
     .pro-spotlight {
-      max-width: 820px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 34px;
-      border: 1px solid var(--accent);
-      border-radius: 14px;
-      background: linear-gradient(115deg, rgba(79, 142, 247, 0.16), rgba(20, 20, 22, 0.96) 56%);
-      text-align: center;
+      padding: 26px 28px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
     }
 
-    .pro-spotlight h2 { font-size: clamp(25px, 3vw, 38px); font-weight: 500; letter-spacing: -0.4px; line-height: 1.16; margin-bottom: 12px; }
-    .pro-spotlight p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 58ch; margin: 0 auto; }
-    .pro-spotlight .cta-row { justify-content: center; margin: 22px 0 0; }
+    .pro-spotlight h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.2px; line-height: 1.2; margin-bottom: 8px; }
+    .pro-spotlight p { color: var(--muted); font-size: 14px; line-height: 1.55; max-width: 62ch; }
+    .pro-spotlight .cta-row { flex: 0 0 auto; margin: 0; }
 
     @media (max-width: 800px) {
       header { padding: 24px 20px 0; }
@@ -474,7 +488,7 @@
       .hero-text .cta-row { justify-content: center; }
       .device-stack { margin-top: 10px; }
       main { padding: 0 20px 56px; }
-      .pro-spotlight { padding: 24px; }
+      .pro-spotlight { align-items: flex-start; flex-direction: column; padding: 24px; }
     }
 
     @media (max-width: 480px) {
@@ -490,7 +504,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      max-width: 760px;
+      max-width: 1080px;
       margin: 0 auto;
     }
 
@@ -498,8 +512,13 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      flex: 0 1 360px;
+      flex: 1 1 300px;
+      max-width: 346px;
       overflow: hidden;
+    }
+
+    @media (max-width: 480px) {
+      .shot { flex-basis: 100%; max-width: none; }
     }
 
     .section-intro { max-width: 640px; margin: 0 auto 28px; text-align: center; }
@@ -513,6 +532,7 @@
     }
 
     .shot-caption {
+      min-height: 50px;
       font-size: 12px;
       color: var(--muted);
       padding: 10px 12px;
@@ -595,46 +615,32 @@
   <section class="hero-wrap">
     <div class="hero-text">
       <p class="label">Verified field backup for iPhone and iPad</p>
-      <h1>Know what copied correctly before you reuse the card.</h1>
-      <p class="sub">Bring the card reader and phone or iPad you already carry. Fieldbox imports your selected files, compares source and local SHA-256 values, and records the copy status you can review in the field.</p>
+      <h1>Back up in the field.<br>Verify as you go.</h1>
+      <p class="sub">Fieldbox copies a memory card to your iPhone or iPad, compares source and local SHA-256 values, and can replicate the session to storage you choose. Review what the app recorded before deciding what to do with the card.</p>
 
       <div class="cta-row">
         <a class="cta" href="mailto:info@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
-        <a class="cta-secondary" href="/pro">Explore Fieldbox Pro</a>
         <span class="cta-note">Not on the App Store yet. Email gets you a heads-up the day it ships.</span>
       </div>
     </div>
 
     <div class="device-stack">
       <div class="tablet-frame">
-        <img src="screenshots/08_cloud-browser.png" alt="Fieldbox Cloud Browser showing one connected storage provider">
+        <img src="screenshots/standard/summary.png" alt="Fieldbox card summary showing one selected cloud destination">
       </div>
       <div class="phone-mock">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="screenshots/03_progress.png" alt="Fieldbox Backup transfer progress screen">
+          <img src="screenshots/standard/home.png" alt="Fieldbox Backup standard home screen">
         </div>
       </div>
     </div>
   </section>
 
   <main>
-    <section class="pro-spotlight" aria-labelledby="pro-heading">
-      <div>
-        <p class="label">Fieldbox Pro</p>
-        <h2 id="pro-heading">Looking for Fieldbox Pro?</h2>
-        <p>Pro has its own page, with its production features, workflow, and screenshots kept separate from the standard Fieldbox experience.</p>
-        <div class="cta-row">
-          <a class="cta" href="/pro">Explore Fieldbox Pro</a>
-        </div>
-      </div>
-    </section>
-
-    <hr class="rule">
-
     <div class="section-intro">
-      <h2>Designed around the decision you make in the field.</h2>
-      <p>Fieldbox keeps the transfer, local verification, and provider confirmation in view, so you can review the current state of a session before moving on.</p>
+      <h2>A clear workflow from card to cloud.</h2>
+      <p>Fieldbox keeps the transfer, local comparison, and provider confirmation visible as separate stages, so the current state of each session remains easy to read.</p>
     </div>
 
     <div class="features">
@@ -697,7 +703,7 @@
           <div class="rule321-num">2</div>
         </div>
         <div class="rule321-title">Your Device</div>
-        <div class="rule321-desc">Verified, byte for byte</div>
+        <div class="rule321-desc">Source and local SHA-256 matched</div>
       </div>
 
       <div class="rule321-arrow">&rarr;</div>
@@ -728,23 +734,55 @@
 
     <hr class="rule">
 
-    <h2 class="section-title">See It In Action</h2>
+    <div class="section-intro">
+      <h2>The standard app, from start to record.</h2>
+      <p>A complete card-to-cloud workflow with one connected destination, from the first review to the signed session record.</p>
+    </div>
     <div class="gallery">
       <div class="shot">
-        <img src="screenshots/03_progress.png" alt="Transfer progress screen showing files copying">
+        <img src="screenshots/standard/home.png" alt="Fieldbox Backup standard home screen">
         <div class="shot-caption">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.3-6.4M21 12a9 9 0 0 1-15.3 6.4"/><path d="M18 3v5h-5"/><path d="M6 21v-5h5"/></svg>
-          Transfer in progress
+          Home and current session status
         </div>
       </div>
       <div class="shot">
-        <img src="screenshots/08_cloud-browser.png" alt="Fieldbox Cloud Browser showing session-scoped cloud management">
+        <img src="screenshots/standard/summary.png" alt="Fieldbox card contents and pre-transfer summary with one cloud destination">
         <div class="shot-caption">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/><rect x="9" y="11" width="6" height="5" rx="1"/><path d="M10.5 11V9.5a1.5 1.5 0 0 1 3 0V11"/></svg>
-          Cloud Browser: session-scoped controls
+          Review the card before transfer
+        </div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/standard/progress.png" alt="Fieldbox transfer progress showing file count and current file">
+        <div class="shot-caption">
+          Follow the transfer file by file
+        </div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/standard/preview.png" alt="Fieldbox Sessions Vault with two sessions and one cloud provider">
+        <div class="shot-caption">
+          Browse sessions and their recorded status
+        </div>
+      </div>
+      <div class="shot">
+        <img src="screenshots/standard/verification.png" alt="Fieldbox Integrity Verification showing one provider and recorded SHA-256 evidence">
+        <div class="shot-caption">
+          Review and share the Integrity Record
         </div>
       </div>
     </div>
+
+    <hr class="rule">
+
+    <section class="pro-spotlight" aria-labelledby="pro-heading">
+      <div>
+        <p class="label">Fieldbox Pro</p>
+        <h2 id="pro-heading">More capacity when the production needs it.</h2>
+        <p>The standard app handles the core card-to-cloud workflow. Pro adds production-scale capabilities on its own dedicated page.</p>
+      </div>
+      <div class="cta-row">
+        <a class="cta-secondary" href="/pro">Explore Fieldbox Pro</a>
+      </div>
+    </section>
 
     <hr class="rule">
 
@@ -752,7 +790,7 @@
     <div class="founder-note">
       <p>I built Fieldbox for the parts of professional work that happen away from a desk. On assignment, I may need an offsite copy before leaving a location. When I travel with a camera or drone, I can generate more photographs and footage than the memory cards I have with me can hold. And sometimes I need to send work to the cloud or make it available to a client while I am still on the move.</p>
       <p>In each case, I already have most of what I need in my bag or pocket: an iPhone or iPad, a card reader, and a connection whenever one becomes available. What I wanted was a straightforward way to turn those pieces into a disciplined backup workflow, with a clear record of what has been copied and verified.</p>
-      <p>That is why I made Fieldbox. It copies photographs, video, audio, and other files from a memory card to your device, verifies the transfer byte for byte, and can replicate it to your own cloud storage. Together, those copies can form a practical 3-2-1 workflow built around hardware you already carry.</p>
+      <p>That is why I made Fieldbox. It copies photographs, video, audio, and other files from a memory card to your device, compares each copied file with the source using SHA-256, and can replicate it to your own cloud storage. Together, those copies can form a practical 3-2-1 workflow built around hardware you already carry.</p>
       <p>For me, the value is confidence based on clear evidence, not guesswork. I can see when a transfer has been verified and make the next decision with the facts in front of me.</p>
       <p>I continue to build and maintain Fieldbox from the perspective of someone who uses cameras professionally. Every decision is shaped by the realities of working on set, traveling with limited equipment, and coming home with files that matter.</p>
       <div class="founder-sig">Alessandro Casagli</div>
