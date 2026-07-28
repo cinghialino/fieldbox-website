@@ -182,12 +182,12 @@
   <main>
     <p class="label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: July 20, 2026</p>
+    <p class="updated">Effective date: July 28, 2026</p>
 
     <section>
       <h2>Overview</h2>
       <p>Fieldbox Backup ("the app", "we", "us") is a professional photo backup application for iOS developed by ZANZAN, LLC. This policy explains what data the app accesses, how it is used, and your rights.</p>
-      <p>Fieldbox Backup does not collect, store, or transmit any personal data to our servers. There are no servers. All data stays on your device and in your own cloud accounts.</p>
+      <p>Your media, filenames, paths, hashes, session details, and cloud credentials stay on your device and in storage accounts you choose. If you explicitly enable Anonymous Usage Data, the app sends a small identifier-free weekly summary to a Fieldbox telemetry receiver as described below.</p>
     </section>
 
     <section>
@@ -195,7 +195,7 @@
       <p>Fieldbox Backup accesses only the following data, solely to perform the backup functions you initiate:</p>
       <ul>
         <li><strong>Camera card contents</strong> — image and video files you choose to back up. Read-only. The app never modifies or deletes files from your card.</li>
-        <li><strong>Device storage</strong> — a verified local copy of your files is written to the FieldBox folder in your iOS Files app.</li>
+        <li><strong>Device storage</strong> — verified local files are written to Fieldbox's private app-managed archive. The archive is not editable in Files. An export creates a separate copy at a destination you select.</li>
         <li><strong>Your cloud storage accounts</strong> — when you configure a cloud destination, the app uploads your backed-up files to that account. See the sections below for each provider.</li>
       </ul>
     </section>
@@ -235,25 +235,38 @@
     </section>
 
     <section>
+      <h2>Optional Anonymous Usage Data</h2>
+      <p>Anonymous Usage Data is off by default. The first-run walkthrough offers an unchecked choice, and you can inspect or change it later in Settings. When enabled, Fieldbox combines approved counters on your device and sends one summary only after a calendar week ends.</p>
+      <p>A summary can contain the schema version, calendar week, app version, iOS major version, device class, coarse file-count and size ranges, and counters for completed or failed scans, imports, restores, cloud-provider operations, and S3-compatible multipart uploads.</p>
+      <p>The summary does not include a persistent device or user identifier, media, filenames, paths, hashes, card or session identity, camera details, account information, credentials, exact file counts, exact sizes, exact times, locations, raw errors, advertising identifiers, or contact information. Because there is no stable identifier, summaries are not designed to follow one device or person across weeks.</p>
+      <p>Summaries are sent to <code>telemetry.fieldbox.app</code>, a Fieldbox-controlled Cloudflare Worker. The receiver validates a fixed allowlist and stores only approved summary fields in Cloudflare Workers Analytics Engine. The Worker is configured not to read or store IP addresses or other request metadata, and Worker observability is disabled. Cloudflare necessarily processes network requests to provide and secure its service under its own <a href="https://www.cloudflare.com/privacypolicy/">Privacy Policy</a>.</p>
+      <p>Turning sharing off immediately deletes unsent summaries from the device. Accepted summaries are retained by Workers Analytics Engine for its fixed three-month retention period and then expire.</p>
+    </section>
+
+    <section>
+      <h2>Apple Private Key-Value Storage</h2>
+      <p>Fieldbox may use Apple's private iCloud key-value service to keep only the number of free verified imports used across devices signed in to the same Apple Account. It does not place media, archives, sessions, credentials, or cloud backups in iCloud, and iCloud is not a Fieldbox backup destination or restore source.</p>
+    </section>
+
+    <section>
       <h2>Data We Do Not Collect</h2>
       <ul>
-        <li>No analytics or telemetry</li>
-        <li>No crash reporting sent to our servers</li>
+        <li>No automatic crash reports sent to Fieldbox</li>
         <li>No advertising identifiers</li>
-        <li>No personal information (name, email, location)</li>
-        <li>No access to your Photos library</li>
-        <li>No data sold or shared with third parties — ever</li>
+        <li>No names, email addresses, precise locations, or Fieldbox user accounts</li>
+        <li>No reading of your Photos library; user-initiated Save to Photos uses add-only access</li>
+        <li>No sale of personal data and no data used for advertising or tracking</li>
       </ul>
     </section>
 
     <section>
       <h2>Data Retention</h2>
-      <p>All data is under your control. Local files remain on your device until you delete them through the app or iOS Files. Cloud copies remain in your cloud account until you remove them through the app or directly in your cloud provider's interface.</p>
+      <p>Local archive files remain in Fieldbox's app-managed container until you delete them through the app or remove the app and its data. Exported copies remain at the destinations you selected. Cloud copies remain in your cloud account until you remove them through Fieldbox or through your provider. Optional anonymous summaries follow the retention described above.</p>
     </section>
 
     <section>
       <h2>Security</h2>
-      <p>All cloud credentials are stored in the iOS Keychain with the strictest available device-only protection — they cannot be extracted from the device or included in device backups. All cloud communication uses HTTPS/TLS. Local file integrity is verified with SHA-256 checksums; cloud verification is provider-specific as described above.</p>
+      <p>Cloud credentials are stored in the iOS Keychain using device-only protection and are excluded from device backups. All cloud and telemetry communication uses HTTPS/TLS. Local file integrity is checked with SHA-256; cloud verification is provider-specific as described above.</p>
     </section>
 
     <section>
@@ -268,7 +281,7 @@
 
     <section>
       <h2>Contact</h2>
-      <p>Questions about this privacy policy? Contact us at <a href="mailto:info@fieldbox.app">info@fieldbox.app</a>.</p>
+      <p>Questions about this privacy policy? Contact us at <a href="mailto:support@fieldbox.app">support@fieldbox.app</a>.</p>
     </section>
   </main>
 
@@ -277,7 +290,7 @@
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
       <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
-      <a href="mailto:info@fieldbox.app">Contact</a>
+      <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>
 

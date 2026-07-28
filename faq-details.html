@@ -323,7 +323,7 @@
         <li><strong>Cloud checks depend on the provider.</strong> S3-compatible storage such as Backblaze B2, and Google Drive, must return a matching SHA-256 checksum. Dropbox and WebDAV confirm the stored size. OneDrive uses a SHA-256 checksum when it provides one, otherwise confirms the stored size.</li>
         <li><strong>Fieldbox checks back afterward.</strong> After an upload, Fieldbox asks the provider for the file's stored size and, where the provider supports it, its checksum. The app labels an upload receipt separately from cloud hash verification.</li>
       </ol>
-      <p>A cloud backup only shows as upload-confirmed once the provider's available check passes for every file. The local archive remains the byte-for-byte SHA-256 verified copy; cloud hash verification is called out only where the provider supplies a matching checksum.</p>
+      <p>A cloud backup only shows as upload-confirmed once the provider's available check passes for every file. The local archive records matching source and local SHA-256 values; cloud hash verification is called out only where the provider supplies a matching checksum.</p>
       <div class="aside">
         <div class="aside-label">Why a file sometimes takes a few minutes to show up in your cloud provider's own website</div>
         <p>Some providers' web file browsers take a little while to catch up after an upload, that's just how their listing pages work, not a sign anything is wrong. Fieldbox's confirmation check asks about that one specific file directly, so it gets a reliable answer the moment the file lands, even before the provider's own website has caught up.</p>
@@ -337,9 +337,9 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><path d="M2.5 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.3"/><path d="M14.8 13.6c.7-.2 1.4-.3 2.2-.3 2.8 0 5.1 2.2 5.5 5"/></svg>
         <h2>How shared cloud accounts stay organized</h2>
       </div>
-      <p>Sharing one cloud login across a crew needs clear ownership boundaries. Fieldbox assigns each device its own namespace and applies session-based controls when Cloud Browser is opened from a session. Shared accounts are part of the Pro plan.</p>
-      <p>Every device that connects to a shared account gets its own private space inside it. Two photographers can use cameras that happen to produce identically named files and they'll never collide or overwrite each other. Everyone on the team can browse everyone else's galleries from the in-app Cloud Browser, which is useful for a producer keeping track of a whole shoot, but <strong>a device can only ever delete the files it personally uploaded.</strong> Try to delete someone else's session and Fieldbox shows a lock instead of a delete option.</p>
-      <p>So the account can be fully shared without the risk being shared too. Everyone sees the same pool of work, but nobody can accidentally erase a colleague's backup.</p>
+      <p>Sharing one cloud login across a crew needs clear ownership boundaries. Fieldbox assigns each device its own top-level namespace and applies session-based controls when Cloud Browser is opened from a session.</p>
+      <p>Separate device namespaces keep identical camera filenames from sharing the same cloud object path. A device can browse shared-account inventory, while deletion controls are limited to the current device's top-level area.</p>
+      <p>This is core storage behavior, not a Pro feature. Within Fieldbox, deletion controls cannot remove another installation's top-level area.</p>
     </article>
 
     <hr class="rule">
@@ -349,14 +349,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <h2>What happens when a transfer is interrupted</h2>
       </div>
-      <p>Whether you tap "interrupt" yourself, close the app, unplug the reader, or the battery dies, Fieldbox never leaves things in a confusing state.</p>
+      <p>If you interrupt a transfer, close the app, unplug the reader, or lose power, Fieldbox preserves only the files that completed local verification.</p>
       <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox records which files were verified and which still need attention. Nothing on the card is changed by the app, and verified files are not copied again when the transfer continues.</p>
       <p>The screen tells you plainly how many files made it in before stopping, and shows a standing warning not to format the card until the rest are backed up. Plug the card back in whenever you're ready, and Fieldbox picks up exactly where it left off, skipping everything that's already confirmed and only copying what's left.</p>
     </article>
 
     <div class="contact-block">
       <p>Have a question this page didn't answer?</p>
-      <a class="cta" href="mailto:info@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
+      <a class="cta" href="mailto:support@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
     </div>
   </main>
 

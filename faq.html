@@ -348,14 +348,14 @@
         <summary>What does Fieldbox Backup actually do?</summary>
         <div class="qa-body">
           <p>It copies files from a memory card to your iPhone or iPad and compares source and local SHA-256 values for each selected file. You can then send the verified local archive to a cloud storage account you already own. Backup Status reports the current copy inventory and the confirmations Fieldbox has recorded.</p>
-          <p>It's built with professional shoots in mind, but it works just as well for a drone flight, an interview or podcast recorded on a separate audio recorder, or a card full of vacation photos. Anything that comes off a memory card gets the same verified treatment.</p>
+          <p>It's built with professional shoots in mind, including mixed cards from cameras, drones, and supported audio recorders. The supported-format list below shows the extensions Fieldbox currently recognizes.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>How do I back up a card?</summary>
         <div class="qa-body">
-          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name (or add it to one you already started), glance over the summary of what's on the card, and tap Start. When the screen turns green and says every file is verified, you're done.</p>
+          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name (or add it to one you already started), review the summary, and tap Start. When the transfer completes, review the verified and failed counts before deciding what to do with the card.</p>
           <div class="example">
             <div class="example-label">Example</div>
             <p>You finish a session and swap cards mid-shoot. Fieldbox recognizes the camera and offers to drop the new card straight into the same session, so everything from the day ends up together.</p>
@@ -378,14 +378,14 @@
       <details class="qa">
         <summary>Do I need an internet connection to back up?</summary>
         <div class="qa-body">
-          <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. Once you're back online, Fieldbox picks up any backups that are waiting and sends them to your cloud on its own, even if it's not the same day.</p>
+          <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. When Fieldbox is active again with a connection available, it can resume pending uploads to the enabled destination.</p>
         </div>
       </details>
 
       <details class="qa">
-        <summary><span class="qa-q">Can I plan a session before the shoot even starts? <span class="pro-tag">Pro</span></span></summary>
+        <summary>Can I plan a session before the shoot even starts?</summary>
         <div class="qa-body">
-          <p>Yes. Set up a session with a name and a date ahead of time, and pick which cloud it should go to. On the day, it sits at the top of the list ready to go, so you can plug in and start without stopping to name anything.</p>
+          <p>Yes, after the one-time unlock or with Pro. Set up a session with a name and date ahead of time. On the day, it sits at the top of the list ready for the first card.</p>
         </div>
       </details>
     </section>
@@ -444,7 +444,7 @@
       <details class="qa">
         <summary>How does Fieldbox know a cloud backup really landed, not just that the upload didn't error?</summary>
         <div class="qa-body">
-          <p>Fieldbox always SHA-256 verifies the local archive against the card. Cloud status is a separate provider receipt: S3-compatible storage and Google Drive require a matching provider-reported SHA-256 checksum; Dropbox and WebDAV confirm stored size; OneDrive uses its checksum when available and otherwise confirms stored size. The app labels upload confirmation separately from cloud hash verification.</p>
+          <p>Fieldbox always compares source and local SHA-256 values. Cloud status is separate provider evidence: S3-compatible storage and Google Drive require a matching provider-reported SHA-256 checksum; Dropbox, OneDrive, and WebDAV confirm acceptance or object existence plus stored size when a usable provider checksum is unavailable. The app labels upload confirmation separately from cloud hash verification.</p>
           <a class="readmore" href="/faq-details.html#cloud-safety">Read more about cloud verification →</a>
         </div>
       </details>
@@ -473,7 +473,7 @@
       <details class="qa">
         <summary>Does Fieldbox use my iCloud storage?</summary>
         <div class="qa-body">
-          <p>No, it never touches iCloud. Your files go to your device and to whichever cloud account you connect yourself. There's no subscription or storage tied to Fieldbox itself, you use the storage you already have.</p>
+          <p>Fieldbox never uses iCloud as a media-backup destination or restore source. Your files go to the app-managed archive and to whichever supported storage account you connect. Apple's private key-value service may sync only the number of free verified imports used across your devices.</p>
         </div>
       </details>
     </section>
@@ -485,7 +485,7 @@
       </div>
 
       <details class="qa">
-        <summary><span class="qa-q">Can my whole crew back up to one shared cloud account? <span class="pro-tag">Pro</span></span></summary>
+        <summary>Can my whole crew back up to one shared cloud account?</summary>
         <div class="qa-body">
           <p>Yes. Each connected device uses its own space within the shared account, so Fieldbox keeps one device’s session paths separate from another’s. Cloud Browser also applies ownership boundaries when opened from a session.</p>
           <div class="example">
@@ -507,7 +507,7 @@
         <summary>What do I need to use Fieldbox?</summary>
         <div class="qa-body">
           <ul>
-            <li>An iPhone 15 Pro / 16 or later, or an iPad with USB-C, running iOS or iPadOS 17 or newer</li>
+            <li>An iPhone or iPad with USB-C, running iOS or iPadOS 17 or newer</li>
             <li>A USB-C card reader for whatever your camera, drone, or recorder uses, SD, microSD, CompactFlash, CFast, XQD, CFexpress, and most others. If it shows up as a drive on your device, Fieldbox can read it.</li>
           </ul>
           <p>That's the whole list, no extra hardware, no dedicated device to carry. You don't need an internet connection to back up either, that part happens entirely on your device. You'll just want one eventually so your cloud copy can go through.</p>
@@ -517,21 +517,22 @@
       <details class="qa">
         <summary>What file types does it handle?</summary>
         <div class="qa-body">
-          <p>Just about anything a memory card can hold:</p>
+          <p>Fieldbox currently recognizes these extensions. Matching is case-insensitive:</p>
           <ul>
-            <li>RAW from every major camera brand (Canon, Nikon, Sony, Fujifilm, Panasonic, Olympus, Pentax, and Adobe's universal DNG)</li>
-            <li>Regular stills: JPEG, HEIC, PNG, TIFF</li>
-            <li>Video, including the higher-end formats used by cinema cameras and drones</li>
-            <li>Audio, from a quick voice memo to a full field recorder's output</li>
+            <li><strong>RAW:</strong> 3FR, CR2, CR3, NEF, ARW, RAF, RW2, ORF, DNG, PEF, SRW</li>
+            <li><strong>Stills:</strong> JPG, JPEG, HEIC, HEIF, PNG, TIF, TIFF</li>
+            <li><strong>Video:</strong> MOV, MP4, M4V, AVI, MXF, BRAW, R3D</li>
+            <li><strong>Audio:</strong> WAV, AIF, AIFF, MP3, FLAC, M4A, CAF, BWF, RF64</li>
+            <li><strong>Sidecars and metadata:</strong> XMP, XML, JSON</li>
           </ul>
-          <p>If it came off a camera, a drone, or an audio recorder, Fieldbox almost certainly recognizes it.</p>
+          <p>Every recognized file follows the same copy and source/local SHA-256 comparison workflow. Preview availability is separate and depends on the formats supported by iOS.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>Can I preview my photos and videos in the app?</summary>
         <div class="qa-body">
-          <p>Yes. Browse a backed-up session as a thumbnail grid and tap anything to view it full-size, RAW and HEIC included.</p>
+          <p>Browse a backed-up session as a thumbnail grid and tap a file to open it. Preview and playback depend on iOS support for that specific format. A recognized file can still be copied and compared even when iOS cannot render a preview.</p>
         </div>
       </details>
 
@@ -545,14 +546,14 @@
       <details class="qa">
         <summary><span class="qa-q">Can I copy a backup onto a USB drive to hand off to a client? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
-          <p>Yes, export a session directly to any USB-C drive you already own, formatted exFAT, FAT32, or APFS, no need to buy anything new for it. Handy for a same-day client handoff without needing a laptop.</p>
+          <p>Yes. Fieldbox Pro's USB Transfer copies a verified session directly to an attached drive formatted as exFAT, FAT32, or APFS. It is designed for same-day client handoff without a laptop.</p>
         </div>
       </details>
     </section>
 
     <div class="contact-block">
       <p>Still have a question?</p>
-      <a class="cta" href="mailto:info@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
+      <a class="cta" href="mailto:support@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
     </div>
   </main>
 
@@ -561,7 +562,7 @@
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
       <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="mailto:info@fieldbox.app">Contact</a>
+      <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>
 
