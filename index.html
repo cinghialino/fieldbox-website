@@ -604,11 +604,12 @@
 
     footer a:hover { color: var(--text); }
   </style>
+  <link rel="stylesheet" href="/site-shell.css">
 </head>
 <body>
 
-  <header>
-    <div class="brand">
+  <header class="site-header">
+    <a class="brand" href="/">
       <div class="logo-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
@@ -619,10 +620,12 @@
         Fieldbox Backup
         <span>3 · 2 · 1 Backup</span>
       </div>
-    </div>
+    </a>
     <nav class="site-nav" aria-label="Primary navigation">
+      <a class="active" href="/" aria-current="page">Home</a>
       <a href="/faq.html">How it works</a>
-      <a class="pro-link" href="/pro">Fieldbox Pro</a>
+      <a href="/field-notes/">Field Notes</a>
+      <a href="/pro.html">Pro</a>
     </nav>
   </header>
 
@@ -794,7 +797,7 @@
         <p>The standard app handles the core card-to-cloud workflow. Pro adds production-scale capabilities on its own dedicated page.</p>
       </div>
       <div class="cta-row">
-        <a class="cta-secondary" href="/pro">Explore Fieldbox Pro</a>
+        <a class="cta-secondary" href="/pro.html">Explore Fieldbox Pro</a>
       </div>
     </section>
 
@@ -811,12 +814,15 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
-      <a href="/pro">Pro</a> &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
       <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
       <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Field Notes explains the product and engineering decisions behind Fieldbox Backup for iPhone and iPad.">
+  <title>Field Notes — Fieldbox Backup</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="label">Field Notes</p>
+    <h1>Design decisions from the field.</h1>
+    <p class="standfirst">Essays on the reasoning, constraints, and tradeoffs behind Fieldbox Backup for iPhone and iPad.</p>
+    <hr class="rule">
+
+    <div class="note-list">
+      <a class="note-card" href="/field-notes/how-does-fieldbox-know/">
+        <span class="note-kicker">Evidence design · August 3, 2026</span>
+        <h2>How Does FieldBox Know? Designing Evidence for Field Backup</h2>
+        <p>A verified comparison, a provider confirmation, a source scan, and a user report are different kinds of evidence. Fieldbox labels each one according to where it came from.</p>
+        <span class="note-link">Read the Field Note →</span>
+      </a>
+      <a class="note-card" href="/field-notes/the-boundaries-of-an-integrity-record/">
+        <span class="note-kicker">Record design · July 24, 2026</span>
+        <h2>The Boundaries of an Integrity Record</h2>
+        <p>A signed record becomes more credible when it is precise about what the signature binds and what it cannot establish.</p>
+        <span class="note-link">Read the Field Note →</span>
+      </a>
+      <a class="note-card" href="/field-notes/completeness-is-all-or-nothing/">
+        <span class="note-kicker">Copy accounting · June 22, 2026</span>
+        <h2>Completeness Is All or Nothing</h2>
+        <p>Partial copies remain visible and useful, but a location counts as one copy only when it can account for the whole session independently.</p>
+        <span class="note-link">Read the Field Note →</span>
+      </a>
+      <a class="note-card" href="/field-notes/the-threshold-of-the-archive/">
+        <span class="note-kicker">Archive design · June 19, 2026</span>
+        <h2>The Threshold of the Archive</h2>
+        <p>Copying produces another file. Verification is what allows Fieldbox to accept that file into its app-managed archive.</p>
+        <span class="note-link">Read the Field Note →</span>
+      </a>
+      <a class="note-card" href="/field-notes/the-source-remains-untouched/">
+        <span class="note-kicker">Source design · June 19, 2026</span>
+        <h2>The Source Remains Untouched</h2>
+        <p>Fieldbox reads removable media closely enough to verify a copy while leaving its lifecycle entirely under the user’s control.</p>
+        <span class="note-link">Read the Field Note →</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

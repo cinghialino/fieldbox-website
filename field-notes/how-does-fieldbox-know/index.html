@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How Fieldbox distinguishes checks it performed, destination confirmations, source observations, and facts reported by a user.">
+  <title>How Does FieldBox Know? — Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Editorial source: ADR-0001. Decision conceived: 2026-08-03. Product reviewed: 2026-08-03. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Evidence design</p>
+      <h1>How Does FieldBox Know? Designing Evidence for Field Backup</h1>
+      <p class="standfirst">A check performed by Fieldbox, a confirmation returned by a storage provider, a source scan, and a fact reported by a person are not the same thing. A useful backup record should say where each claim came from.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-08-03">August 3, 2026</time></span><span>8 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>Backup software has a language problem. A single green checkmark can mean that an app compared two files, that a server accepted an upload, or simply that no error appeared. Those are different facts, supported by different evidence.</p>
+      <p>Fieldbox is built for decisions made away from a computer, often while the original memory card is still part of the working set. In that situation, a status is only useful when the person reading it can answer a more basic question:</p>
+
+      <p class="principle">How does FieldBox know this?</p>
+
+      <p>That question led to four evidence-source labels. They do not form a ladder from unsafe to safe. They identify who or what supplied the evidence, what was actually checked, and where the limits are.</p>
+
+      <div class="evidence-grid" aria-label="The four Fieldbox evidence sources">
+        <section class="evidence-card">
+          <h3 class="verified"><span class="evidence-dot"></span>Verified by FieldBox</h3>
+          <p>Fieldbox directly performed the relevant comparison or reread current bytes and matched them to the recorded manifest.</p>
+        </section>
+        <section class="evidence-card">
+          <h3 class="confirmed"><span class="evidence-dot"></span>Confirmed by destination</h3>
+          <p>A configured storage destination supplied evidence about the object it stored.</p>
+        </section>
+        <section class="evidence-card">
+          <h3 class="observed"><span class="evidence-dot"></span>Observed during scan</h3>
+          <p>A complete, read-only scan saw attributed originals at a recorded point in time.</p>
+        </section>
+        <section class="evidence-card">
+          <h3 class="reported"><span class="evidence-dot"></span>Reported by user</h3>
+          <p>A person supplied a source-status fact that Fieldbox could not independently inspect.</p>
+        </section>
+      </div>
+
+      <h2>Verified by FieldBox</h2>
+      <p>During an import, Fieldbox reads a file from the source card and calculates its SHA-256 value. It then reads the staged local copy and calculates that value again. Only a match is promoted into the app-managed archive.</p>
+      <p>That is a check Fieldbox performed, so it belongs under <strong>Verified by FieldBox</strong>. A later local integrity check can also reread current archive bytes and compare them with the recorded manifest.</p>
+      <p>The wording stays deliberately narrow. It says which values matched when the check ran. It does not promise that a device will remain available or that a file can never be changed or lost later.</p>
+
+      <h2>Confirmed by destination</h2>
+      <p>Cloud and NAS storage sit across a service boundary. Fieldbox asks the configured destination what it stored, then records the strongest usable evidence that destination exposes.</p>
+      <p>Some destinations can return a matching SHA-256 checksum. Others confirm that an object was accepted or exists with the expected stored size. Both are destination evidence, but they are not interchangeable. The interface must retain the precise method rather than turning every successful upload into “cloud hash verified.”</p>
+      <p>This is why the broad label is <strong>Confirmed by destination</strong>. It attributes the statement correctly while leaving room to say whether the confirmation was a provider checksum or acceptance, existence, and size.</p>
+
+      <h2>Observed during scan</h2>
+      <p>A memory card can change after an import. Files may be removed, the card may be reused, or only part of its earlier contents may remain. A later complete, read-only scan lets Fieldbox compare what it sees with the originals previously attributed to that source.</p>
+      <p>If 41 of 50 attributed originals are found, Fieldbox can report 82% source coverage <strong>observed during that scan</strong>. The observation time matters. Once the card is disconnected, Fieldbox cannot claim that its contents remain unchanged.</p>
+      <p>Coverage can be partial, but counting a source as one complete current copy remains binary: the applicable complete scan must have observed every attributed original.</p>
+
+      <h2>Reported by user</h2>
+      <p>Sometimes the source is no longer connected and Fieldbox cannot inspect it. A person may report that the originals are no longer available. Fieldbox records that change in the Events Log and labels it <strong>Reported by user</strong>.</p>
+      <p>This is not a failed verification, and it is not presented as a measurement. It is a useful fact with an explicit origin.</p>
+      <p>If a later scan finds known originals, the new observation can replace the report as the current evidence while the earlier event remains in the audit history. That does not mean the user was wrong. It means Fieldbox received newer, directly observed information.</p>
+
+      <h2>One session, four sources of evidence</h2>
+      <p>A single session can contain all four classifications without contradiction:</p>
+
+      <div class="ledger" role="list" aria-label="Example evidence ledger">
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Local archive</span><span class="ledger-source verified">Verified by FieldBox · source and local SHA-256 matched</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Offsite copy</span><span class="ledger-source confirmed">Confirmed by destination · provider checksum or stored-object evidence stated precisely</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Source card</span><span class="ledger-source observed">Observed during scan · 41 of 50 attributed originals</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Source availability</span><span class="ledger-source reported">Reported by user · recorded in Events Log</span></div>
+      </div>
+
+      <p>None of those lines needs an unexplained “trust me” checkmark. Each names the fact, its origin, and—where it matters—the method and time behind it.</p>
+
+      <h2>Where the Integrity Record fits</h2>
+      <p>An Integrity Record freezes a point-in-time view of a session. It binds the session identity, the verified-file manifest, and explicit evidence methods in a deterministic payload. Its signed envelope lets a verifier detect changes to that payload and compare records associated with the same device-held signing key.</p>
+      <p>The signature does not turn an observation into a broader claim. It does not establish civil identity, trusted time, external certification, legal authentication, or the continued existence of a file after the recorded check. A screenshot is a visual rendering; the signed data is the verifiable artifact.</p>
+      <p>The current record format also has a deliberate boundary: partial live source coverage cannot be placed into its existing source-card status without changing the schema. The live interface can explain current observations while the versioned record keeps its defined meaning.</p>
+
+      <div class="boundary">
+        <h2>What these labels do not claim</h2>
+        <p>They do not certify that files are safe, permanent, or guaranteed recoverable. A provider confirmation does not prove permanent integrity. Fieldbox records what it measured, observed, received, or was told at the applicable time so that the next decision can be made from stated evidence rather than an unexplained status.</p>
+      </div>
+
+      <h2>A design language, not a marketing badge</h2>
+      <p>The value of this model comes from using it consistently. Backup Status, File Source Ledger, Events Log, Transfer Details, and Integrity Verification should not invent separate words for the same evidence origins.</p>
+      <p>Over time, the labels become a compact design language. “Verified by FieldBox” means the app performed the check. “Confirmed by destination” means the storage system supplied the evidence. “Observed during scan” remains tied to an observation. “Reported by user” remains a recorded human statement.</p>
+      <p class="principle">Say what was checked, who supplied the evidence, and when it was observed—without turning those facts into certainty they cannot support.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This article explains the reasoning behind a Fieldbox product decision. It is not a technical specification or a guarantee about future file availability. Editorial source: ADR-0001. Last reviewed against the product documentation on August 3, 2026.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

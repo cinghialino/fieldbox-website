@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox keeps partial coverage visible but counts only independently complete session copies.">
+  <title>Completeness Is All or Nothing — Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Editorial source: ADR-0003. Decision conceived: 2026-06-22. Product reviewed: 2026-08-03. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Copy accounting</p>
+      <h1>Completeness Is All or Nothing</h1>
+      <p class="standfirst">Partial copies are valuable and worth showing. But if no single location contains the whole session, Fieldbox cannot honestly count one complete copy there.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-06-22">June 22, 2026</time></span><span>8 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>Imagine a session with three cards. The first has reached one provider, the second has reached another, and the third is still only on the device. Every file may exist somewhere, yet no provider can return the session on its own.</p>
+      <p>It is tempting to add those fragments together. The arithmetic reaches 100 percent, but the operational reality does not. If either provider becomes unavailable, the assembled whole disappears with it.</p>
+      <p>That distinction produced one of Fieldbox’s central accounting rules: a copy has to exist as a complete, independently usable unit before the app counts it as one copy.</p>
+
+      <p class="principle">Coverage can be partial. A complete copy cannot.</p>
+
+      <h2>The location has to stand on its own</h2>
+      <p>Fieldbox evaluates each configured destination separately. A provider counts as a complete copy only when that provider has confirmed every transfer in the session using the evidence method available for that service. To satisfy the offsite leg, that complete provider must also count as offsite; a same-site destination can be complete without being offsite.</p>
+      <p>This remains true even when multiple partial providers collectively contain all the files. They are still useful destinations. Fieldbox shows their progress and names what each one holds. It simply does not invent a complete provider that does not exist.</p>
+
+      <div class="ledger" role="list" aria-label="Example provider coverage">
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Provider A</span><span class="ledger-source">Cards 1 and 2 confirmed · partial session</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Provider B</span><span class="ledger-source">Card 3 confirmed · partial session</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Complete offsite copies</span><span class="ledger-source">None · no provider holds all three cards</span></div>
+      </div>
+
+      <p>The labels in that example are intentionally unglamorous. Partial does not mean useless, and complete does not mean permanent. They describe coverage of the session as Fieldbox currently records it.</p>
+
+      <h2>The active destination is not the truth</h2>
+      <p>An early interface risk was tying backup status to whichever destination happened to be selected for the next upload. That would make a completed copy appear to vanish when someone switched to another provider.</p>
+      <p>The accepted rule looks across every connection instead. If one provider holds the whole session, Fieldbox can name it as complete regardless of which destination is active now. Upload intent and current copy inventory are separate facts.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Upload intent</span>
+          <h3>Where work is going next</h3>
+          <p>The provider currently selected for future or continuing replication.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">Current inventory</span>
+          <h3>Where the whole session is confirmed</h3>
+          <p>Every provider is evaluated independently from its recorded session coverage.</p>
+        </section>
+      </div>
+
+      <h2>The same principle reaches back to the source</h2>
+      <p>Source coverage introduced a continuous measurement into the same model. A later complete, read-only scan might observe 811 of 824 originals previously attributed to one source. Reporting 98.4 percent is more informative than reducing the source to “present” or “missing.”</p>
+      <p>But the copy count remains binary. If thirteen attributed originals are absent from that observation, the source cannot reconstruct the session inventory it is supposed to represent. It remains a valuable partial source, but it does not count as one complete current copy.</p>
+      <p>This later source model did not change the earlier completeness decision. It applied the same principle to better evidence: show the fraction, but count a copy only when the location stands on its own.</p>
+
+      <h2>Three, two, and one are outputs</h2>
+      <p>Fieldbox uses complete copies to evaluate its defined 3-2-1 inventory. The device must currently hold every verified file. At least one complete confirmed provider must be offsite. The third current copy comes from either the complete source or, after the user marks the source card as formatted, a second independently confirmed provider.</p>
+      <p>Those conditions are not a slogan applied after the fact. They are outputs of the copy inventory. If a local file disappears, source coverage becomes partial, or provider coverage no longer spans the whole session, the assessment changes.</p>
+
+      <ul class="invariant-list">
+        <li>The device holds every verified file.</li>
+        <li>At least one complete confirmed provider is offsite.</li>
+        <li>A third complete current copy is independently accounted for.</li>
+      </ul>
+
+      <h2>Why the strictness matters</h2>
+      <p>A more generous interface could award reassuring badges sooner. It could add provider fragments together, count a mostly complete card, or preserve a green state from an earlier success screen. Each shortcut would make the display easier to satisfy and harder to defend.</p>
+      <p>The stricter rule can mean waiting longer for a complete state. It can also expose inconvenient gaps. That is the point. Fieldbox is most useful when it distinguishes progress from completion rather than allowing one to impersonate the other.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>A complete copy means the current Fieldbox inventory attributes the whole verified session to one independently usable location under its recorded evidence method. It does not guarantee that the location will remain available or that provider confirmation proves permanent integrity.</p>
+      </div>
+
+      <h2>Completeness is deliberately boring</h2>
+      <p>There is no confidence score and no weighted average. A location either contains the whole inventory or it does not. The surrounding evidence can be rich, with percentages, timestamps, and provider methods, while the final unit stays simple.</p>
+      <p>That simplicity makes the rest of the product easier to reason about. One provider means one provider. One source means one source. One copy means the entire session exists there, not that its pieces could theoretically be gathered from several places if every dependency cooperated.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This essay explains a Fieldbox product decision first established on June 22, 2026 and extended to observed source coverage on August 2, 2026. It is not a technical specification or a guarantee of future availability. Editorial source: ADR-0003. Last reviewed against the product on August 3, 2026.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

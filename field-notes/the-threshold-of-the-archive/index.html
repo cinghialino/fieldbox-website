@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox keeps copied bytes in staging until source and local SHA-256 values match.">
+  <title>The Threshold of the Archive — Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Editorial source: ADR-0002. Decision conceived: 2026-06-19. Product reviewed: 2026-08-03. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Archive design</p>
+      <h1>The Threshold of the Archive</h1>
+      <p class="standfirst">Copying produces another file. Verification is what allows Fieldbox to accept that file into the archive. Keeping those two moments separate became one of the app’s earliest design decisions.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-06-19">June 19, 2026</time></span><span>7 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>A progress bar has a seductive simplicity. Bytes move from left to right, the bar reaches the end, and the transfer looks complete. But the end of a copy operation answers only one question: did the operating system finish writing something at the destination?</p>
+      <p>Fieldbox needed to answer a stricter question: do the bytes written on the iPhone or iPad match the bytes that were read from the source?</p>
+      <p>The difference between those questions created a threshold. Before that threshold, a file is an attempted copy. After it, the file can become part of the archive.</p>
+
+      <p class="principle">The archive is not where a copy is being made. It is where a verified copy is admitted.</p>
+
+      <h2>Staging keeps uncertainty in the right place</h2>
+      <p>Fieldbox does not write an incoming file directly to its final archive path. It first writes the file into a staging area. Staging is deliberately temporary: it is a place for bytes whose status has not yet been decided.</p>
+      <p>Once the copy is there, Fieldbox calculates SHA-256 from the source and from the staged local file. If the values match, the staged file crosses the threshold and is promoted into the app-managed archive. If they do not, Fieldbox removes the staged attempt, retries once, and leaves a persistent failure outside the archive.</p>
+
+      <div class="decision-flow" aria-label="The archive promotion sequence">
+        <div class="decision-step"><span class="step-number">01</span><strong>Read</strong><span>Read the selected source file without changing it.</span></div>
+        <div class="decision-step"><span class="step-number">02</span><strong>Stage</strong><span>Copy the bytes into temporary local storage.</span></div>
+        <div class="decision-step"><span class="step-number">03</span><strong>Compare</strong><span>Calculate and compare source and staged SHA-256 values.</span></div>
+        <div class="decision-step"><span class="step-number">04</span><strong>Promote</strong><span>Move the file into the archive only after a match.</span></div>
+      </div>
+
+      <p>This structure prevents a half-written or unchecked file from occupying the same conceptual space as an accepted one. The distinction exists in storage, in the transfer record, and in the language the interface uses.</p>
+
+      <h2>Interruption becomes a state, not a catastrophe</h2>
+      <p>Field work is full of interruption: a reader is unplugged, an app is closed, a device runs low on power, or someone simply needs to stop. If the archive were treated as one large all-or-nothing transaction, an interruption could erase the meaning of everything completed before it.</p>
+      <p>Fieldbox instead makes the decision file by file. A file that already crossed the threshold remains a verified archive file. A file still in staging has not crossed it. Files that were never reached remain on the source and remain outstanding.</p>
+      <p>That gives a partial transfer a precise meaning. It is not “complete enough,” and it is not a total failure. It is a recorded set of verified files alongside a recorded set that still needs attention.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Copied</span>
+          <h3>A write operation finished</h3>
+          <p>The destination now contains bytes, but Fieldbox has not yet established that they match the source.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">Verified</span>
+          <h3>Two measured values matched</h3>
+          <p>The source and staged local SHA-256 values matched, so the file was eligible for archive promotion.</p>
+        </section>
+      </div>
+
+      <h2>The same threshold applies on the way back</h2>
+      <p>Restore could have been treated as a special case. A provider had already accepted an uploaded object, so a successful download might appear sufficient to put the file back.</p>
+      <p>But a restore is another arrival of bytes, and the archive threshold should not depend on which direction they traveled. Fieldbox downloads a restored object into separate staging, calculates its SHA-256, and compares it with the original source-derived value recorded in the manifest. Only a match allows it back into the archive.</p>
+      <p>Provider confirmation and restore verification therefore answer different questions. The first describes evidence returned by the destination. The second measures the bytes that have just arrived on the device.</p>
+
+      <h2>The cost is intentional</h2>
+      <p>Reading both source and staged data takes time and energy. Staging also needs temporary space. A design optimized only for apparent speed could remove one of those reads or display success as soon as copying ends.</p>
+      <p>Fieldbox accepts the extra work because it makes the archive’s meaning simpler. There is no provisional category hidden inside it. Either a file passed the admission comparison or it did not.</p>
+      <p>Later checks still matter. Files can be deleted or changed after import, devices can fail, and no local comparison promises future availability. The threshold does not make the archive permanent. It makes the original admission decision measured and explainable.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>Archive promotion means that Fieldbox measured matching source and staged-copy SHA-256 values before accepting the file. It does not guarantee that the file will remain available, unchanged, or recoverable later.</p>
+      </div>
+
+      <h2>A small rule with wide consequences</h2>
+      <p>“Promote only after verification” began as a storage rule, but it shapes much more than storage. It determines what an interruption means, which files appear in a verified manifest, how restore works, and why a success screen cannot be driven by a copy counter alone.</p>
+      <p>Most importantly, it prevents Fieldbox from borrowing certainty from an operation that did not provide it. Copying moves bytes. Comparison establishes whether the two measured versions matched. The archive begins only after the second statement is true.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This essay explains the reasoning behind a Fieldbox product decision first established on June 19, 2026. It is not a technical specification or a guarantee of future file availability. Editorial source: ADR-0002. Last reviewed against the product on August 3, 2026.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

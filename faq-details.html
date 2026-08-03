@@ -264,10 +264,11 @@
 
     footer a:hover { color: var(--text); }
   </style>
+  <link rel="stylesheet" href="/site-shell.css">
 </head>
 <body>
 
-  <header>
+  <header class="site-header">
     <a class="brand" href="/">
       <div class="logo-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +281,12 @@
         <span>3 · 2 · 1 Backup</span>
       </div>
     </a>
-    <a class="back-link" href="/faq.html">&larr; Back to FAQ</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a class="active" href="/faq.html" aria-current="page">How it works</a>
+      <a href="/field-notes/">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
   </header>
 
   <main>
@@ -325,8 +331,8 @@
       </ol>
       <p>A cloud backup only shows as upload-confirmed once the provider's available check passes for every file. The local archive records matching source and local SHA-256 values; cloud hash verification is called out only where the provider supplies a matching checksum.</p>
       <div class="aside">
-        <div class="aside-label">Why a file sometimes takes a few minutes to show up in your cloud provider's own website</div>
-        <p>Some providers' web file browsers take a little while to catch up after an upload, that's just how their listing pages work, not a sign anything is wrong. Fieldbox's confirmation check asks about that one specific file directly, so it gets a reliable answer the moment the file lands, even before the provider's own website has caught up.</p>
+        <div class="aside-label">Why a file can take a few minutes to appear in your cloud provider's website</div>
+        <p>A provider's web file browser can take time to display a newly uploaded object. Fieldbox checks that specific object using the confirmation method available from the provider and records the response separately from what may be visible in the provider's listing interface.</p>
       </div>
     </article>
 
@@ -360,12 +366,16 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
       <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
-      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>
 

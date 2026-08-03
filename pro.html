@@ -87,8 +87,6 @@
     .site-nav { display: flex; align-items: center; gap: 18px; }
     .site-nav a { color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
     .site-nav a:hover { color: var(--text); }
-    .site-nav .active { color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 8px 13px; }
-
     .hero-wrap {
       max-width: 1180px;
       margin: 0 auto;
@@ -590,10 +588,11 @@
 
     footer a:hover { color: var(--text); }
   </style>
+  <link rel="stylesheet" href="/site-shell.css">
 </head>
 <body>
 
-  <header>
+  <header class="site-header">
     <a class="brand" href="/">
       <div class="logo-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -607,8 +606,10 @@
       </div>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="/">Fieldbox Backup</a>
-      <a class="active" href="/pro">Fieldbox Pro</a>
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a href="/field-notes/">Field Notes</a>
+      <a class="active" href="/pro.html" aria-current="page">Pro</a>
     </nav>
   </header>
 
@@ -782,12 +783,15 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
       <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
       <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
       <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>

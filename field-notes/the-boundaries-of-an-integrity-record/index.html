@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why the Fieldbox Integrity Record separates evidence, signatures, transport, and visual presentation.">
+  <title>The Boundaries of an Integrity Record — Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Editorial source: ADR-0004. Decision conceived: 2026-07-24. Product reviewed: 2026-08-03. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Record design</p>
+      <h1>The Boundaries of an Integrity Record</h1>
+      <p class="standfirst">A signed record becomes more credible when it is precise about what the signature binds and equally precise about everything the signature cannot establish.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-07-24">July 24, 2026</time></span><span>9 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>The first instinct was visual. A session summary could gather its file count, hashes, destinations, and timestamp into one screen. Someone could take a screenshot and share a compact account of what Fieldbox had recorded.</p>
+      <p>That would be useful presentation, but it would not be a verifiable artifact. Pixels can be edited. Decorative patterns can be reproduced. A timestamp shown on screen can come from an adjustable device clock. Making the screen harder to imitate would not change those facts.</p>
+      <p>The design turned away from visual authenticity and toward a more modest goal: build a deterministic record of the app’s evidence, sign exactly that record, and make the limits part of the format.</p>
+
+      <p class="principle">The signature should protect the meaning of the record, not inflate the meaning of its claims.</p>
+
+      <h2>Four layers, four responsibilities</h2>
+      <p>The Integrity Record became easier to reason about once it stopped trying to be the screen, the signature, and the exported file at the same time. Fieldbox separates those responsibilities into layers.</p>
+
+      <div class="layer-stack" aria-label="Integrity Record architecture">
+        <div class="layer"><strong>Integrity Record</strong><span>The canonical point-in-time payload: session identity, verified manifest root, copy evidence, timestamps, and current inventory summary.</span></div>
+        <div class="layer"><strong>Signed envelope</strong><span>The record plus its payload digest, signature, key identifier, and self-issued verification certificate.</span></div>
+        <div class="layer"><strong>Transport</strong><span>The deterministic <code>.fieldbox.json</code> bytes used to store or share the envelope.</span></div>
+        <div class="layer"><strong>Presentation</strong><span>The human-readable screen or any future rendering. Useful for reading, but not the cryptographic artifact.</span></div>
+      </div>
+
+      <p>This separation lets the interface evolve without changing what was signed. It also lets an independent verifier reconstruct the canonical record bytes rather than trusting how a particular screen chose to display them.</p>
+
+      <h2>The manifest root identifies the verified set</h2>
+      <p>At the center of the record is a SHA-256 root calculated from a canonical list of verified files. Each entry binds its source path, archive destination, byte count, and SHA-256 value. The list is sorted deterministically before the root is calculated.</p>
+      <p>That root describes which verified-file manifest the record refers to. It does not change because a local file is later deleted, a provider becomes unavailable, or someone reports that a source was reused. Those are later evidence about current copies, not changes to the identity of the historical verified set.</p>
+      <p>Keeping the distinction matters. If every inventory change rewrote the manifest root, the record would lose a stable subject. Instead, the record binds a stable verified set to a point-in-time account of where Fieldbox currently believes copies exist and how it obtained that evidence.</p>
+
+      <h2>What the device signature adds</h2>
+      <p>Fieldbox signs the canonical record with a persistent P-256 key held by the device. Supported physical devices use a Secure Enclave key. The Simulator or hardware without that support uses a software key protected in the Keychain, and the envelope discloses which path was used.</p>
+      <p>A verifier can check the envelope offline using the public material carried inside it. If the signed payload changes, verification fails. Records carrying the same key ID can also be recognized as having been signed by the same locally held key.</p>
+      <p>Those are meaningful properties, but they stop at the key. The current certificate is self-issued. It proves control of the matching private key; it does not prove that Fieldbox, Apple, a certificate authority, or any other institution certified the device or its owner.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">The signature establishes</span>
+          <h3>Payload integrity and key continuity</h3>
+          <p>The canonical record has not changed since that key signed it, and matching key IDs connect records to the same locally held key.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">The signature does not establish</span>
+          <h3>Identity, authority, or permanence</h3>
+          <p>It does not certify a person, create trusted time, or show that recorded files still exist after the observation.</p>
+        </section>
+      </div>
+
+      <h2>A UTC timestamp is not automatically trusted time</h2>
+      <p>The record freezes an observation time so its evidence does not appear to update while someone reads the screen. Current records obtain that time from the device clock and say so.</p>
+      <p>Expressing the value in UTC makes it unambiguous as a timestamp format. It does not make the clock independent or tamper-resistant. Trusted time would require a separate authority and proof, with its own availability, privacy, and lifecycle decisions.</p>
+      <p>The format reserves room for future evidence methods, but a reserved value is not a promise that such a service exists.</p>
+
+      <h2>The negative space is part of the design</h2>
+      <p>Security artifacts often become less trustworthy when their presentation implies more than their mechanism can support. Fieldbox therefore treats the “does not prove” list as part of the architecture, not as legal copy added afterward.</p>
+
+      <ul class="invariant-list">
+        <li>No claim of the user’s civil or legal identity.</li>
+        <li>No Fieldbox, Apple, or external certification of the signing key.</li>
+        <li>No independently trusted time from the current device-clock timestamp.</li>
+        <li>No claim that files or provider objects still exist after observation.</li>
+        <li>No forensic-process certification or legal authentication.</li>
+        <li>No cryptographic authenticity claim for a screenshot.</li>
+      </ul>
+
+      <p>These limits do not weaken the record. They make its positive claims testable. An independent verifier knows exactly what to reconstruct, which signature to check, and which conclusions remain outside the result.</p>
+
+      <h2>Why the screenshot still exists</h2>
+      <p>People need a readable view. The Integrity Verification screen translates the record into a form that can be inspected quickly, discussed with a client or colleague, or captured for ordinary communication.</p>
+      <p>The screen and the signed file serve different audiences. The screen helps a person understand the evidence. The `.fieldbox.json` artifact lets software verify that the canonical record has not changed. A screenshot can show the first, but it cannot substitute for the second.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>A valid signed envelope shows that its canonical record has not changed since the corresponding device-held key signed it. It does not establish external identity, trusted time, ongoing file existence, legal authentication, or certification.</p>
+      </div>
+
+      <h2>Precision creates room to evolve</h2>
+      <p>Future systems could bind a key to an account, add independent timestamps, publish revocation information, or preserve records through an external service. Each would introduce new claims and new tradeoffs. None needs to be smuggled into version one.</p>
+      <p>By keeping today’s boundary narrow, Fieldbox can preserve old records and evaluate future additions honestly. The Integrity Record is useful because it binds a defined set of evidence. It remains credible because it refuses to become a certificate for things it never measured.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This essay explains a Fieldbox product decision first established on July 24, 2026. It is not a technical specification, external certification, or guarantee of future file availability. Editorial source: ADR-0004. Last reviewed against the product on August 3, 2026.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

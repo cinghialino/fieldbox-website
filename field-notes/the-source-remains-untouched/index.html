@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox reads and observes removable source media but never erases, formats, modifies, or ejects it.">
+  <title>The Source Remains Untouched — Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Editorial source: ADR-0005. Decision conceived: 2026-06-19. Product reviewed: 2026-08-03. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Source design</p>
+      <h1>The Source Remains Untouched</h1>
+      <p class="standfirst">Fieldbox needs to read the source closely enough to verify a copy. It does not need to take control of the source’s lifecycle.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-06-19">June 19, 2026</time></span><span>7 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>Backup tools often drift toward media management. Once an app can read a card, offering to erase it, format it, or eject it after a transfer can look like a natural convenience.</p>
+      <p>For Fieldbox, that convenience would cross an important boundary. The source is not part of the archive the app manages. It belongs to the user and may still be the only location for a file that failed, was skipped, or has not reached another complete destination.</p>
+      <p>The decision was made early: Fieldbox can inspect the source, but it does not change it.</p>
+
+      <p class="principle">The app may produce evidence about the source. It does not take ownership of the source.</p>
+
+      <h2>Reading is necessary; control is not</h2>
+      <p>Fieldbox recursively scans the selected source, reads file metadata, copies bytes into local staging, and calculates SHA-256 from the source file. Those operations are necessary to create and verify another copy.</p>
+      <p>Erasing, formatting, deleting, modifying, or ejecting are different categories of action. None is necessary to verify a transfer. Keeping them outside Fieldbox makes the app’s relationship with the source easier to state and easier to audit.</p>
+
+      <ul class="invariant-list">
+        <li>Fieldbox does not erase or format the source.</li>
+        <li>Fieldbox does not modify or delete source files.</li>
+        <li>Fieldbox does not eject the source.</li>
+        <li>Source scans that update coverage are read-only.</li>
+      </ul>
+
+      <p>The boundary applies whether the removable media came from a still camera, cinema camera, audio recorder, drone, or another field device. The user may have a very different reuse workflow for each. Fieldbox does not need to own any of them to report what it copied and verified.</p>
+
+      <h2>A failed file makes the distinction visible</h2>
+      <p>Consider a transfer in which every file except one passes local verification. Fieldbox can keep the verified files already promoted into the archive and identify the failed file precisely.</p>
+      <p>If the same app also offered to clear the card, it would have to turn that evidence into a destructive recommendation. The product would move from “this file did not pass” to “the source may now be erased,” a much broader conclusion involving every other copy and every later dependency.</p>
+      <p>Fieldbox stops before that leap. A failure remains visible, the source remains unchanged, and the media decision stays with the person responsible for it.</p>
+
+      <h2>Why there is no “safe to format” state</h2>
+      <p>A green inventory can summarize measured conditions: all verified files are present on the device, a complete provider is confirmed offsite, and the current copy count meets Fieldbox’s defined 3-2-1 rule.</p>
+      <p>That still does not make the app the authority over what happens next. Provider state can change, devices can fail, business requirements differ, and the user may have reasons to keep original media beyond the copy inventory Fieldbox knows about.</p>
+      <p>So the interface reports the inventory and leaves the decision separate. It does not convert a current status into permission to reuse the source.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Fieldbox reports</span>
+          <h3>What the app measured or recorded</h3>
+          <p>Source/local hash matches, current source observations, provider evidence, and the resulting copy inventory.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">The user decides</span>
+          <h3>What happens to the original media</h3>
+          <p>Whether and when to erase, format, eject, archive, retain, or reuse the source.</p>
+        </section>
+      </div>
+
+      <h2>Source status is evidence, not remote control</h2>
+      <p>The source can change outside Fieldbox. It may be reused in a camera, edited by another device, damaged, or simply disconnected. The app cannot keep making a live claim about media it can no longer inspect.</p>
+      <p>When connected, a complete read-only scan can record which previously attributed originals were observed. When disconnected, the user can report that the originals are no longer available. Fieldbox labels that fact <strong>Reported by user</strong> and records it in the Events Log rather than presenting it as a measurement.</p>
+      <p>If a later scan sees known originals again, the newer observation can update the current source evidence while the earlier report remains part of the history. The source still has not been changed by Fieldbox; only the app’s account of available evidence has changed.</p>
+
+      <h2>Rejecting the helpful sidecar</h2>
+      <p>Writing a small tracking file to the source could make recognition easier. It could carry a session identifier or note which files had already been imported. The write might appear harmless compared with formatting a card.</p>
+      <p>It would still break the rule. A source that was read-only before Fieldbox arrived would leave with a Fieldbox-created file. It could also interact with camera expectations, media-lock switches, filesystem permissions, or another user’s archival policy.</p>
+      <p>The current design accepts the harder identity problem and keeps its evidence on the device. Convenience does not quietly expand the app’s authority.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>Fieldbox can state that it did not erase, format, modify, delete from, or eject the source and can describe what a read-only scan observed. It does not decide that a source is safe to erase or guarantee what will remain recoverable afterward.</p>
+      </div>
+
+      <h2>Restraint is part of reliability</h2>
+      <p>Reliability is often described as doing more: more automation, more recovery, more safeguards. In this case, reliability also comes from refusing an operation the core workflow does not require.</p>
+      <p>The source gives Fieldbox the bytes against which a new copy is measured. Keeping that source outside the app’s destructive control preserves a clear division of responsibility. Fieldbox makes copies, compares them, records evidence, and reports the current inventory. The source remains the user’s.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This essay explains a Fieldbox product decision first established on June 19, 2026. It is not advice that any source should be erased or reused. Editorial source: ADR-0005. Last reviewed against the product on August 3, 2026.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

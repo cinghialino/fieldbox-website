@@ -162,10 +162,11 @@
 
     footer a:hover { color: var(--text); }
   </style>
+  <link rel="stylesheet" href="/site-shell.css">
 </head>
 <body>
 
-  <header>
+  <header class="site-header">
     <a class="brand" href="/">
       <div class="logo-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,6 +179,12 @@
         <span>3 · 2 · 1 Backup</span>
       </div>
     </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a href="/field-notes/">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
   </header>
 
   <main>
@@ -262,11 +269,15 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>
       &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
       <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
       <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
       <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>
