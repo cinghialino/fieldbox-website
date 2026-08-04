@@ -251,8 +251,8 @@
     </section>
 
     <section>
-      <h2>Apple Private Key-Value Storage</h2>
-      <p>Fieldbox may use Apple's private iCloud key-value service to keep only the number of free verified imports used across devices signed in to the same Apple Account. It does not place media, archives, sessions, credentials, or cloud backups in iCloud, and iCloud is not a Fieldbox backup destination or restore source.</p>
+      <h2>Apple Private iCloud Storage</h2>
+      <p>Fieldbox may use Apple's private iCloud key-value service to keep the number of free verified imports used across devices signed in to the same Apple Account. If you deliberately create an iCloud Settings Backup, Fieldbox also stores one setup snapshot in the app's private CloudKit database. That snapshot contains app preferences, camera profiles, and memory-card details. Provider inventory and configuration, credentials, device identity, trust settings, signing keys, media, archives, sessions, and cloud copies never enter the snapshot. iCloud is not a Fieldbox backup destination or restore source.</p>
     </section>
 
     <section>

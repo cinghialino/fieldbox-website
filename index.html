@@ -25,6 +25,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     header {
@@ -114,8 +115,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 480px;
-      height: 480px;
+      width: min(480px, 100vw);
+      height: min(480px, 100vw);
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(79, 142, 247, 0.16), transparent 70%);
       z-index: -1;
@@ -501,6 +502,7 @@
 
     .gallery {
       display: grid;
+      width: 100%;
       grid-auto-flow: column;
       grid-auto-columns: calc(25% - 15px);
       gap: 20px;
@@ -781,9 +783,9 @@
         </div>
       </div>
       <div class="shot">
-        <img src="screenshots/standard/verification.png" alt="Fieldbox Integrity Verification showing one provider and recorded SHA-256 evidence">
+        <img src="screenshots/standard/backup-status.png" alt="Fieldbox Backup Status showing the current source, device, and cloud copy inventory">
         <div class="shot-caption">
-          Review and share the Integrity Record
+          Read the current copy inventory
         </div>
       </div>
     </div>
@@ -794,7 +796,7 @@
       <div>
         <p class="label">Fieldbox Pro</p>
         <h2 id="pro-heading">More capacity when the production needs it.</h2>
-        <p>The standard app handles the core card-to-cloud workflow. Pro adds production-scale capabilities on its own dedicated page.</p>
+        <p>The standard app handles the core card-to-cloud workflow. Pro adds advance planning, multiple destinations, working-copy exports, archive management, source profiles, and client handoff.</p>
       </div>
       <div class="cta-row">
         <a class="cta-secondary" href="/pro.html">Explore Fieldbox Pro</a>

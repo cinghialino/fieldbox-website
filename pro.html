@@ -25,6 +25,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     header {
@@ -161,8 +162,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 380px;
-      height: 380px;
+      width: min(380px, 100vw);
+      height: min(380px, 100vw);
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(79, 142, 247, 0.16), transparent 70%);
       z-index: -1;
@@ -286,6 +287,7 @@
 
     .gallery {
       display: grid;
+      width: 100%;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 20px;
       max-width: 1080px;
@@ -616,11 +618,11 @@
   <section class="hero-wrap">
     <p class="label">Fieldbox Pro</p>
     <h1>More destinations.<br>The same verified core.</h1>
-    <p class="sub">Pro adds multiple cloud and NAS connections, destination sets for each session, concurrent uploads, and USB Transfer for client handoff. The underlying card transfer and source-to-local SHA-256 comparison remain the same.</p>
+    <p class="sub">Pro adds advance planning, multiple cloud and NAS connections, working-copy exports, archive repair and management, detailed records, and USB Transfer for client handoff. The underlying card transfer and source-to-local SHA-256 comparison remain the same.</p>
 
     <div class="cta-row">
       <a class="cta" href="mailto:support@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
-      <span class="cta-note">Pro ships alongside the app. Email gets you a heads-up the day it does.</span>
+      <span class="cta-note">Pro will be available by subscription or as a one-time Lifetime Pro purchase when Fieldbox launches.</span>
     </div>
 
     <div class="device-stack">
@@ -667,6 +669,26 @@
         <div class="feature-title">USB Transfer</div>
         <div class="feature-desc">Copy a verified session to an attached drive for a client or collaborator, with optional integrity material.</div>
       </div>
+      <div class="feature">
+        <div class="feature-label">Planning</div>
+        <div class="feature-title">Prepare Sessions Ahead</div>
+        <div class="feature-desc">Set a session name, shoot date, and destination choices before the first card arrives. An unused plan expires 30 days after its planned date.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Working Copies</div>
+        <div class="feature-title">Export Without Moving the Archive</div>
+        <div class="feature-desc">Create separate working copies through the share sheet, save compatible copies to Photos, or hand a session to an attached drive.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Archive</div>
+        <div class="feature-title">Manage and Repair Local Files</div>
+        <div class="feature-desc">Selectively remove local files and repair a missing or changed archive file from an available source card or confirmed destination.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Production Detail</div>
+        <div class="feature-title">Sources, Events, and Appearance</div>
+        <div class="feature-desc">Maintain camera profiles and memory-card details, inspect full event history, and use additional themes with matching app icons.</div>
+      </div>
     </div>
 
     <hr class="rule">
@@ -686,8 +708,8 @@
         <div class="shot-caption">USB Transfer for client handoff</div>
       </div>
       <div class="shot">
-        <img src="screenshots/standard/verification.png" alt="Fieldbox Integrity Verification included with Fieldbox Pro">
-        <div class="shot-caption">The same signed Integrity Record</div>
+        <img src="screenshots/standard/backup-status.png" alt="Fieldbox Backup Status showing the current source, device, and cloud inventory">
+        <div class="shot-caption">Current copy inventory in Backup Status</div>
       </div>
     </div>
 
@@ -764,7 +786,12 @@
           <li>Multiple cloud connections on one device</li>
           <li>Concurrent uploads to every enabled cloud</li>
           <li>Per-session destination sets</li>
+          <li>Advance session planning</li>
+          <li>Unlimited sessions containing local files</li>
+          <li>Share-sheet exports and Save to Photos</li>
+          <li>Selective local offloading and archive repair</li>
           <li>USB Transfer for client handoff</li>
+          <li>Detailed event history, source profiles, and additional themes</li>
         </ul>
       </div>
     </div>
