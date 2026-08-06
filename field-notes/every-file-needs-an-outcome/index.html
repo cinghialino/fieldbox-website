@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox accounts for every scanned file, freezes the transfer decision before copying, and resumes interrupted work only from the matching source inventory.">
+  <title>Every File Needs an Outcome | Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Product reviewed against the local implementation on 2026-08-06. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Transfer design</p>
+      <h1>Every File Needs an Outcome</h1>
+      <p class="standfirst">A source scan should not collapse into a single copied count. Fieldbox accounts for what will transfer, what was already present, what was excluded, and what remains unfinished, then freezes that decision before any bytes move.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-08-06">August 6, 2026</time></span><span>8 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>Most transfer screens begin with a folder and end with a progress bar. Between those two moments, a surprising amount of meaning can disappear.</p>
+      <p>A card might contain RAW files, matching JPEGs, video, audio, sidecars, camera databases, and files with extensions the app has never seen. Some may already be verified in the chosen session. Some may be intentionally left out. If the interface reports only “37 files to copy,” the person using it cannot tell what happened to everything else the scan found.</p>
+      <p>That ambiguity matters in the field. Before starting a transfer, the useful question is not only “how many files will move?” It is “what is the outcome for every file Fieldbox discovered?”</p>
+
+      <p class="principle">A scan becomes a transfer plan only when every discovered file has an explicit outcome.</p>
+
+      <h2>Presets start the decision</h2>
+      <p>Photography, Hybrid Shoot, and Video presets make a useful first pass through the card. They are starting policies, not hidden rules. The review still shows the categories present on that source, and a person can change the inclusion decision before starting.</p>
+      <p>Unfamiliar extensions and files without an extension receive their own visible treatment. They are included by default rather than disappearing into a generic “other” bucket. A file can still be excluded deliberately, but it should not be omitted simply because the software did not recognize its name.</p>
+
+      <div class="decision-flow" aria-label="How a source scan becomes a transfer plan">
+        <div class="decision-step"><span class="step-number">01</span><strong>Scan</strong><span>Enumerate the selected source without modifying it.</span></div>
+        <div class="decision-step"><span class="step-number">02</span><strong>Classify</strong><span>Group known media and surface unfamiliar extensions.</span></div>
+        <div class="decision-step"><span class="step-number">03</span><strong>Review</strong><span>Apply a preset, then let the user change any category.</span></div>
+        <div class="decision-step"><span class="step-number">04</span><strong>Freeze</strong><span>Record the exact selected, skipped, and excluded disposition.</span></div>
+      </div>
+
+      <p>The result is a review that can state a complete equation: every scanned file is either selected for transfer, recognized as already verified in that session, or explicitly excluded. Those groups are disjoint, and together they account for the scan.</p>
+
+      <h2>Counts and bytes belong together</h2>
+      <p>A file count alone can be misleading. Ten small sidecars and ten large video clips place very different demands on the device and its destinations. Fieldbox therefore calculates both counts and bytes from the same cached selection snapshot.</p>
+      <p>That same selected-byte total drives the storage review. The device check retains 1 GB of free-space headroom. Each chosen cloud or NAS destination gets its own card and, where the provider reports capacity, its own comparison with the selected size.</p>
+      <p>Provider capacity is advisory evidence. Some destinations report used and total storage, some report no quota, and a capacity request can be unavailable. Fieldbox keeps those states distinct instead of converting “not reported” into “enough space.” A favorable capacity report also does not confirm that an upload has happened. It only informs the decision before it starts.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Preflight</span>
+          <h3>What the transfer intends to do</h3>
+          <p>Selected counts and bytes, prior-import skips, explicit exclusions, device headroom, and provider-reported capacity.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">Outcome</span>
+          <h3>What the transfer actually established</h3>
+          <p>Per-file copy and verification results, plus the exact destination evidence recorded after later uploads.</p>
+        </section>
+      </div>
+
+      <p>Keeping preflight and outcome separate prevents an intention from being mistaken for evidence. Selecting a destination is not confirmation. Estimating space is not a completed copy. Reaching the end of a copy operation is not verification.</p>
+
+      <h2>The plan is frozen before copying</h2>
+      <p>Once the user starts, Fieldbox persists the transfer plan before processing the first selected file. The plan includes source identity, selected-root identity, a deterministic digest of the complete path-and-size inventory, the selected files, and the scan disposition.</p>
+      <p>Freezing the plan serves two purposes. First, the completion view and later transfer details can explain the same decision that was reviewed at the beginning. Second, an interrupted transfer has a stable definition of what remains to be done.</p>
+      <p>Excluded files are summarized by category or unfamiliar extension, count, and bytes. They are not presented as failed files, and they are never described as verified. The record preserves the decision without borrowing stronger language from the files that actually passed comparison.</p>
+
+      <h2>Interruption becomes durable work</h2>
+      <p>A removable source can disappear during a transfer. The reader can be unplugged, the app can leave the foreground, or the device can stop the process. Treating that event as an ordinary failure would discard useful facts about files that already completed.</p>
+      <p>Fieldbox writes a durable checkpoint after each file is copied, read back, and found to have the same SHA-256 value as its source. If the source goes away, those checkpointed files remain identified as completed within an unfinished transfer. The remaining selected files stay pending.</p>
+
+      <ul class="invariant-list">
+        <li>A checkpoint is written only for a file whose source and local SHA-256 values matched.</li>
+        <li>An interrupted transfer is not shown as complete.</li>
+        <li>The frozen scan disposition remains attached to the same transfer.</li>
+        <li>The source card is read but never modified, erased, formatted, or ejected by Fieldbox.</li>
+      </ul>
+
+      <h2>Resume must identify the same source state</h2>
+      <p>A matching folder name is not enough to resume. Another card can contain familiar names and similar sizes. Fieldbox requires the reconnected volume identity, selected-root identity, and complete path-and-size inventory to match the frozen plan before it claims the recovery work.</p>
+      <p>It then checks that every checkpointed source file still has the recorded SHA-256 value. The corresponding archive paths are also revalidated. A current verified archive file is kept. If an archive file at a checkpointed path has changed, Fieldbox removes only that stale local file and its sidecar so the planned file can be copied and verified again at the recorded path.</p>
+      <p>Only after those checks does the transfer continue. Files whose verified archive copies are still current are not copied again. Pending files, and any checkpoint whose local bytes no longer match, return to the ordinary stage, compare, and promote sequence.</p>
+
+      <p class="principle">Resume is not “try the folder again.” It is “continue this frozen plan from the same measured source inventory.”</p>
+
+      <h2>A completion screen should reconcile the beginning and the end</h2>
+      <p>When the transfer finishes, the final record can be checked against the plan. The selected file count must match the file records, selected bytes must reconcile with their sizes, every selected file must have a verified result, and the manifest commit must be durable.</p>
+      <p>This makes success narrower and more useful. Previously imported files were not copied again. Excluded files were not verified. Provider capacity was not upload confirmation. The success statement belongs only to the selected files whose measured source and local SHA-256 values matched and whose records were committed.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>Explicit accounting explains what Fieldbox found and what happened during this transfer. Checkpoints preserve measured progress. Neither one guarantees future availability or recoverability. Later device checks and destination confirmations remain separate evidence about the current copies.</p>
+      </div>
+
+      <h2>Clarity is a reliability feature</h2>
+      <p>None of these mechanics makes copying visually dramatic. Most of the work appears as better nouns, clearer counts, separate destination cards, and an interrupted state that refuses the wrong source.</p>
+      <p>That restraint is the point. A field-backup tool should not make a person infer what happened from a progress bar. It should expose the decision before copying, preserve that decision while work is underway, and reconcile it with the measured result at the end.</p>
+      <p class="principle">Every scanned file should have an outcome, and every outcome should keep the limits of its evidence.</p>
+
+      <p class="editorial-note"><strong>A quick note:</strong> This is how Fieldbox handles transfer accounting and interrupted transfers today. It explains what the app records, not a promise that files will always remain available.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>
