@@ -313,7 +313,7 @@
         <li>It reads the copy back and calculates the fingerprint again.</li>
         <li>The two fingerprints are compared. If they match exactly, the file is marked verified. If they don't, Fieldbox retries the file once before flagging it as failed.</li>
       </ol>
-      <p>This happens for every single file in the transfer, not a sample. The green "all files verified" screen only appears once every fingerprint on the card matches its counterpart on your device. A file can only pass this check once every fingerprint has actually been compared and matched.</p>
+      <p>This happens for every selected file in the transfer, not a sample. The green "all files verified" screen appears only after every selected file has been copied and its source and local fingerprints have been compared and matched. Files shown as already verified or deliberately excluded are accounted for separately.</p>
     </article>
 
     <hr class="rule">
@@ -326,7 +326,7 @@
       <p>Uploading a file and having the upload finish without an error isn't proof the file is intact, connections drop, bytes get corrupted along the way, and a naive app would show "done" anyway. Fieldbox records the strongest confirmation each provider can actually supply.</p>
       <ol class="step-list">
         <li><strong>Your device always checks the copy.</strong> Every local archive file is SHA-256 verified against the card before Fieldbox keeps it.</li>
-        <li><strong>Cloud checks depend on the provider.</strong> S3-compatible storage such as Backblaze B2, and Google Drive, must return a matching SHA-256 checksum. Dropbox and WebDAV confirm the stored size. OneDrive uses a SHA-256 checksum when it provides one, otherwise confirms the stored size.</li>
+        <li><strong>Cloud checks depend on the provider.</strong> Fieldbox records a matching provider-reported checksum where one is available. Otherwise it records provider acceptance or object existence together with the expected stored size.</li>
         <li><strong>Fieldbox checks back afterward.</strong> After an upload, Fieldbox asks the provider for the file's stored size and, where the provider supports it, its checksum. The app labels an upload receipt separately from cloud hash verification.</li>
       </ol>
       <p>A cloud backup only shows as upload-confirmed once the provider's available check passes for every file. The local archive records matching source and local SHA-256 values; cloud hash verification is called out only where the provider supplies a matching checksum.</p>
@@ -345,7 +345,7 @@
       </div>
       <p>Sharing one cloud login across a crew needs clear ownership boundaries. Fieldbox assigns each device its own top-level namespace and applies session-based controls when Cloud Browser is opened from a session.</p>
       <p>Separate device namespaces keep identical camera filenames from sharing the same cloud object path. A device can browse shared-account inventory, while deletion controls are limited to the current device's top-level area.</p>
-      <p>This is core storage behavior, not a Pro feature. Within Fieldbox, deletion controls cannot remove another installation's top-level area.</p>
+      <p>This is FieldBox Core storage behavior, not a Pro feature. Within Fieldbox, deletion controls cannot remove another installation's top-level area.</p>
     </article>
 
     <hr class="rule">
@@ -357,7 +357,7 @@
       </div>
       <p>If you interrupt a transfer, close the app, unplug the reader, or lose power, Fieldbox preserves only the files that completed local verification.</p>
       <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox records which files were verified and which still need attention. Nothing on the card is changed by the app, and verified files are not copied again when the transfer continues.</p>
-      <p>The screen tells you plainly how many files made it in before stopping, and shows a standing warning not to format the card until the rest are backed up. Plug the card back in whenever you're ready, and Fieldbox picks up exactly where it left off, skipping everything that's already confirmed and only copying what's left.</p>
+      <p>The screen tells you how many files completed verification before the interruption. To continue, reconnect the source and choose it in Files. Fieldbox checks the recorded card identity, selected folder, current inventory, and per-file checkpoints before it resumes, then skips files whose completed checkpoints still match. You can also discard the interrupted transfer and its partial local files.</p>
     </article>
 
     <div class="contact-block">

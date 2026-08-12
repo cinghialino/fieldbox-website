@@ -334,8 +334,8 @@
   <main>
     <p class="label">Questions & Answers</p>
     <h1>Frequently asked questions</h1>
-    <p class="sub">Answers about using Fieldbox with a shoot, drone flight, interview recording, or card of photographs. If your question is not here, email us at the bottom of the page.</p>
-    <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, comes with the standard app.</p>
+    <p class="sub">Answers for photographers, videographers, drone operators, sound engineers, and anyone working with card-based media. If your question is not here, email us at the bottom of the page.</p>
+    <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, comes with FieldBox Core.</p>
 
     <div class="toc-row">
       <a class="toc-pill" href="#getting-started">Getting started</a>
@@ -355,14 +355,14 @@
         <summary>What does Fieldbox Backup actually do?</summary>
         <div class="qa-body">
           <p>It copies files from a memory card to your iPhone or iPad and compares source and local SHA-256 values for each selected file. You can then send the verified local archive to a cloud storage account you already own. Backup Status reports the current copy inventory and the confirmations Fieldbox has recorded.</p>
-          <p>It's built with professional shoots in mind, including mixed cards from cameras, drones, and supported audio recorders. The supported-format list below shows the extensions Fieldbox currently recognizes.</p>
+          <p>It is built for photographers, videographers, drone operators, sound engineers, and mixed-media crews using cameras, drones, and supported audio recorders. The supported-format list below shows the extensions Fieldbox currently recognizes.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>How do I back up a card?</summary>
         <div class="qa-body">
-          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name (or add it to one you already started), review the summary, and tap Start. When the transfer completes, review the verified and failed counts before deciding what to do with the card.</p>
+          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name or add it to an existing session, then review every scanned file as selected, already verified, or deliberately excluded. Choose a Photography, Hybrid Shoot, or Video preset as a starting point, customize it if needed, and tap Start. When the transfer completes, review the recorded outcomes before deciding what to do with the card.</p>
           <div class="example">
             <div class="example-label">Example</div>
             <p>You finish a session and swap cards mid-shoot. Fieldbox recognizes the camera and offers to drop the new card straight into the same session, so everything from the day ends up together.</p>
@@ -421,7 +421,7 @@
       <details class="qa">
         <summary>What happens if a transfer gets interrupted?</summary>
         <div class="qa-body">
-          <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox reports the files it recorded as verified and warns you to review the result before deciding whether to reuse the card. You can reconnect the card later to continue the transfer.</p>
+          <p>A file is promoted into the archive only after its local verification succeeds. After an interruption, Fieldbox reports the files it recorded as verified and keeps the transfer plan and per-file checkpoints. It resumes only after the reconnected source matches the recorded card identity, selected folder, inventory, and checkpoint evidence. You can also discard the interrupted transfer and its partial local files.</p>
           <a class="readmore" href="/faq-details.html#interrupted">Read more about interrupted transfers →</a>
         </div>
       </details>
@@ -429,7 +429,7 @@
       <details class="qa">
         <summary>If I stop subscribing to Pro, do I lose my backups?</summary>
         <div class="qa-body">
-          <p>No. Fieldbox does not delete the on-device archive or existing cloud copies when a subscription ends. Browsing and restore remain available. New Pro actions, including multiple-destination uploads, working-copy exports, archive repair, local-file management, and USB Transfer, pause until Pro is active again.</p>
+          <p>No. Fieldbox does not delete the on-device archive or existing cloud copies when a subscription ends. Every session remains readable. You can choose up to three active sessions that may continue receiving files and change that selection later. Other Pro actions, including multiple-destination uploads, working-copy exports, archive repair, local-file management, and USB Transfer, pause until Pro is active again.</p>
         </div>
       </details>
     </section>
@@ -444,14 +444,14 @@
         <summary>Which cloud services can I use?</summary>
         <div class="qa-body">
           <p>Dropbox, Google Drive, Microsoft OneDrive, any S3-compatible storage (Backblaze B2, Wasabi, Cloudflare R2, and similar), or your own NAS and home server over WebDAV (Synology, QNAP, TrueNAS, Nextcloud, and others). It's your account and your storage, Fieldbox just moves the verified files there.</p>
-          <p>The standard app connects one of these at a time. Pro adds the rest, so you can connect several and send a backup to all of them at once.</p>
+          <p>FieldBox Core connects one of these at a time. Pro adds multiple connections, so you can send a session to several enabled destinations concurrently.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>How does Fieldbox know a cloud backup really landed, not just that the upload didn't error?</summary>
         <div class="qa-body">
-          <p>Fieldbox always compares source and local SHA-256 values. Cloud status is separate provider evidence: S3-compatible storage and Google Drive require a matching provider-reported SHA-256 checksum; Dropbox, OneDrive, and WebDAV confirm acceptance or object existence plus stored size when a usable provider checksum is unavailable. The app labels upload confirmation separately from cloud hash verification.</p>
+          <p>Fieldbox always compares source and local SHA-256 values. Cloud status is separate provider evidence: the app records a matching provider-reported checksum where one is available. Otherwise it records provider acceptance or object existence together with the expected stored size. Upload confirmation remains distinct from cloud hash verification.</p>
           <a class="readmore" href="/faq-details.html#cloud-safety">Read more about cloud verification →</a>
         </div>
       </details>
@@ -473,7 +473,7 @@
       <details class="qa">
         <summary><span class="qa-q">Can I back up to more than one cloud at the same time? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
-          <p>Yes. Pick as many clouds as you want for a session and they all upload together, not one after another. The success screen tells you how many confirmed.</p>
+          <p>Yes. Choose the enabled destinations for a session and Fieldbox uploads to them concurrently. Each destination keeps its own recorded confirmation state.</p>
         </div>
       </details>
 
