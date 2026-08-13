@@ -152,7 +152,7 @@
 
     .device-stack {
       position: relative;
-      width: min(420px, 86vw);
+      width: min(500px, 92vw);
       height: 450px;
       margin: 40px auto 0;
     }
@@ -169,25 +169,35 @@
       z-index: -1;
     }
 
-    .phone-mock {
-      position: absolute;
-      top: 14px;
-      width: 210px;
-    }
-
-    .phone-mock.back {
-      left: 50%;
-      transform: translateX(-74%) rotate(-9deg);
-      opacity: 0.55;
-      filter: saturate(0.85);
+    .hero-device-pair {
+      display: grid;
+      grid-template-columns: 1.22fr 0.78fr;
+      align-items: end;
+      gap: 14px;
+      height: 100%;
+      position: relative;
       z-index: 1;
     }
 
-    .phone-mock.front {
-      top: 26px;
-      left: 50%;
-      transform: translateX(-26%) rotate(7deg);
-      z-index: 2;
+    .hero-device-pair figure {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .hero-device-pair img {
+      display: block;
+      width: 100%;
+      height: 410px;
+      object-fit: contain;
+      background: #000;
+      border: 8px solid #1b1b1e;
+      border-radius: 22px;
+      box-shadow: 0 30px 70px -18px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-device-pair figure:last-child img {
+      height: 350px;
+      border-radius: 30px;
     }
 
     .phone-frame {
@@ -288,7 +298,7 @@
     .gallery {
       display: grid;
       width: 100%;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
       max-width: 1080px;
       margin: 0 auto;
@@ -316,6 +326,36 @@
     }
 
     .shot img { display: block; width: 100%; height: auto; }
+
+    .device-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px;
+      background: #0b0b0d;
+    }
+
+    .device-pair figure {
+      min-width: 0;
+      margin: 0;
+    }
+
+    .device-pair img {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: #000;
+      border-radius: 7px;
+    }
+
+    .device-pair figcaption {
+      padding-top: 7px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
     .shot-caption {
       min-height: 52px;
@@ -561,6 +601,8 @@
         padding-bottom: 12px;
         scroll-snap-type: x mandatory;
       }
+
+      .device-pair img { height: 300px; }
     }
 
     @media (max-width: 800px) {
@@ -572,6 +614,8 @@
     @media (max-width: 480px) {
       .site-nav a:not(.active) { display: none; }
       .features { grid-template-columns: 1fr; }
+      .device-pair { gap: 6px; padding: 8px; }
+      .device-pair img { height: 250px; }
     }
 
     footer {
@@ -626,17 +670,13 @@
     </div>
 
     <div class="device-stack">
-      <div class="phone-mock back">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="screenshots/app-store/hero/iphone-control-room.webp" alt="Fieldbox Pro Control Room showing multiple cloud connections">
-        </div>
-      </div>
-      <div class="phone-mock front">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="screenshots/app-store/hero/iphone-usb-transfer.webp" alt="Fieldbox Pro USB Transfer screen">
-        </div>
+      <div class="hero-device-pair">
+        <figure>
+          <img src="screenshots/app-store/ipad/08_multi-cloud.webp" alt="Fieldbox Pro Control Room on iPad showing multiple cloud and NAS destinations">
+        </figure>
+        <figure>
+          <img src="screenshots/app-store/iphone/08_multi-cloud.webp" alt="Fieldbox Pro Control Room on iPhone showing multiple cloud and NAS destinations">
+        </figure>
       </div>
     </div>
   </section>
@@ -696,31 +736,55 @@
     <h2 class="section-title gallery-title">Fieldbox Pro In Action</h2>
     <div class="gallery">
       <div class="shot">
-        <picture>
-          <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/07_working-copies.webp">
-          <img src="screenshots/app-store/iphone/07_working-copies.webp" alt="Fieldbox Pro Working Copies screen selecting photographs from a multi-day session" loading="lazy">
-        </picture>
+        <div class="device-pair">
+          <figure>
+            <img src="screenshots/app-store/ipad/07_working-copies.webp" alt="Fieldbox Pro Working Copies on iPad, selecting photographs from a multi-day session" loading="lazy">
+            <figcaption>iPad</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/app-store/iphone/07_working-copies.webp" alt="Fieldbox Pro Working Copies on iPhone, selecting photographs from a multi-day session" loading="lazy">
+            <figcaption>iPhone</figcaption>
+          </figure>
+        </div>
         <div class="shot-caption">Share selected working copies on the spot</div>
       </div>
       <div class="shot">
-        <picture>
-          <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/08_multi-cloud.webp">
-          <img src="screenshots/app-store/iphone/08_multi-cloud.webp" alt="Fieldbox Pro Control Room showing multiple connected cloud and NAS destinations" loading="lazy">
-        </picture>
+        <div class="device-pair">
+          <figure>
+            <img src="screenshots/app-store/ipad/08_multi-cloud.webp" alt="Fieldbox Pro Control Room on iPad, showing multiple connected cloud and NAS destinations" loading="lazy">
+            <figcaption>iPad</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/app-store/iphone/08_multi-cloud.webp" alt="Fieldbox Pro Control Room on iPhone, showing multiple connected cloud and NAS destinations" loading="lazy">
+            <figcaption>iPhone</figcaption>
+          </figure>
+        </div>
         <div class="shot-caption">Manage multiple cloud and NAS connections</div>
       </div>
       <div class="shot">
-        <picture>
-          <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/09_events-log.webp">
-          <img src="screenshots/app-store/iphone/09_events-log.webp" alt="Fieldbox Pro Events Log showing recorded transfer, source-card, and cloud-confirmation events" loading="lazy">
-        </picture>
+        <div class="device-pair">
+          <figure>
+            <img src="screenshots/app-store/ipad/09_events-log.webp" alt="Fieldbox Pro Events Log on iPad, showing recorded transfer, source-card, and cloud-confirmation events" loading="lazy">
+            <figcaption>iPad</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/app-store/iphone/09_events-log.webp" alt="Fieldbox Pro Events Log on iPhone, showing recorded transfer, source-card, and cloud-confirmation events" loading="lazy">
+            <figcaption>iPhone</figcaption>
+          </figure>
+        </div>
         <div class="shot-caption">Review every recorded session event</div>
       </div>
       <div class="shot">
-        <picture>
-          <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/10_usb-transfer.webp">
-          <img src="screenshots/app-store/iphone/10_usb-transfer.webp" alt="Fieldbox Pro USB Transfer screen preparing verified session files for an attached drive" loading="lazy">
-        </picture>
+        <div class="device-pair">
+          <figure>
+            <img src="screenshots/app-store/ipad/10_usb-transfer.webp" alt="Fieldbox Pro USB Transfer on iPad, preparing verified session files for an attached drive" loading="lazy">
+            <figcaption>iPad</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/app-store/iphone/10_usb-transfer.webp" alt="Fieldbox Pro USB Transfer on iPhone, preparing verified session files for an attached drive" loading="lazy">
+            <figcaption>iPhone</figcaption>
+          </figure>
+        </div>
         <div class="shot-caption">Hand a verified session to a client on an attached drive</div>
       </div>
     </div>
