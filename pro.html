@@ -250,6 +250,98 @@
       margin-bottom: 24px;
     }
 
+    .pro-lede {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .pro-lede h2 {
+      font-size: clamp(26px, 3.2vw, 42px);
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    .pro-lede p:not(.label) {
+      max-width: 62ch;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .outcome {
+      position: relative;
+      min-height: 178px;
+      padding: 26px 28px 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(79, 142, 247, 0.12), var(--surface) 42%);
+    }
+
+    .outcome::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28px;
+      width: 42px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .outcome-label {
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .outcome-title {
+      margin-bottom: 8px;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .outcome-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .proof-intro {
+      max-width: 680px;
+      margin: 0 auto 26px;
+      text-align: center;
+    }
+
+    .proof-intro h2 {
+      margin-bottom: 10px;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .proof-intro p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
     .features {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -592,7 +684,7 @@
     .faq-banner-cta:hover { background: var(--accent); color: #06121f; }
 
     @media (max-width: 1000px) {
-      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .outcome-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gallery {
         grid-template-columns: none;
         grid-auto-flow: column;
@@ -613,7 +705,7 @@
 
     @media (max-width: 480px) {
       .site-nav a:not(.active) { display: none; }
-      .features { grid-template-columns: 1fr; }
+      .outcome-grid { grid-template-columns: 1fr; }
       .device-pair { gap: 6px; padding: 8px; }
       .device-pair img { height: 250px; }
     }
@@ -661,8 +753,8 @@
 
   <section class="hero-wrap">
     <p class="label">Fieldbox Pro</p>
-    <h1>More destinations.<br>The same verified core.</h1>
-    <p class="sub">Pro adds advance planning, multiple cloud and NAS connections, working-copy exports, archive repair and management, detailed records, and USB Transfer for client handoff. The underlying card transfer and source-to-local SHA-256 comparison remain the same.</p>
+    <h1>The peace of mind you deserve<br>after capturing the incredible.</h1>
+    <p class="sub">After the job, you can rest easy knowing what was copied, compared, confirmed, and handed off. Fieldbox Pro gives you that feeling of having a proper backup.</p>
 
     <div class="cta-row">
       <a class="cta" href="mailto:support@fieldbox.app?subject=Notify%20me%20when%20Fieldbox%20Backup%20launches">Get notified at launch</a>
@@ -684,56 +776,42 @@
   <main>
     <hr class="rule">
 
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg></div>
-        <div class="feature-label">Destinations</div>
-        <div class="feature-title">Multiple Cloud Connections</div>
-        <div class="feature-desc">Connect more than one supported cloud or NAS destination on the same device.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18z"/></svg></div>
-        <div class="feature-label">Uploads</div>
-        <div class="feature-title">Concurrent Destination Sync</div>
-        <div class="feature-desc">After a transfer, Fieldbox can upload the session to every enabled destination concurrently. Each destination keeps its own recorded confirmation state.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><path d="M2.5 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.3"/><path d="M14.8 13.6c.7-.2 1.4-.3 2.2-.3 2.8 0 5.1 2.2 5.5 5"/></svg></div>
-        <div class="feature-label">Sessions</div>
-        <div class="feature-title">Destination Sets</div>
-        <div class="feature-desc">Choose which of your connected destinations receive each session instead of treating every job the same.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><line x1="8" y1="14" x2="16" y2="14"/></svg></div>
-        <div class="feature-label">Handoff</div>
-        <div class="feature-title">USB Transfer</div>
-        <div class="feature-desc">Copy a verified session to an attached drive for a client or collaborator, with optional integrity material.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-label">Planning</div>
-        <div class="feature-title">Prepare Sessions Ahead</div>
-        <div class="feature-desc">Set a session name, shoot date, and destination choices before the first card arrives. An unused plan expires 30 days after its planned date.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-label">Working Copies</div>
-        <div class="feature-title">Export Without Moving the Archive</div>
-        <div class="feature-desc">Create separate working copies through the share sheet, save compatible copies to Photos, or hand a session to an attached drive.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-label">Archive</div>
-        <div class="feature-title">Manage and Repair Local Files</div>
-        <div class="feature-desc">Selectively remove local files and repair a missing or changed archive file from an available source card or confirmed destination.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-label">Production Detail</div>
-        <div class="feature-title">Sources, Events, and Appearance</div>
-        <div class="feature-desc">Maintain camera profiles and memory-card details, inspect full event history, and use additional themes with matching app icons.</div>
-      </div>
+    <section class="pro-lede" aria-labelledby="outcomes-heading">
+      <p class="label">What Pro helps you finish</p>
+      <h2 id="outcomes-heading">The whole production stays accounted for.</h2>
+      <p>Pro adds the capacity to carry a multi-card job from the first ingest to the final client handoff without losing sight of what the app has recorded.</p>
+    </section>
+
+    <div class="outcome-grid">
+      <article class="outcome">
+        <div class="outcome-label">Multi-card sessions</div>
+        <h3 class="outcome-title">Keep every card in the same session.</h3>
+        <p class="outcome-desc">Plan the job ahead of time, then add cards across a multi-day shoot while the session keeps its name, files, and recorded history together.</p>
+      </article>
+      <article class="outcome">
+        <div class="outcome-label">Multiple destinations</div>
+        <h3 class="outcome-title">Send each session where it belongs.</h3>
+        <p class="outcome-desc">Connect more than one supported cloud or NAS destination, choose a destination set for each session, and see each provider's confirmation separately.</p>
+      </article>
+      <article class="outcome">
+        <div class="outcome-label">Working copies</div>
+        <h3 class="outcome-title">Make selects before you get home.</h3>
+        <p class="outcome-desc">Create separate working copies through the share sheet or Save to Photos without changing the verified archive.</p>
+      </article>
+      <article class="outcome">
+        <div class="outcome-label">Client handoff</div>
+        <h3 class="outcome-title">Hand off verified material immediately.</h3>
+        <p class="outcome-desc">Copy a verified session to an attached drive and include optional integrity material for the client or collaborator.</p>
+      </article>
     </div>
 
     <hr class="rule">
 
-    <h2 class="section-title gallery-title">Fieldbox Pro In Action</h2>
+    <div class="proof-intro">
+      <p class="label">The work stays visible</p>
+      <h2>See what you are carrying home.</h2>
+      <p>From a multi-day ingest to a client handoff, the current state remains readable on the iPhone or iPad you already carry.</p>
+    </div>
     <div class="gallery">
       <div class="shot">
         <div class="device-pair">
