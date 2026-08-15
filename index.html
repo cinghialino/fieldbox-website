@@ -73,18 +73,7 @@
     .site-nav { display: flex; align-items: center; gap: 18px; }
     .site-nav a { color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
     .site-nav a:hover { color: var(--text); }
-    .site-nav .pro-link { color: var(--muted); }
-    .site-nav .pro-link::after {
-      content: "PRO";
-      display: inline-block;
-      margin-left: 6px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 2px 6px;
-      color: var(--accent);
-      font-size: 9px;
-      letter-spacing: 1px;
-    }
+    .site-nav .pro-link { color: var(--accent); }
 
     .hero-wrap {
       max-width: 1180px;
@@ -122,48 +111,11 @@
       z-index: -1;
     }
 
-    .tablet-frame {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-58%);
-      width: 340px;
-      border: 13px solid #1b1b1e;
-      border-radius: 24px;
-      background: #000;
-      padding: 4px;
-      opacity: 0.5;
-      filter: saturate(0.85);
-      box-shadow: 0 30px 70px -18px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
-    }
-
-    .tablet-frame::after {
-      content: "";
-      position: absolute;
-      top: 7px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #333;
-      z-index: 2;
-    }
-
-    .tablet-frame img {
-      display: block;
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 12px;
-    }
-
     .phone-mock {
       position: absolute;
       bottom: 0;
       left: 50%;
-      transform: translateX(-36%);
+      transform: translateX(-50%);
       width: 215px;
       z-index: 2;
     }
@@ -313,6 +265,7 @@
       font-size: 15px;
       font-weight: 500;
       margin-bottom: 6px;
+      text-wrap: balance;
     }
 
     .feature-desc {
@@ -322,52 +275,63 @@
     }
 
     .rule321 {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 4px;
-      margin-top: 40px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr);
+      align-items: stretch;
+      gap: 12px;
+      margin-top: 48px;
+      padding: 20px;
+      border: 1px solid rgba(79, 142, 247, 0.28);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at top left, rgba(79, 142, 247, 0.12), transparent 42%),
+        linear-gradient(135deg, rgba(15, 21, 31, 0.98), rgba(10, 13, 18, 0.98));
+      box-shadow: 0 22px 60px -42px rgba(79, 142, 247, 0.9);
     }
 
     .rule321-step {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      column-gap: 14px;
       align-items: center;
-      text-align: center;
-      width: 140px;
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(20, 20, 23, 0.9);
     }
 
     .rule321-icon-wrap {
       position: relative;
-      width: 56px;
-      height: 56px;
-      margin-bottom: 12px;
+      grid-row: 1 / 3;
+      width: 52px;
+      height: 52px;
     }
 
     .rule321-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(79, 142, 247, 0.32);
+      background: rgba(79, 142, 247, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .rule321-icon svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       color: var(--accent);
     }
 
     .rule321-num {
       position: absolute;
-      top: -6px;
-      right: -6px;
-      width: 20px;
-      height: 20px;
+      top: -7px;
+      right: -7px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--green);
       color: #06210f;
@@ -379,30 +343,36 @@
     }
 
     .rule321-title {
-      font-size: 13px;
+      align-self: end;
+      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .rule321-desc {
-      font-size: 12px;
+      align-self: start;
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .rule321-arrow {
-      color: var(--muted);
-      font-size: 20px;
+      color: var(--accent);
+      font-size: 22px;
       align-self: center;
-      margin-top: 18px;
-      flex-shrink: 0;
+      text-align: center;
     }
 
     .rule321-caption {
-      text-align: center;
+      max-width: 760px;
       font-size: 13px;
       color: var(--muted);
-      margin-top: 28px;
+      line-height: 1.55;
+      margin: 14px auto 0;
+      padding: 12px 16px;
+      border-left: 2px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      background: rgba(39, 174, 96, 0.06);
     }
 
     .rule321-caption strong { color: var(--green); font-weight: 600; }
@@ -492,12 +462,55 @@
       .pro-spotlight { align-items: flex-start; flex-direction: column; padding: 24px; }
     }
 
+    @media (max-width: 720px) {
+      .rule321 { grid-template-columns: 1fr; padding: 14px; }
+      .rule321-arrow { transform: rotate(90deg); }
+    }
+
     @media (max-width: 480px) {
       .site-nav a:not(.pro-link) { display: none; }
       .feature { flex-basis: 100%; max-width: none; }
-      .rule321 { flex-direction: column; align-items: center; }
-      .rule321-step { width: 100%; max-width: 220px; }
-      .rule321-arrow { transform: rotate(90deg); margin: 4px 0; }
+      .gallery-toolbar span { max-width: 150px; }
+    }
+
+    .gallery-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      max-width: 1080px;
+      margin: -8px auto 14px;
+    }
+
+    .gallery-toolbar span {
+      margin-right: auto;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .gallery-control {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      font-size: 18px;
+      cursor: pointer;
+      transition: border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+    }
+
+    .gallery-control:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .gallery-control:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
     .gallery {
@@ -627,13 +640,13 @@
       <a class="active" href="/" aria-current="page">Home</a>
       <a href="/faq.html">How it works</a>
       <a href="/field-notes/">Field Notes</a>
-      <a class="pro-link" href="/pro.html">Pro</a>
+      <a class="pro-link" href="/pro.html">Fieldbox PRO</a>
     </nav>
   </header>
 
   <section class="hero-wrap">
     <div class="hero-text">
-      <p class="label">Verified field backup for iPhone and iPad</p>
+      <p class="label">Verified backup for iPhone and iPad</p>
       <h1>Back up cards<br>without a laptop.</h1>
       <p class="sub">Fieldbox copies card-based photos, video, and audio to your iPhone or iPad, compares source and local SHA-256 values, and can replicate the complete session to storage you choose. Built for photographers, videographers, drone operators, sound engineers, and other crews working away from a laptop.</p>
 
@@ -645,13 +658,10 @@
     </div>
 
     <div class="device-stack">
-      <div class="tablet-frame">
-        <img src="screenshots/app-store/hero/ipad-card-review.webp" alt="FieldBox Core card review showing one selected cloud destination">
-      </div>
       <div class="phone-mock">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="screenshots/app-store/hero/iphone-home.webp" alt="FieldBox Core home screen">
+          <img src="screenshots/app-store/hero/iphone-transfer-complete.png" alt="Fieldbox transfer complete screen showing 58 files verified">
         </div>
       </div>
     </div>
@@ -687,7 +697,7 @@
       <div class="feature">
         <div class="feature-label">Session Log</div>
         <div class="feature-title">Read the Session, Not a Guess</div>
-        <div class="feature-desc">Review file counts, sizes, local comparison results, and the cloud-provider confirmations Fieldbox has recorded for each session.</div>
+        <div class="feature-desc">Each session provides useful details about the ingested files, including their counts and sizes, source-to-local SHA-256 comparison results, and the confirmation status reported by each connected cloud provider.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Formats</div>
@@ -763,7 +773,12 @@
       <h2>FieldBox Core, from card to record.</h2>
       <p>A complete workflow with one connected cloud or NAS destination, from reviewing scanned files to reading the current copy inventory.</p>
     </div>
-    <div class="gallery">
+    <div class="gallery-toolbar" aria-label="Screenshot carousel controls">
+      <span>Five screens from the complete workflow</span>
+      <button class="gallery-control" type="button" data-gallery-prev aria-controls="core-gallery" aria-label="Previous screenshot">&larr;</button>
+      <button class="gallery-control" type="button" data-gallery-next aria-controls="core-gallery" aria-label="Next screenshot">&rarr;</button>
+    </div>
+    <div class="gallery" id="core-gallery">
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/01_home.webp">
@@ -799,13 +814,6 @@
         </picture>
         <div class="shot-caption">Read the current card, device, and cloud inventory</div>
       </div>
-      <div class="shot">
-        <picture>
-          <source media="(min-width: 900px)" srcset="screenshots/app-store/ipad/06_travel-viewer.webp">
-          <img src="screenshots/app-store/iphone/06_travel-viewer.webp" alt="FieldBox Core full-screen photograph viewer displaying a travel image" loading="lazy">
-        </picture>
-        <div class="shot-caption">Review full-screen photographs while you travel</div>
-      </div>
     </div>
 
     <hr class="rule">
@@ -825,11 +833,8 @@
 
     <h2 class="section-title">Why I Built Fieldbox</h2>
     <div class="founder-note">
-      <p>I built Fieldbox for the parts of professional work that happen away from a desk. On assignment, I may need an offsite copy before leaving a location. When I travel with a camera or drone, I can generate more photographs and footage than the memory cards I have with me can hold. And sometimes I need to send work to the cloud or make it available to a client while I am still on the move.</p>
-      <p>In each case, I already have most of what I need in my bag or pocket: an iPhone or iPad, a card reader, and a connection whenever one becomes available. What I wanted was a straightforward way to turn those pieces into a disciplined backup workflow, with a clear record of what has been copied and verified.</p>
-      <p>That is why I made Fieldbox. It copies photographs, video, audio, and other files from a memory card to your device, compares each copied file with the source using SHA-256, and can replicate it to your own cloud storage. Together, those copies can form a practical 3-2-1 workflow built around hardware you already carry.</p>
-      <p>For me, the value is confidence based on clear evidence, not guesswork. I can see when a transfer has been verified and make the next decision with the facts in front of me.</p>
-      <p>I continue to build and maintain Fieldbox for photographers, videographers, drone operators, sound engineers, and other professionals who bring card-based media home from the field. Every decision is shaped by the realities of working on location, traveling with limited equipment, and returning with files that matter.</p>
+      <p>Fieldbox started with a practical need: back up camera cards while working away from a laptop. I already carried an iPhone or iPad and a card reader, but I wanted a clear record of what had been copied and verified.</p>
+      <p>Fieldbox copies card media into its app-managed archive, compares source and local SHA-256 values, and can replicate the complete session to storage you choose. It is the tool I wanted in the field: direct about what it measured and built around equipment I already carry.</p>
       <div class="founder-sig">Alessandro Casagli</div>
     </div>
   </main>
@@ -843,9 +848,22 @@
       <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
       <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
       <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/fieldbox.app/" rel="me noopener noreferrer" target="_blank">Instagram</a> &nbsp;·&nbsp;
       <a href="mailto:support@fieldbox.app">Contact</a>
     </p>
   </footer>
+
+  <script>
+    const coreGallery = document.getElementById("core-gallery");
+    const moveGallery = (direction) => {
+      const firstCard = coreGallery.querySelector(".shot");
+      const gap = Number.parseFloat(getComputedStyle(coreGallery).columnGap) || 20;
+      coreGallery.scrollBy({ left: direction * (firstCard.offsetWidth + gap), behavior: "smooth" });
+    };
+
+    document.querySelector("[data-gallery-prev]").addEventListener("click", () => moveGallery(-1));
+    document.querySelector("[data-gallery-next]").addEventListener("click", () => moveGallery(1));
+  </script>
 
 </body>
 </html>
