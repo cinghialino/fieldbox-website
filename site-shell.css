@@ -65,6 +65,25 @@
   text-decoration: none;
 }
 
+.app-store-badge {
+  display: inline-block;
+  flex: 0 0 auto;
+  border: 0;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.app-store-badge img {
+  display: block;
+  width: 246px;
+  height: 82px;
+  object-fit: contain;
+}
+
+.app-store-badge:hover {
+  opacity: 0.9;
+}
+
 @media (max-width: 760px) {
   .site-header {
     padding: 24px 20px 0;
