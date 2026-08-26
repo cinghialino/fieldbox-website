@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What three copies, two kinds of storage, and one complete offsite copy mean when backing up card media while on the go.">
+  <title>What 3-2-1 Backup Means While on the Go | Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Product behavior reviewed against the public Fieldbox 1.1 implementation on 2026-08-25. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Backup practice</p>
+      <h1>What 3-2-1 Backup Means While on the Go</h1>
+      <p class="standfirst">One copied card can solve an immediate problem while leaving several others untouched. A 3-2-1 approach spreads a complete session across three copies, two kinds of storage, and one location somewhere else.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-08-25">August 25, 2026</time></span><span>6 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>Making another copy is valuable. It means a damaged card does not automatically remove the only instance of the work. But two copies kept together can still share the same failure: the same lost bag, stolen vehicle, damaged device, or unavailable location.</p>
+      <p>The 3-2-1 approach is a compact way to think beyond a single failure. It is not tied to one app, provider, or profession. It describes how copies are distributed.</p>
+
+      <p class="principle">Three complete copies. Two kinds of storage. One complete copy kept somewhere else.</p>
+
+      <div class="decision-flow" aria-label="The three parts of a 3-2-1 backup approach">
+        <div class="decision-step"><span class="step-number">03</span><strong>Three copies</strong><span>Each copy can account for the complete session.</span></div>
+        <div class="decision-step"><span class="step-number">02</span><strong>Two storage types</strong><span>Do not place every copy behind the same kind of failure.</span></div>
+        <div class="decision-step"><span class="step-number">01</span><strong>One offsite</strong><span>Keep one complete copy somewhere else.</span></div>
+        <div class="decision-step"><span class="step-number">Now</span><strong>Current inventory</strong><span>Review what exists today, not what existed once.</span></div>
+      </div>
+
+      <h2>Three means three complete copies</h2>
+      <p>A thumbnail, partial upload, or folder containing only some of the session does not carry the same value as a complete copy. Each location counted by Fieldbox must be able to account for every verified file in that session.</p>
+      <p>Files spread across several incomplete providers do not combine into one complete location. A provider counts only when it has confirmed the complete session.</p>
+
+      <h2>Two means different storage types</h2>
+      <p>Multiple copies on one device can disappear together. The “2” asks for copies across at least two kinds of storage so that one device-level problem does not reach every copy in the same way.</p>
+      <p>For a new Fieldbox session, the original card, the verified archive on an iPhone or iPad, and a complete cloud or offsite NAS copy create the clearest path. The source and device are physically distinct, while the remote location adds another storage boundary.</p>
+
+      <h2>One means somewhere else</h2>
+      <p>An offsite copy is separated from the cards and device. Internet cloud providers count as offsite. A WebDAV or NAS location counts only when the user identifies it as living somewhere else, such as a studio or another building.</p>
+      <p>A NAS in the same room can still be a useful additional copy. It does not satisfy the offsite part simply because it is a server.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Before reusing the card</span>
+          <h3>Card + device + offsite</h3>
+          <p>The complete original source, every verified file on this iPhone or iPad, and one complete confirmed offsite location.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">After the source is unavailable</span>
+          <h3>Device + two locations</h3>
+          <p>The complete device archive and two independently confirmed complete locations, with at least one kept offsite.</p>
+        </section>
+      </div>
+
+      <h2>The source card has a changing role</h2>
+      <p>Before it is reused, the source card can count as one complete copy. Fieldbox bases that status on the latest recorded complete import or scan. Once the card is disconnected, the app cannot continuously observe what remains on it.</p>
+      <p>If the user later marks that source formatted, Fieldbox records the statement as a user assertion and stops counting the source as a current complete copy. The app does not format the card itself. To meet the 3-2-1 conditions afterward, the device copy needs two independently confirmed complete locations, including at least one offsite.</p>
+
+      <h2>Why current inventory matters</h2>
+      <p>A session can meet 3-2-1 today and fall short later. A local file can be removed, a provider can stop confirming a complete session, or the original source can be reused. A badge that never changes would describe history, not the copies available now.</p>
+      <p>Fieldbox therefore treats Backup Status as a current inventory. It evaluates whether every verified file remains on the device, whether a complete confirmed location is offsite, and whether three current complete copies exist across the required storage boundaries.</p>
+
+      <ul class="invariant-list">
+        <li>A partial location remains visible but does not count as a complete copy.</li>
+        <li>At least one complete confirmed location must be offsite.</li>
+        <li>Marking a source formatted is a recorded user assertion.</li>
+        <li>The status can change when the current copy inventory changes.</li>
+      </ul>
+
+      <h2>What 3-2-1 does not promise</h2>
+      <p>The approach reduces dependence on one card, device, storage type, or location. It does not certify that files are permanent, guarantee recovery, or make every future event predictable.</p>
+      <p>Its value is practical: a problem affecting one copy does not automatically become a problem affecting all of them. The status is most useful when its requirements stay concrete and its limits remain visible.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>A Fieldbox 3-2-1 status reports the session’s current recorded copy inventory. It is not a certificate or guarantee. Provider confirmations describe what each destination reported, and source availability remains tied to the latest recorded observation or user assertion.</p>
+      </div>
+
+      <p class="principle">3-2-1 is not the end of a progress bar. It is a way to avoid asking one copy to survive every problem.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This article explains the 3-2-1 inventory model used by Fieldbox. It describes recorded copy conditions and measured evidence, not a promise of future availability or recovery.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/fieldbox.app/" rel="me noopener noreferrer" target="_blank">Instagram</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>
