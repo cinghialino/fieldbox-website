@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Translate Fieldbox</title>
+  <meta name="description" content="Help translate Fieldbox Backup through its community localization project.">
+  <link rel="canonical" href="https://fieldbox.app/improve/localization/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0b;
+      --surface: #141416;
+      --border: #232327;
+      --text: #f0f0f2;
+      --muted: #8a8a90;
+      --accent: #4f8ef7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wordmark {
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .wordmark span {
+      color: var(--muted);
+      display: block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-top: 2px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-mark { width: 30px; height: 30px; color: var(--accent); flex-shrink: 0; }
+    .logo-mark svg { width: 100%; height: 100%; display: block; }
+
+    main {
+      flex: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 76px 24px 96px;
+      width: 100%;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 62px);
+      font-weight: 600;
+      letter-spacing: -1.8px;
+      line-height: 1.02;
+      max-width: 650px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.55;
+      margin-top: 24px;
+      max-width: 650px;
+    }
+
+    .primary-action {
+      align-items: center;
+      background: var(--accent);
+      border-radius: 12px;
+      color: #fff;
+      display: inline-flex;
+      font-size: 14px;
+      font-weight: 650;
+      gap: 10px;
+      margin-top: 32px;
+      padding: 14px 18px;
+      text-decoration: none;
+    }
+
+    .primary-action:hover { filter: brightness(1.08); }
+    .primary-action span { font-size: 16px; }
+
+    .content-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 72px;
+    }
+
+    .content-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .content-card.wide { grid-column: 1 / -1; }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    p, li {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    ul { list-style: none; }
+    li { padding-left: 18px; position: relative; }
+    li + li { margin-top: 8px; }
+    li::before { color: var(--accent); content: "•"; left: 0; position: absolute; }
+
+    .note {
+      border-left: 2px solid var(--accent);
+      margin-top: 48px;
+      padding-left: 18px;
+    }
+
+    .note strong { color: var(--text); }
+
+    @media (max-width: 640px) {
+      main { padding-top: 54px; }
+      .content-grid { grid-template-columns: 1fr; margin-top: 54px; }
+      .content-card.wide { grid-column: auto; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/site-shell.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">
+        Fieldbox Backup
+        <span>3 · 2 · 1 Backup</span>
+      </div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a href="/field-notes/">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">Community localization</p>
+    <h1>Help translate Fieldbox</h1>
+    <p class="intro">Fieldbox is built for photographers working everywhere. Community translators can help make its interface clearer and more useful in more languages.</p>
+
+    <a class="primary-action" href="https://crowdin.com/project/fieldbox-app" target="_blank" rel="noopener noreferrer">
+      Open the Fieldbox project on Crowdin <span aria-hidden="true">↗</span>
+    </a>
+
+    <div class="content-grid">
+      <section class="content-card">
+        <h2>How you can help</h2>
+        <ul>
+          <li>Translate Fieldbox interface text into a language you know well.</li>
+          <li>Review wording for clarity, consistency, and photography context.</li>
+          <li>Leave a comment when a source phrase needs more context.</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <h2>How it works</h2>
+        <p>English source text is maintained with the app. Crowdin hosts community translations and reviews. Approved translations return to the Fieldbox project for automated checks and in-app review before a language is released.</p>
+      </section>
+
+      <section class="content-card wide">
+        <h2>What the project contains</h2>
+        <p>The public Crowdin project contains Fieldbox interface text prepared for localization. It does not contain your photos, filenames, sessions, hashes, storage accounts, credentials, telemetry, or other app data.</p>
+      </section>
+    </div>
+
+    <p class="note"><strong>Contributions are reviewed before release.</strong> A translation may be adjusted for terminology, layout, accessibility, placeholders, or consistency with the rest of the app.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 ZANZAN, LLC &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a></p>
+  </footer>
+</body>
+</html>
