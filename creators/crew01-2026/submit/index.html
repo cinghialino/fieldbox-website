@@ -33,10 +33,79 @@
       <p class="notice">The form accepts Instagram Reel and TikTok links only. A submitted link is reviewed before it counts toward a one-year or lifetime license.</p>
     </section>
 
-    <section class="form-shell" aria-label="Video submission form" data-campaign-form></section>
+    <form class="form-shell" action="https://docs.google.com/forms/d/e/1FAIpQLSeRIkrfjP_QfUTzDRgUA9LhzvEDq0a2Ovps6p7e9rp_PvkIFQ/formResponse" method="post" target="crew01-submission-response" data-campaign-form data-success-heading="Video received for review." data-success-body="Submit this form again for each additional Crew01 video.">
+      <div class="field-group">
+        <label class="field-label" for="creator-name">Creator name <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="creator-name" name="entry.1364169378" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="creator-email">Enrollment email <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="creator-email" name="entry.194434320" type="email" autocomplete="email" required>
+        <span class="field-hint">Use the same email address used for Crew01 enrollment.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="platform">Platform <span class="required-marker" aria-hidden="true">*</span></label>
+        <select id="platform" name="entry.48567142" required>
+          <option value="" selected disabled>Select one</option>
+          <option value="Instagram">Instagram</option>
+          <option value="TikTok">TikTok</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="video-url">Public video URL <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="video-url" name="entry.456098895" type="url" inputmode="url" placeholder="https://instagram.com/reel/…" required>
+        <span class="field-hint">Instagram Reel and TikTok video links only.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="published-date">Published date <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="published-date" name="published-date" type="date" required>
+        <input name="entry.731381614_year" type="hidden">
+        <input name="entry.731381614_month" type="hidden">
+        <input name="entry.731381614_day" type="hidden">
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="video-duration">Video duration in seconds <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="video-duration" name="entry.533384280" type="number" min="20" step="1" inputmode="numeric" required>
+        <span class="field-hint">Qualifying videos must be at least 20 seconds long.</span>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Confirm every requirement <span class="required-marker" aria-hidden="true">*</span></legend>
+        <div class="choice-list">
+          <label class="choice"><input name="entry.1873563230" type="checkbox" value="The video is public." required><span>The video is public.</span></label>
+          <label class="choice"><input name="entry.1873563230" type="checkbox" value="The caption includes #FieldboxBackup." required><span>The caption includes #FieldboxBackup.</span></label>
+          <label class="choice"><input name="entry.1873563230" type="checkbox" value="The caption includes #FieldboxCrew01." required><span>The caption includes #FieldboxCrew01.</span></label>
+          <label class="choice"><input name="entry.1873563230" type="checkbox" value="Fieldbox is a meaningful part of the video." required><span>Fieldbox is a meaningful part of the video.</span></label>
+          <label class="choice"><input name="entry.1873563230" type="checkbox" value="The video clearly discloses that Fieldbox provided complimentary access." required><span>The video clearly discloses that Fieldbox provided complimentary access.</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field-group">
+        <label class="field-label" for="feedback">What worked, what was confusing, or what would you improve?</label>
+        <textarea id="feedback" name="entry.77096670"></textarea>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Optional repost contact</legend>
+        <label class="choice"><input name="entry.1547100393" type="checkbox" value="Fieldbox may contact me separately to request permission to repost this video."><span>Fieldbox may contact me separately to request permission to repost this video.</span></label>
+      </fieldset>
+
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="pageHistory" value="0">
+      <div class="form-actions">
+        <button class="form-submit" type="submit">Submit video</button>
+        <p class="form-status" data-form-status aria-live="polite">Fields marked * are required.</p>
+      </div>
+    </form>
+    <iframe class="response-frame" name="crew01-submission-response" title="Submission response" data-campaign-response></iframe>
   </main>
 
-  <footer class="campaign-footer"><p><a href="../brief/">Creator brief</a> · <a href="../terms/">Crew01 terms</a> · <a href="/privacy.html">Privacy</a> · <a href="mailto:support@fieldbox.app">Contact</a></p></footer>
+  <footer class="campaign-footer"><p><a href="../brief/">Creator brief</a> · <a href="../terms/">Crew01 terms</a> · <a href="/privacy.html">Privacy</a> · <a href="mailto:creators@fieldbox.app">Contact</a></p></footer>
   <script src="../campaign-config.js"></script>
   <script>window.renderCrew01Form("submission");</script>
 </body>

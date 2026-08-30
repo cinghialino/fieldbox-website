@@ -47,10 +47,69 @@
       <p class="notice">Your redemption code will be sent individually after enrollment. It is not included in the creator brief.</p>
     </section>
 
-    <section class="form-shell" aria-label="Enrollment form" data-campaign-form></section>
+    <form class="form-shell" action="https://docs.google.com/forms/d/e/1FAIpQLScs4NE3ifV33zTtlOkd7UNDHmjZOMsCVKX8QigdQ7pbFG_u0A/formResponse" method="post" target="crew01-enrollment-response" data-campaign-form data-success-heading="Enrollment received." data-success-body="Check your email for the Crew01 creator brief. Your redemption details will be sent individually.">
+      <div class="field-group">
+        <label class="field-label" for="creator-name">Creator name <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="creator-name" name="entry.1157804745" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="creator-email">Email <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="creator-email" name="entry.1018500871" type="email" autocomplete="email" required>
+        <span class="field-hint">We will send the creator brief and campaign details to this address.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="instagram-profile">Instagram profile URL</label>
+        <input id="instagram-profile" name="entry.381992298" type="url" inputmode="url" placeholder="https://instagram.com/yourname">
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="tiktok-profile">TikTok profile URL</label>
+        <input id="tiktok-profile" name="entry.1414636555" type="url" inputmode="url" placeholder="https://tiktok.com/@yourname">
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="primary-platform">Primary platform <span class="required-marker" aria-hidden="true">*</span></label>
+        <select id="primary-platform" name="entry.204697437" required>
+          <option value="" selected disabled>Select one</option>
+          <option value="Instagram">Instagram</option>
+          <option value="TikTok">TikTok</option>
+          <option value="Both">Both</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="content-category">Primary content category <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="content-category" name="entry.795691013" type="text" placeholder="Photography, filmmaking, travel, audio…" required>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="country">Country <span class="required-marker" aria-hidden="true">*</span></label>
+        <input id="country" name="entry.1189892332" type="text" autocomplete="country-name" required>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Campaign agreement <span class="required-marker" aria-hidden="true">*</span></legend>
+        <label class="choice"><input name="entry.415997136" type="checkbox" value="I have read and agree to the Crew01 terms at https://fieldbox.app/creators/crew01-2026/terms/" required><span>I have read and agree to the <a href="../terms/" target="_blank" rel="noopener">Crew01 terms</a>.</span></label>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Campaign email consent <span class="required-marker" aria-hidden="true">*</span></legend>
+        <label class="choice"><input name="entry.1853858981" type="checkbox" value="Fieldbox may email me about Crew01 enrollment, access, submissions, rewards, and feedback." required><span>Fieldbox may email me about Crew01 enrollment, access, submissions, rewards, and feedback.</span></label>
+      </fieldset>
+
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="pageHistory" value="0">
+      <div class="form-actions">
+        <button class="form-submit" type="submit">Enroll in Crew01</button>
+        <p class="form-status" data-form-status aria-live="polite">Fields marked * are required.</p>
+      </div>
+    </form>
+    <iframe class="response-frame" name="crew01-enrollment-response" title="Enrollment response" data-campaign-response></iframe>
   </main>
 
-  <footer class="campaign-footer"><p><a href="../terms/">Crew01 terms</a> · <a href="/privacy.html">Privacy</a> · <a href="mailto:support@fieldbox.app">Contact</a></p></footer>
+  <footer class="campaign-footer"><p><a href="../terms/">Crew01 terms</a> · <a href="/privacy.html">Privacy</a> · <a href="mailto:creators@fieldbox.app">Contact</a></p></footer>
   <script src="../campaign-config.js"></script>
   <script>window.renderCrew01Form("enrollment");</script>
 </body>
