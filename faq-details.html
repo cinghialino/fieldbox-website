@@ -296,6 +296,7 @@
 
     <div class="toc-row">
       <a class="toc-pill" href="#verification">Verification</a>
+      <a class="toc-pill" href="#capture-date-naming">File naming</a>
       <a class="toc-pill" href="#cloud-safety">Cloud confirmation</a>
       <a class="toc-pill" href="#sharing">Shared accounts</a>
       <a class="toc-pill" href="#interrupted">Interrupted transfers</a>
@@ -314,6 +315,18 @@
         <li>The two fingerprints are compared. If they match exactly, the file is marked verified. If they don't, Fieldbox retries the file once before flagging it as failed.</li>
       </ol>
       <p>This happens for every selected file in the transfer, not a sample. The green "all files verified" screen appears only after every selected file has been copied and its source and local fingerprints have been compared and matched. Files shown as already verified or deliberately excluded are accounted for separately.</p>
+    </article>
+
+    <hr class="rule">
+
+    <article class="deep" id="capture-date-naming">
+      <div class="deep-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+        <h2>Which date appears in a custom filename</h2>
+      </div>
+      <p>When a filename template includes Capture date, Fieldbox reads the camera's EXIF DateTimeOriginal from the verified file. That is the calendar date recorded by the camera when the image was made.</p>
+      <p>Fieldbox does not silently substitute the import date or the file's modification or creation date. Those timestamps can describe when a file was copied, changed, or presented by a storage provider rather than when it was captured.</p>
+      <p>If DateTimeOriginal is missing or unreadable, Capture date and its individual date tokens use <code>undated</code>. The original filename and extension remain available through the Original filename token.</p>
     </article>
 
     <hr class="rule">
