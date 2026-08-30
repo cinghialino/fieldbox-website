@@ -7,7 +7,10 @@
   <title>Join Fieldbox Crew01</title>
   <meta name="description" content="Invitation-only enrollment for the Fieldbox Crew01 creator campaign.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../campaign.08baa3319948.css">
+  <link rel="stylesheet" href="../campaign.4eff7fc4a04a.css">
+  <link rel="preconnect" href="https://challenges.cloudflare.com">
+  <script src="../campaign-config.44353baa3997.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <header class="campaign-header">
@@ -47,7 +50,7 @@
       <p class="notice">Your redemption code will be sent individually after enrollment. It is not included in the creator brief.</p>
     </section>
 
-    <form class="form-shell" action="https://docs.google.com/forms/d/e/1FAIpQLScs4NE3ifV33zTtlOkd7UNDHmjZOMsCVKX8QigdQ7pbFG_u0A/formResponse" method="post" target="crew01-enrollment-response" data-campaign-form data-success-heading="Enrollment received." data-success-body="Check your email for the Crew01 creator brief. Your redemption details will be sent individually.">
+    <form class="form-shell" action="https://forms.fieldbox.app/crew01/enroll" method="post" data-campaign-form data-success-heading="Enrollment received." data-success-body="Check your email for the Crew01 creator brief. Your redemption details will be sent individually.">
       <div class="field-group">
         <label class="field-label" for="creator-name">Creator name <span class="required-marker" aria-hidden="true">*</span></label>
         <input id="creator-name" name="entry.1157804745" type="text" autocomplete="name" required>
@@ -101,16 +104,18 @@
 
       <input type="hidden" name="fvv" value="1">
       <input type="hidden" name="pageHistory" value="0">
+      <div class="turnstile-shell">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEiYQgXh-9kj-ePf" data-theme="dark" data-size="flexible" data-action="crew01_enroll" data-callback="onCrew01TurnstileSuccess" data-error-callback="onCrew01TurnstileError" data-expired-callback="onCrew01TurnstileExpired" data-timeout-callback="onCrew01TurnstileExpired" data-unsupported-callback="onCrew01TurnstileUnsupported"></div>
+        <p class="turnstile-note">Turnstile helps Fieldbox prevent automated submissions. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.</p>
+      </div>
       <div class="form-actions">
-        <button class="form-submit" type="submit">Enroll in Crew01</button>
+        <button class="form-submit" type="submit" disabled>Enroll in Crew01</button>
         <p class="form-status" data-form-status aria-live="polite">Fields marked * are required.</p>
       </div>
     </form>
-    <iframe class="response-frame" name="crew01-enrollment-response" title="Enrollment response" data-campaign-response></iframe>
   </main>
 
   <footer class="campaign-footer"><p><a href="../terms/">Crew01 terms</a> · <a href="/privacy.html">Privacy</a> · <a href="mailto:creators@fieldbox.app">Contact</a></p></footer>
-  <script src="../campaign-config.3dbb8dbc4152.js"></script>
   <script>window.renderCrew01Form("enrollment");</script>
 </body>
 </html>

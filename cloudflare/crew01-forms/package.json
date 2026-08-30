@@ -1,0 +1,8 @@
+{
+  "name": "fieldbox-crew01-forms",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
