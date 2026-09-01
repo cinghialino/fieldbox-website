@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox separates scanning, selecting, and copying so a memory card does not have to become one indivisible transfer.">
+  <title>Choose First, Then Copy | Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Product behavior reviewed against the current Fieldbox implementation on 2026-09-01. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Transfer design</p>
+      <h1>Choose First, Then Copy</h1>
+      <p class="standfirst">A memory card is not always one indivisible job. Fieldbox makes selection a deliberate step between understanding the source and moving files into the archive.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-08-25">August 25, 2026</time></span><span>6 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>The simplest transfer model treats a card like a sealed box: choose the source, copy everything, wait for the result. That model works until the card contains more than one useful boundary.</p>
+      <p>A photographer may have several days on one card. A drone operator may need only the current flight. A video card can contain finished takes beside material that should stay out of the present session. Copying the entire source can be unnecessary, but choosing files before the source has been fully scanned can hide what is being left behind.</p>
+
+      <p class="principle">First understand the source. Then choose the scope. Only then begin the transfer.</p>
+
+      <h2>Scanning and selecting answer different questions</h2>
+      <p>A scan answers, “What is on this source?” Selection answers, “What belongs in this transfer?” Combining those questions too early makes it difficult to distinguish an undiscovered file from a deliberate exclusion.</p>
+      <p>Fieldbox scans the chosen source without modifying it, then presents the files by capture date. The date groups make a large source easier to review. They do not decide what must move.</p>
+      <p>From that overview, an entire date can be selected at once. Opening a date reveals the individual files inside it, so the scope can be narrowed further. Select All remains available when the whole card really is the job.</p>
+
+      <div class="comparison">
+        <section class="comparison-card">
+          <span class="card-label">Source inventory</span>
+          <h3>What Fieldbox found</h3>
+          <p>The files visible during the completed scan, organized so the source can be reviewed before copying.</p>
+        </section>
+        <section class="comparison-card">
+          <span class="card-label">Transfer selection</span>
+          <h3>What you chose</h3>
+          <p>The full dates or individual files that define the scope of this transfer.</p>
+        </section>
+      </div>
+
+      <h2>Selection is intent, not evidence of success</h2>
+      <p>A checked file has been chosen. It has not yet been copied or verified. Keeping those states separate avoids giving the selection screen more authority than it has.</p>
+      <p>Once the transfer begins, Fieldbox copies the selected files to staging on the device. It reads the source and staged copy, calculates a SHA-256 value for each, and accepts the local file into the app-managed archive only when the values match.</p>
+      <p>A file left outside the selection has another clear outcome: excluded from this transfer. It is not counted as a transfer failure, and Fieldbox does not describe it as verified.</p>
+
+      <ul class="invariant-list">
+        <li>Selected means included in the transfer plan.</li>
+        <li>Excluded means not part of this transfer.</li>
+        <li>Verified means the measured source and local SHA-256 values matched.</li>
+        <li>Fieldbox never writes to, erases, or formats the original card.</li>
+      </ul>
+
+      <h2>The structure should survive the transfer</h2>
+      <p>A useful review should not disappear the moment copying starts. Fieldbox carries the date organization into the completed session, where imported files are grouped by capture date.</p>
+      <p>Each file also shows its recorded size and import date. Those details answer different questions. Capture date connects a file to the work that produced it. Import date records when it entered this Fieldbox session. Size provides a concrete way to distinguish and account for the file.</p>
+      <p>The result is not only a cleaner browser. It is continuity between the choice made before the transfer and the record available afterward.</p>
+
+      <h2>Why dates are a useful first boundary</h2>
+      <p>Dates are imperfect. A camera clock can be wrong, a shoot can cross midnight, and multiple assignments can happen on the same day. They are still a useful first view because they reduce a long, flat list into recognizable groups without forcing a hidden decision.</p>
+      <p>The important part is that the group remains navigable. A date can be selected as a whole when it matches the job, or opened when it does not. The interface offers a shortcut without turning that shortcut into a rule.</p>
+
+      <p class="principle">A useful default reduces work while preserving the ability to inspect and change the decision.</p>
+
+      <h2>The source remains the source</h2>
+      <p>Selective Transfer changes the scope of a session, not the source card. Fieldbox reads the selected source and leaves its lifecycle under the user’s control. It does not erase, format, write to, or automatically eject the card.</p>
+      <p>This boundary matters even more when only part of a card is selected. Leaving files out of one transfer is not a command to remove them from the source. It is only a decision about what Fieldbox should copy and verify now.</p>
+
+      <div class="boundary">
+        <h2>The boundary of the claim</h2>
+        <p>Selective Transfer makes the intended scope explicit. It does not guarantee future file availability or make an unselected file part of the archive. Verification applies only to files that were copied and whose measured source and local SHA-256 values matched.</p>
+      </div>
+
+      <h2>A smaller transfer can still have a complete explanation</h2>
+      <p>“Copy less” is not the whole design goal. The stronger goal is to make a smaller transfer as legible as a full-card transfer.</p>
+      <p>The scan shows what was available. The selection records what was intended. The transfer measures what succeeded. The completed session keeps the files organized so that decision can be understood later.</p>
+      <p class="principle">The transfer does not need to include the whole card. Its explanation should still be whole.</p>
+
+      <p class="editorial-note"><strong>About Field Notes:</strong> This article explains the design reasoning behind Selective Transfer. It describes the app’s current measured workflow, not a guarantee that files will always remain available.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/fieldbox.app/" rel="me noopener noreferrer" target="_blank">Instagram</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

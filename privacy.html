@@ -189,7 +189,7 @@
   <main>
     <p class="label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: August 29, 2026</p>
+    <p class="updated">Effective date: August 30, 2026</p>
 
     <section>
       <h2>Overview</h2>
@@ -243,9 +243,9 @@
 
     <section>
       <h2>Optional Anonymous Usage Data</h2>
-      <p>Anonymous Usage Data is off by default. The first-run walkthrough offers an unchecked choice, and you can inspect or change it later in Settings. When enabled, Fieldbox combines approved counters on your device and sends one summary only after a calendar week ends.</p>
-      <p>A summary can contain the schema version, calendar week, app version, iOS major version, device class, coarse file-count and size ranges, and counters for completed or failed scans, imports, restores, cloud-provider operations, and S3-compatible multipart uploads.</p>
-      <p>The summary does not include a persistent device or user identifier, media, filenames, paths, hashes, card or session identity, camera details, account information, credentials, exact file counts, exact sizes, exact times, locations, raw errors, advertising identifiers, or contact information. Because there is no stable identifier, summaries are not designed to follow one device or person across weeks.</p>
+      <p>Anonymous Usage Data is on by default and disclosed in the first-run walkthrough, where you can turn it off before finishing. You can inspect or change it later in Settings. When enabled, Fieldbox combines approved counters on your device and sends one summary only after a calendar week ends.</p>
+      <p>A summary can contain the schema version, calendar week, app version, iOS major version, device class, coarse file-count and size ranges, verified completion ranges, broad device-family and storage bands, provider kinds, whether cellular uploads were allowed, whether a cloud upload began on cellular, and counters for completed or failed scans, imports, restores, cloud-provider operations, and S3-compatible multipart uploads.</p>
+      <p>The summary does not include a persistent device or user identifier, media, filenames, paths, hashes, card or session identity, camera details, exact device model or storage values, account information or provider endpoints, Wi-Fi names, credentials, exact file counts, exact sizes, exact times, locations, raw errors, advertising identifiers, or contact information. Fieldbox does not report network changes during an upload. Because there is no stable identifier, summaries are not designed to follow one device or person across weeks.</p>
       <p>Summaries are sent to <code>telemetry.fieldbox.app</code>, a Fieldbox-controlled Cloudflare Worker. The receiver validates a fixed allowlist and stores only approved summary fields in Cloudflare Workers Analytics Engine. The Worker is configured not to read or store IP addresses or other request metadata, and Worker observability is disabled. Cloudflare necessarily processes network requests to provide and secure its service under its own <a href="https://www.cloudflare.com/privacypolicy/">Privacy Policy</a>.</p>
       <p>Turning sharing off immediately deletes unsent summaries from the device. Accepted summaries are retained by Workers Analytics Engine for its fixed three-month retention period and then expire.</p>
     </section>
