@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Fieldbox is better than the Files app for backing up a camera card on an iPhone or iPad.">
+  <title>Why Fieldbox Is Better Than Copying a Card in Files | Field Notes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/field-notes/field-notes.css">
+  <link rel="stylesheet" href="/site-shell.css">
+  <!-- Product behavior reviewed against the current Fieldbox implementation on 2026-09-01. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="wordmark">Fieldbox Backup<span>3 · 2 · 1 Backup</span></div>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/faq.html">How it works</a>
+      <a class="active" href="/field-notes/" aria-current="page">Field Notes</a>
+      <a href="/pro.html">Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/field-notes/">← All Field Notes</a>
+    <header class="article-header">
+      <p class="label">Field Notes · Transfer design</p>
+      <h1>Why Fieldbox Is Better Than Copying a Card in Files</h1>
+      <p class="standfirst">Files can put a second folder on your iPhone or iPad. Fieldbox tells you whether the shoot was copied correctly and where the complete copies are now.</p>
+      <div class="meta"><span>Alessandro Casagli</span><span><time datetime="2026-09-01">September 1, 2026</time></span><span>4 min read</span></div>
+    </header>
+
+    <article class="article-body">
+      <p>The Files app can copy a memory card. Connect a reader to an iPhone or iPad, choose the files, pick a destination, and let the copy run. What Files does not give me is a backup record for the shoot.</p>
+      <p>After a long transfer, seeing a folder at the destination is not the answer I need. I want to know whether every file arrived, whether the copied bytes match the card, whether anything failed, and whether another complete copy exists somewhere else. I do not want to work that out by comparing folders, counting files, and opening several storage apps.</p>
+      <p>That is why I built Fieldbox.</p>
+
+      <p class="principle">Files completes a copy operation. Fieldbox accounts for the shoot.</p>
+
+      <h2>A file has to prove it copied correctly</h2>
+      <p>Fieldbox does not put a file into its archive simply because a copy operation finished. It first copies the file into a staging area. It calculates a SHA-256 hash from the source and another from the staged copy, then compares them. Only a match is promoted into the archive.</p>
+      <p>If the hashes do not match, Fieldbox retries the file once. If it still does not match, the file is reported as failed. There is no vague middle ground where a file appears to be present and the rest is left to assumption. Every attempted file gets an outcome.</p>
+      <p>The original card remains untouched throughout the process. Fieldbox does not write to it, erase it, or format it. The card stays as one copy while the verified files become another copy on the device.</p>
+
+      <h2>The shoot stays together</h2>
+      <p>A camera card is not just a pile of unrelated files. It represents a shoot, a day, or a part of a job. Fieldbox keeps that transfer together as a session, with its own identity, file manifest, and results.</p>
+      <p>That matters as soon as there is more than one card or more than one destination. A folder name tells me where I put something. A Fieldbox session tells me what was selected, what copied, what matched, and what needs attention. I can return later without reconstructing the transfer from filenames and memory.</p>
+
+      <h2>The archive is separate from everyday file handling</h2>
+      <p>Files is built for handling documents: browsing, moving, renaming, sharing, and deleting. Those are useful actions, but they are the opposite of what I want inside a backup archive.</p>
+      <p>The Fieldbox archive is app-managed and cannot be edited in Files. That boundary keeps routine file handling away from the verified archive. When I need to use an image somewhere else, Fieldbox Pro can create a separate working copy for Photos, Files, or another app. It can also export a session to an attached USB-C drive for a client handoff. The archive remains the archive.</p>
+
+      <h2>One session can upload to several destinations at once</h2>
+      <p>With Fieldbox Pro, the same session can upload to multiple selected cloud or NAS locations concurrently. Each destination gets its own upload lane, so one provider does not have to finish before the next one starts. I can begin building separate offsite copies without sending the shoot through the same manual process again and again.</p>
+      <p>Fieldbox tracks every destination independently. A failed or incomplete upload to one location does not erase the progress of another, and partial coverage is never presented as a complete offsite copy.</p>
+      <p>The evidence depends on what each storage provider reports. Some providers return a checksum that Fieldbox can compare. Others confirm that the object exists with the expected size. Fieldbox shows the distinction instead of presenting every provider result as the same kind of proof.</p>
+      <p>Backup Status brings the current inventory together. It shows whether the device still has every verified file and whether a complete session is confirmed on the configured destinations. It is a view of the copies that exist now, not a certificate or a guarantee about the future.</p>
+
+      <h2>Restoring a file is also verified</h2>
+      <p>If a file has been removed from the device, Fieldbox can restore it from the original card or a confirmed provider. The returning file goes through staging again. It only re-enters the archive after its SHA-256 matches the source hash recorded for the session.</p>
+      <p>That is the reason Fieldbox is better than copying a card in Files for this job. It does not stop when another folder exists. It verifies the transfer, keeps the shoot together, follows complete copies across destinations, and applies the same check when a file comes back.</p>
+      <p>Files moves files. Fieldbox tells me what happened to the shoot.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 ZANZAN, LLC &nbsp;·&nbsp;
+      <a href="/">Fieldbox Backup</a> &nbsp;·&nbsp;
+      <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+      <a href="/field-notes/">Field Notes</a> &nbsp;·&nbsp;
+      <a href="/pro.html">Pro</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/fieldbox.app/" rel="me noopener noreferrer" target="_blank">Instagram</a> &nbsp;·&nbsp;
+      <a href="mailto:support@fieldbox.app">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>
