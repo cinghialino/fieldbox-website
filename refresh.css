@@ -7,7 +7,7 @@ h1 { font-weight: 600; letter-spacing: -2px; line-height: 1.06; }
 .hero-text .label, .editorial-copy .label { color: #83afff; }
 .hero-text .cta-row { gap: 16px; margin-bottom: 0; }
 .hero-text .cta-note { flex-basis: 100%; }
-.hero-artwork { min-width: 0; width: 100%; max-width: 410px; justify-self: center; }
+.hero-artwork { min-width: 0; width: 100%; max-width: 300px; justify-self: center; }
 .hero-artwork picture, .hero-artwork img { display: block; width: 100%; }
 .hero-artwork img { height: auto; border-radius: 18px; }
 .workflow-strip { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 0; margin: 0 0 72px; }
