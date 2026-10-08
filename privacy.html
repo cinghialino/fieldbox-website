@@ -202,8 +202,8 @@
       <p>Fieldbox Backup accesses only the following data, solely to perform the backup functions you initiate:</p>
       <ul>
         <li><strong>Memory-card contents</strong> — photographs, video, audio, sidecars, and other supported files you choose to back up. Read-only. The app never modifies or deletes files from your card.</li>
-        <li><strong>Device storage</strong> — verified local files are written to Fieldbox's private app-managed archive. The archive is not editable in Files. An export creates a separate copy at a destination you select.</li>
-        <li><strong>Your cloud storage accounts</strong> — when you configure a cloud destination, the app uploads your backed-up files to that account. See the sections below for each provider.</li>
+        <li><strong>Device storage</strong> — verified local files are written to Fieldbox's private app-managed archive. The archive is not editable in Files. An export creates a separate copy at an endpoint you select.</li>
+        <li><strong>Your cloud storage accounts</strong> — when you configure a cloud endpoint, the app uploads your backed-up files to that account. See the sections below for each provider.</li>
       </ul>
     </section>
 
@@ -233,12 +233,12 @@
 
     <section>
       <h2>Backblaze B2 / S3-Compatible Storage</h2>
-      <p>When you configure an S3-compatible destination (Backblaze B2, Wasabi, Cloudflare R2, etc.), you provide your own access credentials. The app uses those credentials solely to upload, verify, and delete files in the bucket you specify. Credentials are stored in the iOS Keychain and never leave your device.</p>
+      <p>When you configure an S3-compatible endpoint (Backblaze B2, Wasabi, Cloudflare R2, etc.), you provide your own access credentials. The app uses those credentials solely to upload, verify, and delete files in the bucket you specify. Credentials are stored in the iOS Keychain and never leave your device.</p>
     </section>
 
     <section>
       <h2>NAS (WebDAV)</h2>
-      <p>When you configure your own NAS or WebDAV server as a destination, you provide the server address and your own credentials. The app uses those credentials solely to upload, verify, and delete files in the folder you specify on your server. Connections require HTTPS. Credentials are stored in the iOS Keychain and are sent only to the server you configured.</p>
+      <p>When you configure your own NAS or WebDAV server as an endpoint, you provide the server address and your own credentials. The app uses those credentials solely to upload, verify, and delete files in the folder you specify on your server. Connections require HTTPS. Credentials are stored in the iOS Keychain and are sent only to the server you configured.</p>
     </section>
 
     <section>
@@ -252,7 +252,7 @@
 
     <section>
       <h2>Apple Private iCloud Storage</h2>
-      <p>Fieldbox may use Apple's private iCloud key-value service to keep the number of free verified imports used across devices signed in to the same Apple Account. If you deliberately create an iCloud Settings Backup, Fieldbox also stores one setup snapshot in the app's private CloudKit database. That snapshot contains app preferences, camera profiles, and memory-card details. Provider inventory and configuration, credentials, device identity, trust settings, signing keys, media, archives, sessions, and cloud copies never enter the snapshot. iCloud is not a Fieldbox backup destination or restore source.</p>
+      <p>Fieldbox may use Apple's private iCloud key-value service to keep the number of free verified imports used across devices signed in to the same Apple Account. If you deliberately create an iCloud Settings Backup, Fieldbox also stores one setup snapshot in the app's private CloudKit database. That snapshot contains app preferences, camera profiles, and memory-card details. Provider inventory and configuration, credentials, device identity, trust settings, signing keys, media, archives, sessions, and cloud copies never enter the snapshot. iCloud is not a Fieldbox backup endpoint or restore source.</p>
     </section>
 
     <section>
@@ -268,7 +268,7 @@
 
     <section>
       <h2>Data Retention</h2>
-      <p>Local archive files remain in Fieldbox's app-managed container until you delete them through the app or remove the app and its data. Exported copies remain at the destinations you selected. Cloud copies remain in your cloud account until you remove them through Fieldbox or through your provider. Optional anonymous summaries follow the retention described above.</p>
+      <p>Local archive files remain in Fieldbox's app-managed container until you delete them through the app or remove the app and its data. Exported copies remain at the endpoints you selected. Cloud copies remain in your cloud account until you remove them through Fieldbox or through your provider. Optional anonymous summaries follow the retention described above.</p>
     </section>
 
     <section>

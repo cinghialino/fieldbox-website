@@ -46,8 +46,8 @@
       <p class="principle">Coverage can be partial. A complete copy cannot.</p>
 
       <h2>The location has to stand on its own</h2>
-      <p>Fieldbox evaluates each configured destination separately. A provider counts as a complete copy only when that provider has confirmed every transfer in the session using the evidence method available for that service. To satisfy the offsite leg, that complete provider must also count as offsite; a same-site destination can be complete without being offsite.</p>
-      <p>This remains true even when multiple partial providers collectively contain all the files. They are still useful destinations. Fieldbox shows their progress and names what each one holds. It simply does not invent a complete provider that does not exist.</p>
+      <p>Fieldbox evaluates each configured endpoint separately. A provider counts as a complete copy only when that provider has confirmed every transfer in the session using the evidence method available for that service. To satisfy the offsite leg, that complete provider must also count as offsite; a same-site endpoint can be complete without being offsite.</p>
+      <p>This remains true even when multiple partial providers collectively contain all the files. They are still useful endpoints. Fieldbox shows their progress and names what each one holds. It simply does not invent a complete provider that does not exist.</p>
 
       <div class="ledger" role="list" aria-label="Example provider coverage">
         <div class="ledger-row" role="listitem"><span class="ledger-name">Provider A</span><span class="ledger-source">Cards 1 and 2 confirmed · partial session</span></div>
@@ -57,9 +57,9 @@
 
       <p>The labels in that example are intentionally unglamorous. Partial does not mean useless, and complete does not mean permanent. They describe coverage of the session as Fieldbox currently records it.</p>
 
-      <h2>The active destination is not the truth</h2>
-      <p>An early interface risk was tying backup status to whichever destination happened to be selected for the next upload. That would make a completed copy appear to vanish when someone switched to another provider.</p>
-      <p>The accepted rule looks across every connection instead. If one provider holds the whole session, Fieldbox can name it as complete regardless of which destination is active now. Upload intent and current copy inventory are separate facts.</p>
+      <h2>The active endpoint is not the truth</h2>
+      <p>An early interface risk was tying backup status to whichever endpoint happened to be selected for the next upload. That would make a completed copy appear to vanish when someone switched to another provider.</p>
+      <p>The accepted rule looks across every connection instead. If one provider holds the whole session, Fieldbox can name it as complete regardless of which endpoint is active now. Upload intent and current copy inventory are separate facts.</p>
 
       <div class="comparison">
         <section class="comparison-card">

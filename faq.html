@@ -385,14 +385,14 @@
       <details class="qa">
         <summary>Do I need an internet connection to back up?</summary>
         <div class="qa-body">
-          <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. When Fieldbox is active again with a connection available, it can resume pending uploads to the enabled destination.</p>
+          <p>No. Copying files off the card and checking them happens entirely on your device, so it works in a basement, a tent, or a plane. When Fieldbox is active again with a connection available, it can resume pending uploads to the enabled endpoint.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>Can I plan a session before the shoot even starts?</summary>
         <div class="qa-body">
-          <p>Yes, with Pro. Set up a session with a name, date, and destination choices ahead of time. Once a transfer begins, it becomes a regular session and remains in the archive. If no transfer starts, the plan expires 30 days after its planned date.</p>
+          <p>Yes, with Pro. Set up a session with a name, date, and endpoint choices ahead of time. Once a transfer begins, it becomes a regular session and remains in the archive. If no transfer starts, the plan expires 30 days after its planned date.</p>
         </div>
       </details>
     </section>
@@ -429,7 +429,7 @@
       <details class="qa">
         <summary>If I stop subscribing to Pro, do I lose my backups?</summary>
         <div class="qa-body">
-          <p>No. Fieldbox does not delete the on-device archive or existing cloud copies when a subscription ends. Every session remains readable. You can choose up to three active sessions that may continue receiving files and change that selection later. Other Pro actions, including multiple-destination uploads, working-copy exports, archive repair, local-file management, and USB Transfer, pause until Pro is active again.</p>
+          <p>No. Fieldbox does not delete the on-device archive or existing cloud copies when a subscription ends. Every session remains readable. You can choose up to three active sessions that may continue receiving files and change that selection later. Other Pro actions, including multiple-endpoint uploads, working-copy exports, archive repair, local-file management, and USB Transfer, pause until Pro is active again.</p>
         </div>
       </details>
     </section>
@@ -444,7 +444,7 @@
         <summary>Which cloud services can I use?</summary>
         <div class="qa-body">
           <p>Dropbox, Google Drive, Microsoft OneDrive, any S3-compatible storage (Backblaze B2, Wasabi, Cloudflare R2, and similar), or your own NAS and home server over WebDAV (Synology, QNAP, TrueNAS, Nextcloud, and others). It's your account and your storage, Fieldbox just moves the verified files there.</p>
-          <p>Fieldbox Core connects one of these at a time. Pro adds multiple connections, so you can send a session to several enabled destinations concurrently.</p>
+          <p>Fieldbox Core connects one of these at a time. Pro adds multiple connections, so you can send a session to several enabled endpoints concurrently.</p>
         </div>
       </details>
 
@@ -473,14 +473,14 @@
       <details class="qa">
         <summary><span class="qa-q">Can I back up to more than one cloud at the same time? <span class="pro-tag">Pro</span></span></summary>
         <div class="qa-body">
-          <p>Yes. Choose the enabled destinations for a session and Fieldbox uploads to them concurrently. Each destination keeps its own recorded confirmation state.</p>
+          <p>Yes. Choose the enabled endpoints for a session and Fieldbox uploads to them concurrently. Each endpoint keeps its own recorded confirmation state.</p>
         </div>
       </details>
 
       <details class="qa">
         <summary>Does Fieldbox use my iCloud storage?</summary>
         <div class="qa-body">
-          <p>Fieldbox never uses iCloud as a media-backup destination or restore source. Your files go to the app-managed archive and to whichever supported storage account you connect. Apple's private services may sync the number of free verified imports used across your devices and, only when you deliberately request it, hold a settings backup. That settings backup contains app preferences, camera profiles, and memory-card details. It never contains media, archives, sessions, cloud connections, or provider credentials.</p>
+          <p>Fieldbox never uses iCloud as a media-backup endpoint or restore source. Your files go to the app-managed archive and to whichever supported storage account you connect. Apple's private services may sync the number of free verified imports used across your devices and, only when you deliberately request it, hold a settings backup. That settings backup contains app preferences, camera profiles, and memory-card details. It never contains media, archives, sessions, cloud connections, or provider credentials.</p>
         </div>
       </details>
     </section>
@@ -568,11 +568,11 @@
 
     <section class="qa-group" id="more-workflows">
       <div class="section-head"><h2 class="section-title">Photos, contact sheets, and portable sessions</h2></div>
-      <details class="qa" id="photos-backup"><summary>Can I back up the Photos app too?</summary><div class="qa-body"><p>Yes. Photos App Offload is included with the permanent Unlock. Choose individual items, a date range, or your accessible library and copy available originals and edited versions to attached storage, cloud, or NAS. Unlock supports one destination per job; Pro supports multiple destinations.</p><p>Full-resolution files stored by Apple may need to download first. Shared Albums expose the versions available through Photos, which may differ from the original camera files. Review the recorded copy results before choosing whether to remove items. Removal is a separate user action and can also affect your synced Apple Photos library.</p><p>Supported backups can be restored to Photos. Photos app backup is a separate workflow from Fieldbox’s app-managed card archive. iCloud is not a Fieldbox backup destination or restore source.</p></div></details>
+      <details class="qa" id="photos-backup"><summary>Can I back up the Photos app too?</summary><div class="qa-body"><p>Yes. Photos App Offload is included with the permanent Unlock. Choose individual items, a date range, or your accessible library and copy available originals and edited versions to attached storage, cloud, or NAS. Unlock supports one endpoint per job; Pro supports multiple endpoints.</p><p>Full-resolution files stored by Apple may need to download first. Shared Albums expose the versions available through Photos, which may differ from the original camera files. Review the recorded copy results before choosing whether to remove items. Removal is a separate user action and can also affect your synced Apple Photos library.</p><p>Supported backups can be restored to Photos. Photos app backup is a separate workflow from Fieldbox’s app-managed card archive. iCloud is not a Fieldbox backup endpoint or restore source.</p></div></details>
       <details class="qa" id="contact-sheets"><summary>Can I create contact sheets? <span class="pro-tag">Pro</span></summary><div class="qa-body"><p>Yes. Create a PDF or JPEG contact sheet from session images, customize the header and logo, page layout, image grid, and captions, then save layout presets for reuse. A contact sheet is a visual overview, not cryptographic verification evidence.</p><p><strong>Coming in 1.7.5:</strong> Pro also creates PDF contact sheets directly from external folders without importing the originals or creating a session. Filter and group by folder or file type. For Capture One edits, use processed JPEG or TIFF exports; a RAW preview does not reconstruct the edit.</p></div></details>
       <details class="qa"><summary>Can I import an existing Fieldbox session?</summary><div class="qa-body"><p>Open its portable .fieldbox record from Files, attached storage, or a connected cloud endpoint. Fieldbox can import the session or reconcile it with an existing one. Files returned to the archive must pass SHA-256 verification against the recorded source hash.</p></div></details>
       <details class="qa"><summary>Can I follow progress without staying on the transfer screen?</summary><div class="qa-body"><p>Supported backup workflows show Live Activity progress on the Lock Screen and Dynamic Island on compatible devices. iOS controls background execution; a progress display does not guarantee the app can keep working indefinitely in the background.</p></div></details>
-      <details class="qa"><summary>What additional endpoints are coming in 1.7.5?</summary><div class="qa-body"><p>The upcoming 1.7.5 update adds reusable connected-drive folders and password-based SFTP, FTP, and FTPS endpoints. Drive copies are checked against the archive’s recorded SHA-256; SFTP setup includes server-key review. Provider confirmation remains specific to the destination and is not a promise of permanent integrity.</p><p>An attached drive is a local copy. It does not automatically satisfy the offsite requirement in Backup Status.</p></div></details>
+      <details class="qa"><summary>What additional endpoints are coming in 1.7.5?</summary><div class="qa-body"><p>The upcoming 1.7.5 update adds reusable connected-drive folders and password-based SFTP, FTP, and FTPS endpoints. Drive copies are checked against the archive’s recorded SHA-256; SFTP setup includes server-key review. Provider confirmation remains specific to the endpoint and is not a promise of permanent integrity.</p><p>An attached drive is a local copy. It does not automatically satisfy the offsite requirement in Backup Status.</p></div></details>
     </section>
 
     <div class="contact-block">

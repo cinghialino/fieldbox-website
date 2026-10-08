@@ -39,7 +39,7 @@
     </header>
 
     <article class="article-body">
-      <p>The first instinct was visual. A session summary could gather its file count, hashes, destinations, and timestamp into one screen. Someone could take a screenshot and share a compact account of what Fieldbox had recorded.</p>
+      <p>The first instinct was visual. A session summary could gather its file count, hashes, endpoints, and timestamp into one screen. Someone could take a screenshot and share a compact account of what Fieldbox had recorded.</p>
       <p>That would be useful presentation, but it would not be a verifiable artifact. Pixels can be edited. Decorative patterns can be reproduced. A timestamp shown on screen can come from an adjustable device clock. Making the screen harder to imitate would not change those facts.</p>
       <p>The design turned away from visual authenticity and toward a more modest goal: build a deterministic record of the app’s evidence, sign exactly that record, and make the limits part of the format.</p>
 
@@ -58,7 +58,7 @@
       <p>This separation lets the interface evolve without changing what was signed. It also lets an independent verifier reconstruct the canonical record bytes rather than trusting how a particular screen chose to display them.</p>
 
       <h2>The manifest root identifies the verified set</h2>
-      <p>At the center of the record is a SHA-256 root calculated from a canonical list of verified files. Each entry binds its source path, archive destination, byte count, and SHA-256 value. The list is sorted deterministically before the root is calculated.</p>
+      <p>At the center of the record is a SHA-256 root calculated from a canonical list of verified files. Each entry binds its source path, archive endpoint, byte count, and SHA-256 value. The list is sorted deterministically before the root is calculated.</p>
       <p>That root describes which verified-file manifest the record refers to. It does not change because a local file is later deleted, a provider becomes unavailable, or someone reports that a source was reused. Those are later evidence about current copies, not changes to the identity of the historical verified set.</p>
       <p>Keeping the distinction matters. If every inventory change rewrote the manifest root, the record would lose a stable subject. Instead, the record binds a stable verified set to a point-in-time account of where Fieldbox currently believes copies exist and how it obtained that evidence.</p>
 

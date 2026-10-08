@@ -39,7 +39,7 @@
     </header>
 
     <article class="article-body">
-      <p>A progress bar has a seductive simplicity. Bytes move from left to right, the bar reaches the end, and the transfer looks complete. But the end of a copy operation answers only one question: did the operating system finish writing something at the destination?</p>
+      <p>A progress bar has a seductive simplicity. Bytes move from left to right, the bar reaches the end, and the transfer looks complete. But the end of a copy operation answers only one question: did the operating system finish writing something at the endpoint?</p>
       <p>Fieldbox needed to answer a stricter question: do the bytes written on the iPhone or iPad match the bytes that were read from the source?</p>
       <p>The difference between those questions created a threshold. Before that threshold, a file is an attempted copy. After it, the file can become part of the archive.</p>
 
@@ -67,7 +67,7 @@
         <section class="comparison-card">
           <span class="card-label">Copied</span>
           <h3>A write operation finished</h3>
-          <p>The destination now contains bytes, but Fieldbox has not yet established that they match the source.</p>
+          <p>The endpoint now contains bytes, but Fieldbox has not yet established that they match the source.</p>
         </section>
         <section class="comparison-card">
           <span class="card-label">Verified</span>
@@ -79,7 +79,7 @@
       <h2>The same threshold applies on the way back</h2>
       <p>Restore could have been treated as a special case. A provider had already accepted an uploaded object, so a successful download might appear sufficient to put the file back.</p>
       <p>But a restore is another arrival of bytes, and the archive threshold should not depend on which direction they traveled. Fieldbox downloads a restored object into separate staging, calculates its SHA-256, and compares it with the original source-derived value recorded in the manifest. Only a match allows it back into the archive.</p>
-      <p>Provider confirmation and restore verification therefore answer different questions. The first describes evidence returned by the destination. The second measures the bytes that have just arrived on the device.</p>
+      <p>Provider confirmation and restore verification therefore answer different questions. The first describes evidence returned by the endpoint. The second measures the bytes that have just arrived on the device.</p>
 
       <h2>The cost is intentional</h2>
       <p>Reading both source and staged data takes time and energy. Staging also needs temporary space. A design optimized only for apparent speed could remove one of those reads or display success as soon as copying ends.</p>

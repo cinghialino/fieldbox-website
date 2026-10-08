@@ -59,9 +59,9 @@
       <p>The result is a review that can state a complete equation: every scanned file is either selected for transfer, recognized as already verified in that session, or explicitly excluded. Those groups are disjoint, and together they account for the scan.</p>
 
       <h2>Counts and bytes belong together</h2>
-      <p>A file count alone can be misleading. Ten small sidecars and ten large video clips place very different demands on the device and its destinations. Fieldbox therefore calculates both counts and bytes from the same cached selection snapshot.</p>
-      <p>That same selected-byte total drives the storage review. The device check retains 1 GB of free-space headroom. Each chosen cloud or NAS destination gets its own card and, where the provider reports capacity, its own comparison with the selected size.</p>
-      <p>Provider capacity is advisory evidence. Some destinations report used and total storage, some report no quota, and a capacity request can be unavailable. Fieldbox keeps those states distinct instead of converting “not reported” into “enough space.” A favorable capacity report also does not confirm that an upload has happened. It only informs the decision before it starts.</p>
+      <p>A file count alone can be misleading. Ten small sidecars and ten large video clips place very different demands on the device and its endpoints. Fieldbox therefore calculates both counts and bytes from the same cached selection snapshot.</p>
+      <p>That same selected-byte total drives the storage review. The device check retains 1 GB of free-space headroom. Each chosen cloud or NAS endpoint gets its own card and, where the provider reports capacity, its own comparison with the selected size.</p>
+      <p>Provider capacity is advisory evidence. Some endpoints report used and total storage, some report no quota, and a capacity request can be unavailable. Fieldbox keeps those states distinct instead of converting “not reported” into “enough space.” A favorable capacity report also does not confirm that an upload has happened. It only informs the decision before it starts.</p>
 
       <div class="comparison">
         <section class="comparison-card">
@@ -72,11 +72,11 @@
         <section class="comparison-card">
           <span class="card-label">Outcome</span>
           <h3>What the transfer actually established</h3>
-          <p>Per-file copy and verification results, plus the exact destination evidence recorded after later uploads.</p>
+          <p>Per-file copy and verification results, plus the exact endpoint evidence recorded after later uploads.</p>
         </section>
       </div>
 
-      <p>Keeping preflight and outcome separate prevents an intention from being mistaken for evidence. Selecting a destination is not confirmation. Estimating space is not a completed copy. Reaching the end of a copy operation is not verification.</p>
+      <p>Keeping preflight and outcome separate prevents an intention from being mistaken for evidence. Selecting an endpoint is not confirmation. Estimating space is not a completed copy. Reaching the end of a copy operation is not verification.</p>
 
       <h2>The plan is frozen before copying</h2>
       <p>Once the user starts, Fieldbox persists the transfer plan before processing the first selected file. The plan includes source identity, selected-root identity, a deterministic digest of the complete path-and-size inventory, the selected files, and the scan disposition.</p>
@@ -107,11 +107,11 @@
 
       <div class="boundary">
         <h2>The boundary of the claim</h2>
-        <p>Explicit accounting explains what Fieldbox found and what happened during this transfer. Checkpoints preserve measured progress. Neither one guarantees future availability or recoverability. Later device checks and destination confirmations remain separate evidence about the current copies.</p>
+        <p>Explicit accounting explains what Fieldbox found and what happened during this transfer. Checkpoints preserve measured progress. Neither one guarantees future availability or recoverability. Later device checks and endpoint confirmations remain separate evidence about the current copies.</p>
       </div>
 
       <h2>Clarity is a reliability feature</h2>
-      <p>None of these mechanics makes copying visually dramatic. Most of the work appears as better nouns, clearer counts, separate destination cards, and an interrupted state that refuses the wrong source.</p>
+      <p>None of these mechanics makes copying visually dramatic. Most of the work appears as better nouns, clearer counts, separate endpoint cards, and an interrupted state that refuses the wrong source.</p>
       <p>That restraint is the point. A field-backup tool should not make a person infer what happened from a progress bar. It should expose the decision before copying, preserve that decision while work is underway, and reconcile it with the measured result at the end.</p>
       <p class="principle">Every scanned file should have an outcome, and every outcome should keep the limits of its evidence.</p>
 

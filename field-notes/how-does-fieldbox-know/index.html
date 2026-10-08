@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How Fieldbox distinguishes checks it performed, destination confirmations, source observations, and facts reported by a user.">
+  <meta name="description" content="How Fieldbox distinguishes checks it performed, endpoint confirmations, source observations, and facts reported by a user.">
   <title>How Does FieldBox Know? — Field Notes</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/field-notes/field-notes.css">
@@ -52,8 +52,8 @@
           <p>Fieldbox directly performed the relevant comparison or reread current bytes and matched them to the recorded manifest.</p>
         </section>
         <section class="evidence-card">
-          <h3 class="confirmed"><span class="evidence-dot"></span>Confirmed by destination</h3>
-          <p>A configured storage destination supplied evidence about the object it stored.</p>
+          <h3 class="confirmed"><span class="evidence-dot"></span>Confirmed by endpoint</h3>
+          <p>A configured storage endpoint supplied evidence about the object it stored.</p>
         </section>
         <section class="evidence-card">
           <h3 class="observed"><span class="evidence-dot"></span>Observed during scan</h3>
@@ -70,10 +70,10 @@
       <p>That is a check Fieldbox performed, so it belongs under <strong>Verified by FieldBox</strong>. A later local integrity check can also reread current archive bytes and compare them with the recorded manifest.</p>
       <p>The wording stays deliberately narrow. It says which values matched when the check ran. It does not promise that a device will remain available or that a file can never be changed or lost later.</p>
 
-      <h2>Confirmed by destination</h2>
-      <p>Cloud and NAS storage sit across a service boundary. Fieldbox asks the configured destination what it stored, then records the strongest usable evidence that destination exposes.</p>
-      <p>Some destinations can return a matching SHA-256 checksum. Others confirm that an object was accepted or exists with the expected stored size. Both are destination evidence, but they are not interchangeable. The interface must retain the precise method rather than turning every successful upload into “cloud hash verified.”</p>
-      <p>This is why the broad label is <strong>Confirmed by destination</strong>. It attributes the statement correctly while leaving room to say whether the confirmation was a provider checksum or acceptance, existence, and size.</p>
+      <h2>Confirmed by endpoint</h2>
+      <p>Cloud and NAS storage sit across a service boundary. Fieldbox asks the configured endpoint what it stored, then records the strongest usable evidence that endpoint exposes.</p>
+      <p>Some endpoints can return a matching SHA-256 checksum. Others confirm that an object was accepted or exists with the expected stored size. Both are endpoint evidence, but they are not interchangeable. The interface must retain the precise method rather than turning every successful upload into “cloud hash verified.”</p>
+      <p>This is why the broad label is <strong>Confirmed by endpoint</strong>. It attributes the statement correctly while leaving room to say whether the confirmation was a provider checksum or acceptance, existence, and size.</p>
 
       <h2>Observed during scan</h2>
       <p>A memory card can change after an import. Files may be removed, the card may be reused, or only part of its earlier contents may remain. A later complete, read-only scan lets Fieldbox compare what it sees with the originals previously attributed to that source.</p>
@@ -90,7 +90,7 @@
 
       <div class="ledger" role="list" aria-label="Example evidence ledger">
         <div class="ledger-row" role="listitem"><span class="ledger-name">Local archive</span><span class="ledger-source verified">Verified by FieldBox · source and local SHA-256 matched</span></div>
-        <div class="ledger-row" role="listitem"><span class="ledger-name">Offsite copy</span><span class="ledger-source confirmed">Confirmed by destination · provider checksum or stored-object evidence stated precisely</span></div>
+        <div class="ledger-row" role="listitem"><span class="ledger-name">Offsite copy</span><span class="ledger-source confirmed">Confirmed by endpoint · provider checksum or stored-object evidence stated precisely</span></div>
         <div class="ledger-row" role="listitem"><span class="ledger-name">Source card</span><span class="ledger-source observed">Observed during scan · 41 of 50 attributed originals</span></div>
         <div class="ledger-row" role="listitem"><span class="ledger-name">Source availability</span><span class="ledger-source reported">Reported by user · recorded in Events Log</span></div>
       </div>
@@ -109,7 +109,7 @@
 
       <h2>A design language, not a marketing badge</h2>
       <p>The value of this model comes from using it consistently. Backup Status, File Source Ledger, Events Log, Transfer Details, and Integrity Verification should not invent separate words for the same evidence origins.</p>
-      <p>Over time, the labels become a compact design language. “Verified by FieldBox” means the app performed the check. “Confirmed by destination” means the storage system supplied the evidence. “Observed during scan” remains tied to an observation. “Reported by user” remains a recorded human statement.</p>
+      <p>Over time, the labels become a compact design language. “Verified by FieldBox” means the app performed the check. “Confirmed by endpoint” means the storage system supplied the evidence. “Observed during scan” remains tied to an observation. “Reported by user” remains a recorded human statement.</p>
       <p class="principle">Say what was checked, who supplied the evidence, and when it was observed—without turning those facts into certainty they cannot support.</p>
 
       <p class="editorial-note"><strong>About Field Notes:</strong> This article explains the reasoning behind a Fieldbox product decision. It is not a technical specification or a guarantee about future file availability. Editorial source: ADR-0001. Last reviewed against the product documentation on August 3, 2026.</p>
