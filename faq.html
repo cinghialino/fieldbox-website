@@ -335,7 +335,7 @@
     <p class="label">Questions & Answers</p>
     <h1>Frequently asked questions</h1>
     <p class="sub">Answers for photographers, videographers, drone operators, sound engineers, and anyone working with card-based media. If your question is not here, email us at the bottom of the page.</p>
-    <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, comes with FieldBox Core.</p>
+    <p class="plan-note">A few answers below are marked <span class="pro-tag">Pro</span> for what comes with the Pro plan. Everything else, including verified backup itself, comes with Fieldbox Core.</p>
 
     <div class="toc-row">
       <a class="toc-pill" href="#getting-started">Getting started</a>
@@ -362,7 +362,7 @@
       <details class="qa">
         <summary>How do I back up a card?</summary>
         <div class="qa-body">
-          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name or add it to an existing session, then review every scanned file as selected, already verified, or deliberately excluded. Choose a Photography, Hybrid Shoot, or Video preset as a starting point, customize it if needed, and tap Start. When the transfer completes, review the recorded outcomes before deciding what to do with the card.</p>
+          <p>Plug your card reader into your phone or iPad, open Fieldbox, and choose the card. Give the shoot a name or add it to an existing session, then review every scanned file as selected, already verified, or deliberately excluded. Adjust your selection by file type, review the setup, and start the transfer. When the transfer completes, review the recorded outcomes before deciding what to do with the card.</p>
           <div class="example">
             <div class="example-label">Example</div>
             <p>You finish a session and swap cards mid-shoot. Fieldbox recognizes the camera and offers to drop the new card straight into the same session, so everything from the day ends up together.</p>
@@ -444,7 +444,7 @@
         <summary>Which cloud services can I use?</summary>
         <div class="qa-body">
           <p>Dropbox, Google Drive, Microsoft OneDrive, any S3-compatible storage (Backblaze B2, Wasabi, Cloudflare R2, and similar), or your own NAS and home server over WebDAV (Synology, QNAP, TrueNAS, Nextcloud, and others). It's your account and your storage, Fieldbox just moves the verified files there.</p>
-          <p>FieldBox Core connects one of these at a time. Pro adds multiple connections, so you can send a session to several enabled destinations concurrently.</p>
+          <p>Fieldbox Core connects one of these at a time. Pro adds multiple connections, so you can send a session to several enabled destinations concurrently.</p>
         </div>
       </details>
 
@@ -564,6 +564,15 @@
           <p>Yes. Fieldbox Pro's USB Transfer copies one verified session or a selection of sessions to an attached drive formatted as exFAT, FAT32, or APFS. You can optionally include integrity sidecars so the recipient can compare each delivered file's SHA-256 value offline.</p>
         </div>
       </details>
+    </section>
+
+    <section class="qa-group" id="more-workflows">
+      <div class="section-head"><h2 class="section-title">Photos, contact sheets, and portable sessions</h2></div>
+      <details class="qa" id="photos-backup"><summary>Can I back up the Photos app too?</summary><div class="qa-body"><p>Yes. Photos App Offload is included with the permanent Unlock. Choose individual items, a date range, or your accessible library and copy available originals and edited versions to attached storage, cloud, or NAS. Unlock supports one destination per job; Pro supports multiple destinations.</p><p>Full-resolution files stored by Apple may need to download first. Shared Albums expose the versions available through Photos, which may differ from the original camera files. Review the recorded copy results before choosing whether to remove items. Removal is a separate user action and can also affect your synced Apple Photos library.</p><p>Supported backups can be restored to Photos. Photos app backup is a separate workflow from Fieldbox’s app-managed card archive. iCloud is not a Fieldbox backup destination or restore source.</p></div></details>
+      <details class="qa" id="contact-sheets"><summary>Can I create contact sheets? <span class="pro-tag">Pro</span></summary><div class="qa-body"><p>Yes. Create a PDF or JPEG contact sheet from session images, customize the header and logo, page layout, image grid, and captions, then save layout presets for reuse. A contact sheet is a visual overview, not cryptographic verification evidence.</p><p><strong>Coming in 1.7.5:</strong> Pro also creates PDF contact sheets directly from external folders without importing the originals or creating a session. Filter and group by folder or file type. For Capture One edits, use processed JPEG or TIFF exports; a RAW preview does not reconstruct the edit.</p></div></details>
+      <details class="qa"><summary>Can I import an existing Fieldbox session?</summary><div class="qa-body"><p>Open its portable .fieldbox record from Files, attached storage, or a connected cloud endpoint. Fieldbox can import the session or reconcile it with an existing one. Files returned to the archive must pass SHA-256 verification against the recorded source hash.</p></div></details>
+      <details class="qa"><summary>Can I follow progress without staying on the transfer screen?</summary><div class="qa-body"><p>Supported backup workflows show Live Activity progress on the Lock Screen and Dynamic Island on compatible devices. iOS controls background execution; a progress display does not guarantee the app can keep working indefinitely in the background.</p></div></details>
+      <details class="qa"><summary>What additional endpoints are coming in 1.7.5?</summary><div class="qa-body"><p>The upcoming 1.7.5 update adds reusable connected-drive folders and password-based SFTP, FTP, and FTPS endpoints. Drive copies are checked against the archive’s recorded SHA-256; SFTP setup includes server-key review. Provider confirmation remains specific to the destination and is not a promise of permanent integrity.</p><p>An attached drive is a local copy. It does not automatically satisfy the offsite requirement in Backup Status.</p></div></details>
     </section>
 
     <div class="contact-block">

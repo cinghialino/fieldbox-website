@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verified field backup on iPhone and iPad. Copy camera cards, compare SHA-256 hashes, back up Photos, and use your own cloud or NAS storage.">
   <title>Fieldbox Backup: Verified Field Backup for iPhone and iPad</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8 L86.4 29 L86.4 71 L50 92 L13.6 71 L13.6 29 Z' fill='none' stroke='%234f8ef7' stroke-width='11' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%234f8ef7'/%3E%3C/svg%3E">
   <style>
@@ -620,6 +621,7 @@
     footer a:hover { color: var(--text); }
   </style>
   <link rel="stylesheet" href="/site-shell.css">
+  <link rel="stylesheet" href="/refresh.css">
 </head>
 <body>
 
@@ -647,8 +649,8 @@
   <section class="hero-wrap">
     <div class="hero-text">
       <p class="label">Verified backup for iPhone and iPad</p>
-      <h1>Back up cards<br>without a laptop.</h1>
-      <p class="sub">Fieldbox copies card-based photos, video, and audio to your iPhone or iPad, compares source and local SHA-256 values, and can replicate the complete session to storage you choose. Built for photographers, videographers, drone operators, sound engineers, and other crews working away from a laptop.</p>
+      <h1>Your shoot.<br>Your copies.<br>No laptop required.</h1>
+      <p class="sub">Copy camera cards to your iPhone or iPad. Compare every copied file with its source using SHA-256. Then send the complete session to your own cloud or NAS storage, with a clear record of each copy.</p>
 
       <div class="cta-row">
         <a class="app-store-badge" href="https://apps.apple.com/us/app/fieldbox-backup/id6781406490" aria-label="Download Fieldbox Backup on the App Store">
@@ -659,17 +661,20 @@
       </div>
     </div>
 
-    <div class="device-stack">
-      <div class="phone-mock">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="assets/images/product/current/hero/iphone-transfer-complete.png" alt="Fieldbox transfer complete screen showing 58 files verified">
-        </div>
-      </div>
+    <div class="hero-artwork">
+      <picture>
+        <source media="(min-width: 801px)" srcset="assets/images/product/current/app-store/ipad-review-share.webp">
+        <img src="assets/images/product/current/app-store/iphone-review-share.webp" alt="Fieldbox’s review-and-share screen showing a selection of photographs, using the supplied App Store artwork" width="646" height="1400" fetchpriority="high">
+      </picture>
     </div>
   </section>
 
   <main>
+    <div class="workflow-strip" aria-label="Card backup workflow">
+      <div><span>01</span><strong>Choose your files</strong><p>Review the card before copying.</p></div>
+      <div><span>02</span><strong>Copy and compare</strong><p>Source and local SHA-256 must match.</p></div>
+      <div><span>03</span><strong>Confirm your copies</strong><p>Read each destination’s recorded status.</p></div>
+    </div>
     <div class="section-intro">
       <h2>A clear workflow from card to cloud.</h2>
       <p>Fieldbox keeps the transfer, local comparison, and provider confirmation visible as separate stages, so the current state of each session remains easy to read.</p>
@@ -679,7 +684,7 @@
       <div class="feature">
         <div class="feature-label">Transfer Review</div>
         <div class="feature-title">Every Scanned File Gets an Outcome</div>
-        <div class="feature-desc">Review what will transfer, what was already verified in the session, and what you deliberately excluded. Photography, Hybrid Shoot, and Video presets are editable starting points.</div>
+        <div class="feature-desc">Review what will transfer, what was already verified in the session, and what you deliberately excluded. Adjust the selection directly by file type before copying begins.</div>
       </div>
       <div class="feature">
         <div class="feature-label">Integrity</div>
@@ -714,7 +719,7 @@
       <div class="feature">
         <div class="feature-label">Integrity Record</div>
         <div class="feature-title">Export the Evidence</div>
-        <div class="feature-desc">Create a signed record of a session’s verification evidence and share the resulting <code>.fieldbox.json</code> file. It is self-issued by the device, not externally certified.</div>
+        <div class="feature-desc">Create a signed record of a session’s verification evidence and share the resulting <code>.fieldbox</code> file. It is self-issued by the device, not externally certified.</div>
       </div>
     </div>
 
@@ -772,7 +777,7 @@
     <hr class="rule">
 
     <div class="section-intro">
-      <h2>FieldBox Core, from card to record.</h2>
+      <h2>Fieldbox Core, from card to record.</h2>
       <p>A complete workflow with one connected cloud or NAS destination, from reviewing scanned files to reading the current copy inventory.</p>
     </div>
     <div class="gallery-toolbar" aria-label="Screenshot carousel controls">
@@ -784,35 +789,35 @@
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="assets/images/product/current/ipad/01_home.webp">
-          <img src="assets/images/product/current/iphone/01_home.webp" alt="FieldBox Core home screen with three sessions and the New Transfer button" loading="lazy">
+          <img src="assets/images/product/current/iphone/01_home.webp" alt="Fieldbox Core home screen with three sessions and the New Transfer button" loading="lazy">
         </picture>
         <div class="shot-caption">Start a card transfer from your iPhone or iPad</div>
       </div>
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="assets/images/product/current/ipad/02_card-review.webp">
-          <img src="assets/images/product/current/iphone/02_card-review.webp" alt="FieldBox Core card review showing selected, already verified, and excluded file outcomes" loading="lazy">
+          <img src="assets/images/product/current/iphone/02_card-review.webp" alt="Fieldbox Core card review showing selected, already verified, and excluded file outcomes" loading="lazy">
         </picture>
         <div class="shot-caption">Account for every scanned file before transfer</div>
       </div>
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="assets/images/product/current/ipad/03_media-browser.webp">
-          <img src="assets/images/product/current/iphone/03_media-browser.webp" alt="FieldBox Core session browser showing photographs, drone video, and audio from a multi-day ingest" loading="lazy">
+          <img src="assets/images/product/current/iphone/03_media-browser.webp" alt="Fieldbox Core session browser showing photographs, drone video, and audio from a multi-day ingest" loading="lazy">
         </picture>
         <div class="shot-caption">Browse photographs, drone video, and audio together</div>
       </div>
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="assets/images/product/current/ipad/04_transfer-report.webp">
-          <img src="assets/images/product/current/iphone/04_transfer-report.webp" alt="FieldBox Core transfer report showing 58 files copied and 58 files verified" loading="lazy">
+          <img src="assets/images/product/current/iphone/04_transfer-report.webp" alt="Fieldbox Core transfer report showing 58 files copied and 58 files verified" loading="lazy">
         </picture>
         <div class="shot-caption">See exact copied and verified counts</div>
       </div>
       <div class="shot">
         <picture>
           <source media="(min-width: 900px)" srcset="assets/images/product/current/ipad/05_backup-status.webp">
-          <img src="assets/images/product/current/iphone/05_backup-status.webp" alt="FieldBox Core Backup Status showing source card, device archive, and cloud copy inventory" loading="lazy">
+          <img src="assets/images/product/current/iphone/05_backup-status.webp" alt="Fieldbox Core Backup Status showing source card, device archive, and cloud copy inventory" loading="lazy">
         </picture>
         <div class="shot-caption">Read the current card, device, and cloud inventory</div>
       </div>
@@ -820,15 +825,43 @@
 
     <hr class="rule">
 
+    <section class="editorial-panel" aria-labelledby="photos-heading">
+      <div class="editorial-copy">
+        <p class="label">Photos app backup · Included with Unlock</p>
+        <h2 id="photos-heading">Give your Photos library<br>another place to live.</h2>
+        <p>Copy accessible originals and edited versions to an attached drive, cloud endpoint, or NAS. Choose individual items, a date range, or your accessible library, then review the recorded copy results.</p>
+        <p>Pause and resume longer jobs, return supported backups to Photos, and decide separately whether to remove copied items from your library.</p>
+        <a class="text-link" href="/faq.html#photos-backup">Explore Photos app backup →</a>
+      </div>
+      <picture><img src="assets/images/product/current/app-store/iphone-photos-backup.webp" alt="Photos App Offload with choices for individual items, a date range, or the accessible library" loading="lazy" width="738" height="1600"></picture>
+    </section>
+    <div class="feature-notes">
+      <article><p class="label">Portable sessions</p><h3>Bring a session back.</h3><p>Open a portable .fieldbox record from Files, an external drive, or a connected cloud endpoint to import or reconcile its session.</p></article>
+      <article><p class="label">Live progress</p><h3>Follow along from the Lock Screen.</h3><p>Live Activities show supported backup progress on the Lock Screen and Dynamic Island on compatible devices.</p></article>
+    </div>
+    <hr class="rule">
+
     <section class="pro-spotlight" aria-labelledby="pro-heading">
       <div>
         <p class="label">Fieldbox Pro</p>
         <h2 id="pro-heading">More capacity when the production needs it.</h2>
-        <p>FieldBox Core handles the card-to-cloud workflow with one connected destination. Pro adds advance planning, multiple destinations, working-copy exports, archive management, source profiles, and client handoff. Choose monthly, yearly, or Lifetime Pro in the app. Every non-revoked Pro purchase also includes permanent ownership of FieldBox Core.</p>
+        <p>Fieldbox Core handles the card-to-cloud workflow with one connected destination. Pro adds advance planning, multiple destinations, working-copy exports, custom contact sheets, archive management, source profiles, and client handoff. Choose monthly, yearly, or Lifetime Pro in the app. Every non-revoked Pro purchase also includes permanent ownership of Fieldbox Core.</p>
       </div>
       <div class="cta-row">
         <a class="cta-secondary" href="/pro.html">Explore Fieldbox Pro</a>
       </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="release-preview" aria-labelledby="next-release-heading">
+      <p class="label">Coming in 1.7.5</p>
+      <h2 id="next-release-heading">More places to copy.<br>More ways to review.</h2>
+      <div class="feature-notes">
+        <article><h3>Reusable drive and server endpoints</h3><p>Save a connected USB drive or SSD folder as a backup endpoint, with copied files checked against the archive’s recorded SHA-256. Connect password-based SFTP, FTP, and FTPS servers, with server-key review for SFTP.</p></article>
+        <article><h3>Contact sheets from external folders</h3><p>With Pro, create PDF contact sheets from images across folders on connected storage without importing the originals or creating a session. Filter by folder or file type and group the images into sections.</p></article>
+      </div>
+      <p class="release-note">These additions are part of the upcoming 1.7.5 update. The current public App Store version is 1.7.2.</p>
     </section>
 
     <hr class="rule">

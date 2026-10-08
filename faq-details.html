@@ -373,6 +373,23 @@
       <p>The screen tells you how many files completed verification before the interruption. To continue, reconnect the source and choose it in Files. Fieldbox checks the recorded card identity, selected folder, current inventory, and per-file checkpoints before it resumes, then skips files whose completed checkpoints still match. You can also discard the interrupted transfer and its partial local files.</p>
     </article>
 
+    <hr class="rule">
+
+    <article class="deep" id="photos-evidence">
+      <div class="deep-head"><h2>What Photos app backup records</h2></div>
+      <p>Photos App Offload copies the full-resolution resources Apple Photos supplies. When an edited version is available, the backup includes it and the original. An original held by Apple’s cloud service must download before Fieldbox can copy it; without that resource, the item is not marked complete.</p>
+      <p>The package includes accessible album membership, dates, locations, favorite and hidden state, and a portable .fieldbox record. Shared Album media is copied at the quality Apple Photos supplies. Participants, comments, people, and Apple edit history are not reconstructed.</p>
+      <p>These copies do not enter the card archive or contribute to a card session’s Backup Status. Supported packages can return media and supported album information to Photos. Removing items from Photos remains a separate user decision and may also remove them from a synced Apple Photos library.</p>
+    </article>
+
+    <hr class="rule">
+
+    <article class="deep" id="portable-records">
+      <div class="deep-head"><h2>What a portable record does and does not establish</h2></div>
+      <p>A portable .fieldbox record carries session identity, paths, sizes, hashes, and recorded evidence so Fieldbox can import or reconcile the session. A restore downloads to staging and returns a file to the archive only when its SHA-256 matches the recorded source hash.</p>
+      <p>A self-issued device signature provides tamper evidence and signing-key continuity. The record describes observations made at a point in time. It does not certify that a copy still exists, establish trusted time, or provide external or legal authentication. Contact sheets and screenshots are visual references, not cryptographic evidence.</p>
+    </article>
+
     <div class="contact-block">
       <p>Have a question this page didn't answer?</p>
       <a class="cta" href="mailto:support@fieldbox.app?subject=Fieldbox%20Backup%20question">Email us</a>
