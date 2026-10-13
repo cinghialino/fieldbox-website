@@ -14,5 +14,13 @@
   ],
   "observability": {
     "enabled": false
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "TESTFLIGHT_DB",
+      "database_name": "fieldbox-testflight",
+      "database_id": "e7024b40-e053-4709-9675-a09b9cea40fd",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Help test Fieldbox 1.8 on your iPhone or iPad. Apply for a TestFlight invitation and one of 30 places with a complimentary year of Fieldbox Pro.">
+  <title>Join the Fieldbox TestFlight</title>
+  <link rel="canonical" href="https://fieldbox.app/testflight/">
+  <link rel="stylesheet" href="/homepage.css">
+  <link rel="stylesheet" href="/testflight/testflight.css">
+  <script src="/testflight/testflight.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Fieldbox home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 86.4 29v42L50 92 13.6 71V29Z" fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="50" r="15" fill="currentColor"/></svg>
+      <span>Fieldbox<small>Backup for iPhone and iPad</small></span>
+    </a>
+    <nav aria-label="Primary navigation"><a href="/">Explore Fieldbox</a><a href="https://apps.apple.com/us/app/fieldbox-backup/id6781406490">App Store</a></nav>
+  </header>
+  <main class="beta-main">
+    <section class="beta-card" aria-labelledby="apply-title">
+      <p class="eyebrow">Fieldbox 1.8 · iPhone and iPad</p>
+      <h1 id="apply-title">Join the TestFlight</h1>
+      <p class="form-intro">Tell us about your setup. We’ll review your application and email you a TestFlight invitation if you’re selected.</p>
+      <p class="beta-offer">We’re offering <strong>30 accepted testers a free year of Fieldbox Pro</strong>, with a code sent privately after beta installation. No feedback checklist required.</p>
+        <form id="beta-form" action="https://forms.fieldbox.app/testflight/join" method="post">
+          <label for="name">Name <span>(optional)</span></label><input id="name" name="name" autocomplete="name" maxlength="100">
+          <label for="email">Email for your TestFlight invitation</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required><p class="field-help">Use an address where you can receive and accept an Apple TestFlight invitation.</p>
+          <label for="device">iPhone or iPad model</label><input id="device" name="device" placeholder="e.g. iPhone 16 Pro or iPad Pro M4" maxlength="150" required>
+          <label for="setup">Your camera, reader, and storage setup</label><textarea id="setup" name="setup" rows="3" maxlength="2000" placeholder="Camera and card type, card reader or hub, external drive if used…" required></textarea>
+          <label for="workflow">How would you use Fieldbox? <span>(optional)</span></label><textarea id="workflow" name="workflow" rows="2" maxlength="1500" placeholder="Backing up cards while traveling, copying a shoot to an SSD, uploading to my NAS…"></textarea>
+          <label class="check"><input type="checkbox" name="contact_consent" value="yes" required><span>I agree that Fieldbox may email me about this beta, my invitation, Pro access, and feedback. I’ve read the <a href="/privacy.html#testflight">privacy notice</a>. This does not subscribe me to a newsletter.</span></label>
+          <label class="check"><input type="checkbox" name="offer_consent" value="yes" required><span>I understand that codes must be redeemed before November 1, 2026. After the free year, the subscription automatically renews at the standard price unless I cancel through Apple.</span></label>
+          <div id="beta-verification"></div>
+          <button id="beta-submit" type="submit" disabled>Apply to join TestFlight <span aria-hidden="true">→</span></button>
+          <p id="beta-status" class="form-status" role="status" aria-live="polite">Complete the verification to apply.</p>
+          <noscript><p>JavaScript is required for verification and submission. Contact <a href="mailto:support@fieldbox.app">support@fieldbox.app</a> for help joining.</p></noscript>
+        </form>
+        <div id="beta-success" hidden tabindex="-1"><span class="success-mark" aria-hidden="true">✓</span><h3>Application received.</h3><p>We’ll review your setup and email you if you’re selected. Look out for a separate invitation from Apple’s TestFlight.</p><p>Pro codes are sent privately after beta installation. There’s nothing to redeem on this page.</p></div>
+    </section>
+  </main>
+  <footer class="beta-footer"><a href="/">Fieldbox</a><span>Backup for iPhone and iPad</span><a href="/privacy.html">Privacy</a><a href="mailto:support@fieldbox.app">Contact</a></footer>
+</body>
+</html>

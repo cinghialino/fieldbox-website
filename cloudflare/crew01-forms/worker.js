@@ -4,6 +4,7 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const ROUTES = Object.freeze({
+  "/testflight/join": { action: "testflight_join", validate: validateTestFlight, privateStorage: true },
   "/crew01/enroll": {
     action: "crew01_enroll",
     googleFormUrl:
@@ -91,7 +92,27 @@ export default {
 
     let formData;
     try {
-      formData = await request.formData();
+      if (route.privateStorage) {
+        if (!env.TESTFLIGHT_DB) return jsonResponse({ ok: false, error: "Applications are temporarily unavailable. Please try again later." }, 503, origin);
+        // Bound streamed requests too, including requests without Content-Length.
+        const reader = request.body?.getReader();
+        if (!reader) throw new Error("Missing body");
+        const chunks = [];
+        let length = 0;
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          length += value.byteLength;
+          if (length > 65536) {
+            await reader.cancel();
+            return jsonResponse({ ok: false, error: "Submission is too large." }, 413, origin);
+          }
+          chunks.push(value);
+        }
+        formData = await new Response(new Blob(chunks), { headers: { "Content-Type": request.headers.get("Content-Type") || "" } }).formData();
+      } else {
+        formData = await request.formData();
+      }
     } catch {
       return jsonResponse({ ok: false, error: "Invalid form submission." }, 400, origin);
     }
@@ -131,6 +152,24 @@ export default {
       turnstileResult.action !== route.action
     ) {
       return jsonResponse({ ok: false, error: "Verification failed. Please try again." }, 403, origin);
+    }
+
+    if (route.privateStorage) {
+      try {
+        const result = await env.TESTFLIGHT_DB.prepare(`
+          INSERT INTO testflight_applications
+            (id, campaign, email, name, device, setup, workflow, consent_version, created_at)
+          VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+          ON CONFLICT(campaign, email) DO NOTHING
+        `).bind(crypto.randomUUID(), "testflight-1.8-2026", stringValue(formData.get("email")).trim().toLowerCase(),
+          stringValue(formData.get("name")).trim(), stringValue(formData.get("device")).trim(),
+          stringValue(formData.get("setup")).trim(), stringValue(formData.get("workflow")).trim(),
+          "2026-10-12", new Date().toISOString()).run();
+        if (!result.success) throw new Error("Write failed");
+      } catch {
+        return jsonResponse({ ok: false, error: "We couldn’t save your application. Please try again." }, 503, origin);
+      }
+      return jsonResponse({ ok: true }, 200, origin);
     }
 
     const googleFields = new URLSearchParams();
@@ -281,4 +320,15 @@ function jsonResponse(body, status, origin, extraHeaders = {}) {
       "Content-Type": "application/json;charset=UTF-8",
     },
   });
+}
+
+function validateTestFlight(formData) {
+  const limits = { name: 100, email: 254, device: 150, setup: 2000, workflow: 1500, contact_consent: 3, offer_consent: 3, "cf-turnstile-response": 2048 };
+  for (const [key, value] of formData.entries()) {
+    if (!Object.hasOwn(limits, key) || typeof value !== "string" || value.length > limits[key] || formData.getAll(key).length !== 1) return "Invalid or oversized form field.";
+  }
+  if (!isEmail(stringValue(formData.get("email")).trim())) return "Enter a valid email address.";
+  if (!["device", "setup"].every(name => hasText(formData, name))) return "Tell us about your device and storage setup.";
+  if (formData.get("contact_consent") !== "yes" || formData.get("offer_consent") !== "yes") return "Confirm the privacy notice and subscription terms.";
+  return "";
 }

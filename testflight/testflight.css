@@ -1,0 +1,18 @@
+.beta-main{max-width:620px;margin:36px auto 60px;padding:0 24px}
+.beta-card h1{font-size:34px;letter-spacing:-.035em;line-height:1.15;margin:12px 0 14px}
+.form-intro,.beta-offer{font-size:15px;line-height:1.6;color:var(--muted)}
+.beta-offer{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:24px}.beta-offer strong{color:var(--text);font-weight:600}
+#beta-form>label:not(.check){display:block;font-size:14px;font-weight:600;margin:20px 0 8px}
+#beta-form>label:not(.check) span{font-weight:400;color:var(--muted)}
+input:not([type=checkbox]),textarea{display:block;width:100%;box-sizing:border-box;background:var(--surface);border:1px solid #3a3f49;border-radius:8px;color:var(--text);font:inherit;font-size:16px;padding:11px 12px}
+textarea{resize:vertical;min-height:70px}input::placeholder,textarea::placeholder{color:#8d94a2}
+input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--blue-soft);outline-offset:3px}
+.field-help{font-size:12px;color:var(--muted);line-height:1.5;margin:8px 0}
+.check{display:flex;align-items:flex-start;gap:11px;font-size:13px;line-height:1.6;color:var(--muted);margin:20px 0}
+.check input{flex-shrink:0;width:17px;height:17px;accent-color:var(--blue);margin:2px 0 0}.check a{color:var(--blue-soft);text-decoration:underline}
+#beta-verification{margin:22px 0 14px;min-height:65px}
+#beta-submit{width:100%;border:0;border-radius:8px;background:var(--blue);color:#fff;padding:14px 16px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+#beta-submit:disabled{opacity:.5;cursor:not-allowed}.form-status{font-size:13px;line-height:1.6;color:var(--muted)}.form-status[data-error=true]{color:#ffb1aa}
+#beta-success{padding:24px 0;line-height:1.7;color:var(--muted)}#beta-success h3{color:var(--text);font-size:24px}.success-mark{color:var(--green);font-size:28px}
+.beta-footer{max-width:620px;margin:auto;padding:24px;display:flex;gap:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.beta-footer span{margin-right:auto}.beta-footer a{color:var(--text)}
+[hidden]{display:none!important}@media(max-width:520px){.beta-main{margin-top:24px;padding:0 20px}.beta-card h1{font-size:30px}.beta-footer{padding:22px 20px;flex-wrap:wrap;gap:16px}.beta-footer span{width:100%;order:4}}
