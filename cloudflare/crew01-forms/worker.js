@@ -1,3 +1,4 @@
+import { flushNotifications } from "./notifications.js";
 const ALLOWED_ORIGINS = new Set([
   "https://fieldbox.app",
   "https://www.fieldbox.app",
@@ -56,7 +57,10 @@ const REQUIRED_SUBMISSION_CONFIRMATIONS = new Set([
 ]);
 
 export default {
-  async fetch(request, env) {
+  async scheduled(event, env) {
+    await flushNotifications(env);
+  },
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const origin = request.headers.get("Origin") || "";
     const route = ROUTES[url.pathname];
@@ -169,6 +173,7 @@ export default {
       } catch {
         return jsonResponse({ ok: false, error: "We couldn’t save your application. Please try again." }, 503, origin);
       }
+      if (ctx && env.TESTFLIGHT_EMAIL) ctx.waitUntil(flushNotifications(env));
       return jsonResponse({ ok: true }, 200, origin);
     }
 

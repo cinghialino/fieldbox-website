@@ -73,3 +73,16 @@ the App Store subscription, separate from TestFlight beta access.
 Before the deadline or once all 30 offers are allocated, update the page, metadata,
 and required offer checkbox together; do not leave an expired or exhausted offer
 advertised. The signup route deliberately has no automatic invitation/reward logic.
+
+## Application notifications
+
+Each saved application is queued for a private email with all submitted fields and its record ID.
+The recipient is the encrypted Worker secret `TESTFLIGHT_NOTIFY_TO`; never put the private address
+in public site assets or committed config. The native `TESTFLIGHT_EMAIL` binding uses the existing
+Fieldbox Email Routing setup. The recipient must be a verified routing destination.
+
+Submission saves and email delivery are separate: the applicant receives success once saved.
+The Worker attempts notifications in background after submission and every five minutes.
+Failed attempts retry with backoff up to hourly. `notification_sent_at` records provider acceptance,
+not proof that the recipient read the email. A crash after send and before recording may duplicate
+a notification; the stable record ID and Message-ID identify the same application.
